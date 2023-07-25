@@ -17,7 +17,7 @@ function Mozok() {
             <ul className={s.Menu}>
               <NavLink
                 className={s.Link}
-                to="/"
+                to="/mozok/"
                 style={({ isActive }) => {
                   return {
                     color: isActive ? "red" : "black",
@@ -29,7 +29,7 @@ function Mozok() {
               </NavLink>
               <NavLink
                 className={s.Link}
-                to="/About"
+                to="/mozok/About"
                 style={({ isActive }) => {
                   return {
                     color: isActive ? "red" : "black",
@@ -40,7 +40,7 @@ function Mozok() {
               </NavLink>
               <NavLink
                 className={s.Link}
-                to="/User"
+                to="/mozok/User"
                 style={({ isActive }) => {
                   return {
                     color: isActive ? "red" : "black",
@@ -51,7 +51,7 @@ function Mozok() {
               </NavLink>
               <NavLink
                 className={s.Link}
-                to="/ServiceCentre"
+                to="/mozok/ServiceCentre"
                 style={({ isActive }) => {
                   return {
                     color: isActive ? "red" : "black",
@@ -62,7 +62,7 @@ function Mozok() {
               </NavLink>
               <NavLink
                 className={s.Link}
-                to="/Basket"
+                to="/mozok/Basket"
                 style={({ isActive }) => {
                   return {
                     color: isActive ? "red" : "black",
@@ -73,7 +73,7 @@ function Mozok() {
               </NavLink>
               <NavLink
                 className={s.Link}
-                to="/Reviews"
+                to="/mozok/Reviews"
                 style={({ isActive }) => {
                   return {
                     color: isActive ? "red" : "black",
@@ -86,12 +86,12 @@ function Mozok() {
           </div>
 
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/User" element={<User />} />
-            <Route path="/Basket" element={<Basket />} />
-            <Route path="/Reviews" element={<Reviews />} />
-            <Route path="/ServiceCentre" element={<ServiceCentre />} />
+            <Route path="/mozok/" element={<Home />} />
+            <Route path="/mozok/About" element={<About />} />
+            <Route path="/mozok/User" element={<User />} />
+            <Route path="/mozok/Basket" element={<Basket />} />
+            <Route path="/mozok/Reviews" element={<Reviews />} />
+            <Route path="/mozok/ServiceCentre" element={<ServiceCentre />} />
           </Routes>
         </main>
         <footer className={s.footer}></footer>
