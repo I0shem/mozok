@@ -1,0 +1,9 @@
+.mozok {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+ul,
+li {
+  list-style: none;
+}
