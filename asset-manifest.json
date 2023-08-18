@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/mozok/static/css/main.6e9bd642.css",
-    "main.js": "/mozok/static/js/main.3a73c8b1.js",
+    "main.css": "/mozok/static/css/main.c4c23861.css",
+    "main.js": "/mozok/static/js/main.c0e62c95.js",
     "static/media/mozok_svg.svg": "/mozok/static/media/mozok_svg.438e3167e4e6999361b704fd99e0dbd9.svg",
     "index.html": "/mozok/index.html",
-    "main.6e9bd642.css.map": "/mozok/static/css/main.6e9bd642.css.map",
-    "main.3a73c8b1.js.map": "/mozok/static/js/main.3a73c8b1.js.map"
+    "main.c4c23861.css.map": "/mozok/static/css/main.c4c23861.css.map",
+    "main.c0e62c95.js.map": "/mozok/static/js/main.c0e62c95.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e9bd642.css",
-    "static/js/main.3a73c8b1.js"
+    "static/css/main.c4c23861.css",
+    "static/js/main.c0e62c95.js"
   ]
 }
