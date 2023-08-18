@@ -1,0 +1,10 @@
+.StoresContent {
+  margin-top: 10vh;
+  position: relative;
+  min-height: 100vh;
+}
+.cartTest {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+}

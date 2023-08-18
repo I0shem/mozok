@@ -1,101 +1,62 @@
+import { Navigation } from "./Components/navigation";
 import s from "./Mozok.module.css";
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import Home from "./Components/Home/Home";
-import About from "./Components/About/About";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Stores from "./Components/Stores/Stores";
 import User from "./Components/User/User";
 import ServiceCentre from "./Components/ServiceCentre/ServiceCentre";
 import Basket from "./Components/Basket/Basket";
-import Reviews from "./Components/Reviews/Reviews";
+import Deals from "./Components/Deals/Deals";
+import { FaBars } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import Home from "./Components/Home/Home";
+import { ReactComponent as MyLogo } from "./Components/Images/mozok_svg.svg";
+import React, { useState } from "react";
+import ModalCityWindow from "./modalCity";
 
 function Mozok() {
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
   return (
     <div className={s.mozok}>
-      <BrowserRouter>
-        <header className={s.header}></header>
-        <main className={s.content}>
-          <div className={s.TopBanner}>
-            <ul className={s.Menu}>
-              <NavLink
-                className={s.Link}
-                to="/mozok/"
-                style={({ isActive }) => {
-                  return {
-                    color: isActive ? "red" : "black",
-                  };
-                }}
-                end
-              >
-                <li id="home">Home</li>
-              </NavLink>
-              <NavLink
-                className={s.Link}
-                to="/mozok/About"
-                style={({ isActive }) => {
-                  return {
-                    color: isActive ? "red" : "black",
-                  };
-                }}
-              >
-                <li id="about">About</li>
-              </NavLink>
-              <NavLink
-                className={s.Link}
-                to="/mozok/User"
-                style={({ isActive }) => {
-                  return {
-                    color: isActive ? "red" : "black",
-                  };
-                }}
-              >
-                <li id="user">User</li>
-              </NavLink>
-              <NavLink
-                className={s.Link}
-                to="/mozok/ServiceCentre"
-                style={({ isActive }) => {
-                  return {
-                    color: isActive ? "red" : "black",
-                  };
-                }}
-              >
-                <li id="serviceCentre">ServiceCentre</li>
-              </NavLink>
-              <NavLink
-                className={s.Link}
-                to="/mozok/Basket"
-                style={({ isActive }) => {
-                  return {
-                    color: isActive ? "red" : "black",
-                  };
-                }}
-              >
-                <li id="basket">Basket</li>
-              </NavLink>
-              <NavLink
-                className={s.Link}
-                to="/mozok/Reviews"
-                style={({ isActive }) => {
-                  return {
-                    color: isActive ? "red" : "black",
-                  };
-                }}
-              >
-                <li id="reviews">Reviews</li>
-              </NavLink>
-            </ul>
+      <header className={s.header}>
+        <div className={s.containerOne}>
+          <div className={s.logo} onClick={() => navigate(`/mozok/`)}>
+            <MyLogo className={s.logoImage} />
+            Mozok
           </div>
+          <div></div>
+          <ModalCityWindow show={show} setShow={setShow} />
+          <div className={s.pages}>
+            <Navigation text="Головна" adress="/mozok/" />
+            <Navigation text="Магазини" adress="/mozok/Stores" />
+            <Navigation text="Клієнтам" adress="/mozok/User" />
+            <Navigation text="Сервіс" adress="/mozok/ServiceCentre" />
+            <Navigation text="Акції" adress="/mozok/Basket" col="red" />
+          </div>
+        </div>
 
-          <Routes>
-            <Route path="/mozok/" element={<Home />} />
-            <Route path="/mozok/About" element={<About />} />
-            <Route path="/mozok/User" element={<User />} />
-            <Route path="/mozok/Basket" element={<Basket />} />
-            <Route path="/mozok/Reviews" element={<Reviews />} />
-            <Route path="/mozok/ServiceCentre" element={<ServiceCentre />} />
-          </Routes>
-        </main>
-        <footer className={s.footer}></footer>
-      </BrowserRouter>
+        <div class={s.line} />
+        <div class={s.topContainerTwo}>
+          <div class={s.catalog}>
+            <IconContext.Provider value={{ className: s.headerBtn }}>
+              <FaBars />
+            </IconContext.Provider>
+            <div class={s.catalogText}>КАТАЛОГ ТОВАРІВ</div>
+          </div>
+        </div>
+      </header>
+      <main className={s.content}>
+        <Routes>
+          <Route path="/mozok/" element={<Home />} />
+          <Route path="/mozok/Stores" element={<Stores />} />
+          <Route path="/mozok/User" element={<User />} />
+          <Route path="/mozok/Deals" element={<Deals />} />
+          <Route path="/mozok/ServiceCentre" element={<ServiceCentre />} />
+          <Route path="/mozok/Basket" element={<Basket />} />
+        </Routes>
+      </main>
+      <footer className={s.footer}></footer>
     </div>
   );
 }

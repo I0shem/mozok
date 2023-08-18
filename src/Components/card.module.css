@@ -1,0 +1,102 @@
+.productCard {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.parallaxEffect {
+  width: 320px;
+  height: 450px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  border-radius: 11px;
+  transform-style: preserve-3d;
+}
+.innerElement {
+  display: block;
+  transform: translateZ(60px);
+  width: 90%;
+  margin-left: 7.5%;
+  height: 40%;
+}
+.cardImage {
+  border-radius: 10px;
+  width: 80%;
+  mix-blend-mode: multiply;
+  filter: contrast(1);
+}
+.title {
+  font-size: 16px;
+  line-height: 19px;
+  margin-top: -40px;
+  max-width: 90%;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.title:hover {
+  transform: scale(1.01);
+  text-shadow: 0px 0px 5px rgba(20, 126, 197, 0.779);
+}
+.price {
+  font-size: 26px;
+  color: rgba(0, 0, 0, 0.882);
+  font-weight: 600;
+}
+.buyButton {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  bottom: -10px;
+  text-decoration: none;
+  transition: all 150ms;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.buyButton:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  background-color: rgb(20, 126, 197);
+  color: rgb(255, 255, 255);
+}
+
+.buyButton:hover {
+  transform: translateY(-1px);
+}
+
+.buyButton:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+}
+.availability {
+  color: green;
+  font-size: 12px;
+}
+.innerElement div {
+  margin-bottom: 15px;
+}
+.articul {
+  font-size: 12px;
+}
