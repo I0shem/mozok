@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./card.module.css";
 import Tilt from "react-parallax-tilt";
-
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { IconContext } from "react-icons";
 const test = {
   title: "Процесор INTEL Core™ i5 10400 (BX8070110400)",
   price: "5399",
@@ -43,6 +44,10 @@ const test = {
 const Card = () => {
   let t = test.title;
   let newTitle = t.replace(/ *\([^)]*\) */g, "");
+  const [heart, setHeart] = useState(true);
+  const heartClick = () => {
+    setHeart(!heart);
+  };
   return (
     <div className={s.productCard}>
       <Tilt
@@ -55,9 +60,27 @@ const Card = () => {
         perspective={500}
       >
         <img src={test.image} alt="pic" className={s.cardImage} />
+        {heart ? (
+          <>
+            <IconContext.Provider
+              value={{ className: s.heartBtn, size: "2.5rem" }}
+            >
+              <BsHeart onClick={heartClick} />
+            </IconContext.Provider>
+          </>
+        ) : (
+          <>
+            <IconContext.Provider
+              value={{ className: s.heartBtn, size: "2.5rem" }}
+            >
+              <BsHeartFill onClick={heartClick} />
+            </IconContext.Provider>
+          </>
+        )}
+
         <div className={s.innerElement}>
           <div className={s.title}>{newTitle}</div>
-          <div className={s.articul}>
+          <div className={s.article}>
             Артикул: {test.characteristics.Артикул}{" "}
           </div>
           <div className={s.availability}>В наявності</div>
