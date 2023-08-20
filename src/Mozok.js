@@ -36,13 +36,13 @@ function Mozok() {
           </div>
         </div>
 
-        <div class={s.line} />
-        <div class={s.topContainerTwo}>
-          <div class={s.catalog}>
+        <div className={s.line} />
+        <div className={s.topContainerTwo}>
+          <div className={s.catalog}>
             <IconContext.Provider value={{ className: s.headerBtn }}>
               <FaBars />
             </IconContext.Provider>
-            <div class={s.catalogText}>КАТАЛОГ ТОВАРІВ</div>
+            <div className={s.catalogText}>КАТАЛОГ ТОВАРІВ</div>
           </div>
         </div>
       </header>

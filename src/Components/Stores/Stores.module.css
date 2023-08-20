@@ -8,3 +8,10 @@
   top: 25%;
   left: 40%;
 }
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cards div {
+  margin: 10px;
+}

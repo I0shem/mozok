@@ -1,11 +1,16 @@
 import React from "react";
 import s from "./Stores.module.css";
-import Card from "../card";
+import Card from "../cards/card";
+import MongoDBDataFetcher from "./../useData";
+
 const Stores = () => {
+  const data = MongoDBDataFetcher();
   return (
     <div className={s.StoresContent}>
-      <div className={s.cartTest}>
-        <Card />
+      <div className={s.cards}>
+        {data.map((item) => (
+          <Card item={item} />
+        ))}
       </div>
     </div>
   );

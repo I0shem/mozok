@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "configurations": [
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Launch Edge against localhost",
+      "url": "https://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    }
+  ],
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": [],
+      "label": "npm: start",
+      "detail": "react-scripts start"
+    }
+  ]
+}

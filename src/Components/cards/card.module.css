@@ -1,7 +1,6 @@
 .productCard {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+  width: 320px;
+  height: 450px;
 }
 .parallaxEffect {
   width: 320px;
@@ -10,19 +9,19 @@
   color: rgb(0, 0, 0);
   border: 1px solid black;
   border-radius: 11px;
-  transform-style: preserve-3d;
 }
 .innerElement {
   display: block;
   transform: translateZ(60px);
   width: 90%;
-  margin: auto;
   height: 45%;
   text-align: center;
 }
 .cardImage {
   border-radius: 10px;
-  width: 80%;
+  max-height: 50%;
+  max-width: 80%;
+  margin: 10px;
   mix-blend-mode: multiply;
   filter: contrast(1);
 }
