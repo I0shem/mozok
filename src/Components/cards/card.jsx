@@ -5,7 +5,6 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
 const Card = (item) => {
-  console.log(item);
   let newTitle = item.item.title;
   const [heart, setHeart] = useState(true);
   const heartClick = () => {
@@ -18,8 +17,8 @@ const Card = (item) => {
         glareEnable={true}
         glareMaxOpacity={0.8}
         glareColor="#ffffff"
-        glarePosition="bottom"
-        glareBorderRadius="20px"
+        glarePosition="center"
+        glareBorderRadius="11px"
         scale={1.01}
         tiltMaxAngleY={1}
         tiltMaxAngleX={1}

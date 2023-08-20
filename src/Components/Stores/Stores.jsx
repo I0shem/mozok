@@ -4,7 +4,7 @@ import Card from "../cards/card";
 import MongoDBDataFetcher from "./../useData";
 
 const Stores = () => {
-  const data = MongoDBDataFetcher();
+  const data = MongoDBDataFetcher("motherboards");
   return (
     <div className={s.StoresContent}>
       <div className={s.cards}>

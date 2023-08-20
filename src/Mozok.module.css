@@ -9,8 +9,7 @@
   text-decoration: none;
   background-color: white;
   min-height: 12dvh;
-  max-height: 100px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -23,37 +22,20 @@
   margin-left: 10vw;
 }
 
-.Link {
-  display: inline-flex;
-  list-style: none;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  flex-grow: 1;
-}
-.Link:hover {
-  background-color: rgb(204, 204, 204);
-  color: #fff;
-}
 .Menu {
   display: flex;
   font-weight: normal;
 }
-.pages {
-  position: relative;
-  left: 12%;
-  width: 30vw;
-  display: flex;
-  font-size: 0.85rem;
-}
+
 .containerOne {
   padding-left: 10vw;
   display: flex;
 }
 .topContainerTwo {
+  display: flex;
   margin-left: 10vw;
   width: 80vw;
-  min-height: 10px;
+  min-height: 40px;
   background-color: rgb(255, 255, 255);
 }
 
@@ -78,9 +60,6 @@
   background-color: rgba(20, 126, 197, 0.61);
 }
 
-.Link:visited {
-  color: #0e1333;
-}
 .logo {
   font-size: 2rem;
   font-weight: 800;
@@ -97,9 +76,9 @@ svg:hover {
 }
 .city {
   display: block;
-  position: relative;
+  position: absolute;
   top: 3vh;
-  left: 2vw;
+  left: 21vw;
   font-size: 0.86rem;
   font-weight: 600;
 }
@@ -113,7 +92,7 @@ svg:hover {
 .cities {
   position: absolute;
   top: 5vh;
-  left: 25vw;
+  left: 21vw;
   width: 250px;
   height: 200px;
   font-size: 0.8rem;
@@ -137,4 +116,147 @@ td {
 }
 .cities td:hover {
   cursor: pointer;
+  font-weight: 600;
+}
+.changeCity {
+  width: 135px;
+}
+.modalWindowCities {
+  height: 100dvh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 55;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.dropDownBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.HeaderBtns div {
+  display: inline-flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  flex-grow: 1;
+  color: black;
+}
+
+.Link {
+  display: inline-flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  flex-grow: 1;
+  color: black;
+}
+.HeaderBtns {
+  position: relative;
+  left: 12%;
+  width: 30vw;
+  display: flex;
+  font-size: 0.85rem;
+}
+.headerBtn {
+  margin-left: 4px;
+}
+.headerBtn:hover {
+  background: none;
+  transform: scale(1.05);
+}
+
+.modalHeader {
+  position: absolute;
+  top: 5vh;
+  z-index: 1;
+  margin-right: -30%;
+  border-radius: 0px 11px 11px 11px;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+  min-width: 150px;
+  box-shadow: 3px 1px 4px 1px rgba(0, 0, 0, 0.75);
+}
+
+.modalHeader li {
+  position: relative;
+  display: flex;
+  left: -20px;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  list-style: none;
+  min-width: 155%;
+}
+
+.modalHeader li:hover {
+  cursor: pointer;
+  text-shadow: 0.1px 0 0 black;
+}
+.enterContainer {
+  position: absolute;
+  right: 10vw;
+  top: 2.5vh;
+  cursor: pointer;
+  display: flex;
+  line-height: 19px;
+  font-size: 0.95rem;
+}
+.enterBtn {
+  margin-right: 5px;
+
+  height: 1em;
+  fill: black;
+}
+.enterContainer:hover svg {
+  font-weight: 600;
+  width: 1.1em;
+  height: 1.1em;
+}
+.enterContainer:hover {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.searchBar {
+  position: relative;
+  max-height: 39px;
+  left: 20px;
+  box-shadow: none;
+  width: 29vw;
+  margin: 5px;
+}
+.orderCall,
+.searchOrder,
+.wishedProducts,
+.comperedProducts {
+  margin: 5px;
+  min-width: 140px;
+  max-width: 150px;
+  margin-left: 20px;
+  display: block;
+  font-size: 11px;
+  cursor: pointer;
+}
+.orderCall svg,
+.searchOrder svg,
+.wishedProducts svg,
+.comperedProducts svg {
+  font-size: 20px;
+}
+.orderCall:hover,
+.searchOrder:hover,
+.wishedProducts:hover,
+.comperedProducts:hover,
+.cart:hover {
+  background-color: rgba(20, 126, 197, 0.05);
+  text-shadow: 0.1px 0 0 black;
+}
+.cart svg {
+  font-size: 40px;
+  min-width: 140px;
+  left: 0;
+  filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.6));
 }

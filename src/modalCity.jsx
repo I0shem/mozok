@@ -19,7 +19,7 @@ const ModalCityWindow = ({ show, setShow }) => {
   return (
     <>
       {show ? (
-        <div>
+        <div className={s.modalWindowCities} onClick={() => setShow(false)}>
           <div className={s.city} onClick={() => setShow(true)}>
             {chosenCity} <BiChevronDown className={s.cityBtn} />
           </div>
