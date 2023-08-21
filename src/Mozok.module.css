@@ -1,18 +1,26 @@
 .mozok {
   text-align: center;
   font-family: "Roboto", sans-serif;
-  background-color: grey;
+  background-color: #f6f6f6;
 }
+
 .header {
   justify-content: center;
   align-items: center;
   text-decoration: none;
   background-color: white;
   min-height: 12dvh;
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+}
+.header,
+.content {
+  -webkit-transition: all 0.7s ease-in-out;
+  -moz-transition: all 0.7s ease-in-out;
+  -ms-transition: all 0.7s ease-in-out;
+  -o-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 
 .line {
@@ -42,7 +50,7 @@
 .catalog {
   display: flex;
   max-width: max-content;
-  width: 15dvw;
+  min-width: 8vw;
   background-color: rgb(20, 126, 197);
   color: white;
   padding: 10px;
@@ -50,9 +58,9 @@
   margin: 5px;
 }
 .catalogText {
-  font-size: 1.5dvh;
-  margin-left: 1dvw;
+  font-size: 0.85rem;
   font-weight: 800;
+  margin-left: 5px;
 }
 .catalog:hover,
 .headerBtn:hover {

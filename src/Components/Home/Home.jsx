@@ -1,11 +1,50 @@
 import React from "react";
 import s from "./Home.module.css";
+import { AiOutlineLaptop } from "react-icons/ai";
+import { ReactComponent as GPUSVG } from "../Images/video-card-svgrepo-com.svg";
+import { IoIosPhonePortrait } from "react-icons/io";
+import { AiOutlineApple } from "react-icons/ai";
+import { BsTv, BsSpeaker } from "react-icons/bs";
 
 const Home = () => {
   return (
     <>
       <div className={s.HomeContent}>
-        <h1>HOME</h1>
+        <div className={s.topBannerHeader}>
+          <div className={s.catalog}>
+            <ul>
+              <li>
+                <AiOutlineLaptop />
+                Ноутбуки і комп'ютери
+              </li>
+              <hr />
+              <li>
+                <GPUSVG />
+                Комплектуючі для ПК
+              </li>
+              <hr />
+              <li>
+                <IoIosPhonePortrait />
+                Смартфони та планшети
+              </li>
+              <hr />
+              <li>
+                <AiOutlineApple />
+                Техніка Apple
+              </li>
+              <hr />
+              <li>
+                <BsTv />
+                Телевізори і проектори
+              </li>
+              <hr />
+              <li>
+                <BsSpeaker />
+                Аудіо обладнання
+              </li>
+            </ul>
+          </div>
+        </div>
         <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
           cupiditate odit. Corporis odit asperiores cupiditate repudiandae

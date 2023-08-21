@@ -10,7 +10,7 @@ import { FaBars } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import Home from "./Components/Home/Home";
 import { ReactComponent as MyLogo } from "./Components/Images/mozok_svg.svg";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalCityWindow from "./modalCity";
 import { NavLink } from "react-router-dom";
 import { IoEnterOutline } from "react-icons/io5";
@@ -20,14 +20,40 @@ import { TbMapSearch } from "react-icons/tb";
 import { BsFillBagHeartFill } from "react-icons/bs";
 import { PiScalesFill } from "react-icons/pi";
 import { GiShoppingCart } from "react-icons/gi";
+
 function Mozok() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [weight, setWeight] = useState(300);
   const [weight1, setWeight1] = useState(300);
+
+  useEffect(() => {
+    window.addEventListener("scroll", isSticky);
+    return () => {
+      window.removeEventListener("scroll", isSticky);
+    };
+  });
+
+  const changeHeader = (header, cont) => {
+    header.style.position = "fixed";
+    cont.style.paddingTop = "24vh";
+  };
+  const changeHeaderBack = (header, cont) => {
+    header.style.position = "absolute";
+    cont.style.paddingTop = "12vh";
+  };
+  const isSticky = () => {
+    const header = document.getElementById("header");
+    const cont = document.getElementById("content");
+    const scrollTop = window.pageYOffset;
+    scrollTop >= 500
+      ? changeHeader(header, cont)
+      : changeHeaderBack(header, cont);
+  };
+
   return (
     <div className={s.mozok}>
-      <header className={s.header}>
+      <header className={s.header} id="header">
         <div className={s.containerOne}>
           <div className={s.logo} onClick={() => navigate(`/mozok/`)}>
             <NavLink to="/mozok" end>
@@ -139,14 +165,16 @@ function Mozok() {
         </div>
       </header>
       <main className={s.content}>
-        <Routes>
-          <Route path="/mozok/" element={<Home />} />
-          <Route path="/mozok/stores" element={<Stores />} />
-          <Route path="/mozok/users" element={<User />} />
-          <Route path="/mozok/loyalty_program" element={<LoyaltyProgram />} />
-          <Route path="/mozok/service_centre" element={<ServiceCentre />} />
-          <Route path="/mozok/promotion" element={<Promotion />} />
-        </Routes>
+        <div id="content">
+          <Routes>
+            <Route path="/mozok/" element={<Home />} />
+            <Route path="/mozok/stores" element={<Stores />} />
+            <Route path="/mozok/users" element={<User />} />
+            <Route path="/mozok/loyalty_program" element={<LoyaltyProgram />} />
+            <Route path="/mozok/service_centre" element={<ServiceCentre />} />
+            <Route path="/mozok/promotion" element={<Promotion />} />
+          </Routes>
+        </div>
       </main>
       <footer className={s.footer}></footer>
     </div>
