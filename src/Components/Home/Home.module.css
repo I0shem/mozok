@@ -5,39 +5,3 @@
   margin: auto;
   position: relative;
 }
-.topBannerHeader {
-  left: -1.7vw;
-  position: relative;
-  min-height: 50vh;
-}
-.topBannerHeader {
-  width: 13vw;
-}
-
-.topBannerHeader li {
-  font-size: 13px;
-  line-height: 20px;
-  list-style: none;
-  background: white;
-  padding: 7px;
-  padding-right: 15px;
-  color: #344150;
-  cursor: pointer;
-  display: flex;
-}
-.topBannerHeader hr {
-  margin: 0;
-}
-.topBannerHeader svg {
-  font-size: 17px;
-  height: 17px;
-  width: 25px;
-  margin: 0;
-  margin-right: 10px;
-  display: flex;
-  color: rgb(20, 126, 197);
-  fill: rgb(20, 126, 197);
-}
-.topBannerHeader li:hover {
-  font-weight: 600;
-}

@@ -9,18 +9,11 @@
   align-items: center;
   text-decoration: none;
   background-color: white;
-  min-height: 12dvh;
+  min-height: 12vh;
   top: 0;
+  z-index: 10;
   left: 0;
   right: 0;
-}
-.header,
-.content {
-  -webkit-transition: all 0.7s ease-in-out;
-  -moz-transition: all 0.7s ease-in-out;
-  -ms-transition: all 0.7s ease-in-out;
-  -o-transition: all 0.7s ease-in-out;
-  transition: all 0.7s ease-in-out;
 }
 
 .line {
@@ -44,23 +37,22 @@
   margin-left: 10vw;
   width: 80vw;
   min-height: 40px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.149);
 }
 
 .catalog {
   display: flex;
-  max-width: max-content;
+  width: 11vw;
   min-width: 8vw;
   background-color: rgb(20, 126, 197);
   color: white;
   padding: 10px;
-  padding-right: 15px;
-  margin: 5px;
+  padding-right: 5px;
 }
 .catalogText {
   font-size: 0.85rem;
   font-weight: 800;
-  margin-left: 5px;
+  margin-left: 1vw;
 }
 .catalog:hover,
 .headerBtn:hover {
@@ -267,4 +259,42 @@ td {
   min-width: 140px;
   left: 0;
   filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.6));
+}
+
+.topBannerHeader {
+  top: 0;
+  left: -1.7vw;
+  position: relative;
+  min-height: 50vh;
+}
+.topBannerHeader {
+  width: 13vw;
+}
+
+.topBannerHeader li {
+  font-size: 13px;
+  line-height: 20px;
+  list-style: none;
+  background: white;
+  padding: 7px;
+  padding-right: 15px;
+  color: #344150;
+  cursor: pointer;
+  display: flex;
+}
+.topBannerHeader hr {
+  margin: 0;
+}
+.topBannerHeader svg {
+  font-size: 17px;
+  height: 17px;
+  width: 25px;
+  margin: 0;
+  margin-right: 10px;
+  display: flex;
+  color: rgb(20, 126, 197);
+  fill: rgb(20, 126, 197);
+}
+.topBannerHeader li:hover {
+  font-weight: 600;
 }

@@ -20,6 +20,11 @@ import { TbMapSearch } from "react-icons/tb";
 import { BsFillBagHeartFill } from "react-icons/bs";
 import { PiScalesFill } from "react-icons/pi";
 import { GiShoppingCart } from "react-icons/gi";
+import { AiOutlineLaptop } from "react-icons/ai";
+import { ReactComponent as GPUSVG } from "./Components/Images/video-card-svgrepo-com.svg";
+import { IoIosPhonePortrait } from "react-icons/io";
+import { AiOutlineApple } from "react-icons/ai";
+import { BsTv, BsSpeaker } from "react-icons/bs";
 
 function Mozok() {
   const navigate = useNavigate();
@@ -36,11 +41,11 @@ function Mozok() {
 
   const changeHeader = (header, cont) => {
     header.style.position = "fixed";
-    cont.style.paddingTop = "24vh";
+    cont.style.paddingTop = "22vh";
   };
   const changeHeaderBack = (header, cont) => {
     header.style.position = "absolute";
-    cont.style.paddingTop = "12vh";
+    cont.style.paddingTop = "11vh";
   };
   const isSticky = () => {
     const header = document.getElementById("header");
@@ -164,6 +169,46 @@ function Mozok() {
           </div>
         </div>
       </header>
+      <div className={s.topBannerHeader}>
+        <div className={s.catalog}>
+          <ul>
+            <li>
+              <AiOutlineLaptop />
+              Ноутбуки і комп'ютери
+            </li>
+            <hr />
+            <li>
+              <GPUSVG />
+              Комплектуючі для ПК
+            </li>
+            <hr />
+            <li>
+              <IoIosPhonePortrait />
+              Смартфони та планшети
+            </li>
+            <hr />
+            <li>
+              <AiOutlineApple />
+              Техніка Apple
+            </li>
+            <hr />
+            <li>
+              <BsTv />
+              Монітори та аксесуари
+            </li>
+            <hr />
+            <li>
+              <BsTv />
+              Телевізори і проектори
+            </li>
+            <hr />
+            <li>
+              <BsSpeaker />
+              Аудіо обладнання
+            </li>
+          </ul>
+        </div>
+      </div>
       <main className={s.content}>
         <div id="content">
           <Routes>
