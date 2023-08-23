@@ -298,3 +298,7 @@ td {
 .topBannerHeader li:hover {
   font-weight: 600;
 }
+.footer {
+  width: 100vw;
+  background: #f0f0ff;
+}

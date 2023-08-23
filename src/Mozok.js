@@ -14,7 +14,7 @@ import React, { useState, useEffect } from "react";
 import ModalCityWindow from "./modalCity";
 import { NavLink } from "react-router-dom";
 import { IoEnterOutline } from "react-icons/io5";
-import SearchBar from "material-ui-search-bar";
+// import SearchBar from "material-ui-search-bar";
 import { BiPhoneCall } from "react-icons/bi";
 import { TbMapSearch } from "react-icons/tb";
 import { BsFillBagHeartFill } from "react-icons/bs";
@@ -25,7 +25,7 @@ import { ReactComponent as GPUSVG } from "./Components/Images/video-card-svgrepo
 import { IoIosPhonePortrait } from "react-icons/io";
 import { AiOutlineApple } from "react-icons/ai";
 import { BsTv, BsSpeaker } from "react-icons/bs";
-
+import Footer from "./Components/Footer/Footer";
 function Mozok() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -142,12 +142,12 @@ function Mozok() {
             <div className={s.catalogText}>КАТАЛОГ ТОВАРІВ</div>
           </div>
 
-          <SearchBar
+          {/* <SearchBar
             className={s.searchBar}
             onChange={() => console.log("onChange")}
             onRequestSearch={() => console.log("onRequestSearch")}
             placeholder="Знайти..."
-          />
+          /> */}
           <div className={s.orderCall}>
             <BiPhoneCall />
             <div> Замовити дзвінок</div>
@@ -221,7 +221,10 @@ function Mozok() {
           </Routes>
         </div>
       </main>
-      <footer className={s.footer}></footer>
+
+      <footer className={s.footer}>
+        <Footer />
+      </footer>
     </div>
   );
 }
