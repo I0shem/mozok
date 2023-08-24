@@ -19,9 +19,9 @@
 }
 .cardImage {
   border-radius: 10px;
-  max-height: 50%;
+  max-height: 45%;
   max-width: 80%;
-  margin: 10px;
+  margin: 20px;
   mix-blend-mode: multiply;
   filter: contrast(1);
 }
@@ -111,4 +111,9 @@
 }
 .heartBtn:hover {
   filter: drop-shadow(1px 1px 5px rgba(20, 126, 197, 1));
+}
+.salePNG {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

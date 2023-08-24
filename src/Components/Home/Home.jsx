@@ -5,50 +5,24 @@ const Home = () => {
   return (
     <>
       <div className={s.HomeContent}>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-          cupiditate odit. Corporis odit asperiores cupiditate repudiandae
-          nostrum neque et sed. Autem, rerum. Eaque, assumenda nisi? Facere
-          quasi culpa dolorem amet? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Corporis, quasi commodi! Sit adipisci quo rem
-          delectus libero quas similique esse aliquid, consectetur eos, deserunt
-          blanditiis beatae! Accusamus voluptates aliquam iusto. Lorem ipsum
-          dolor sit amet, consectetur adipisicing elit. Ab mollitia, odit
-          numquam accusamus cumque perferendis, repellendus quis voluptate ad
-          recusandae nostrum ipsa dolor, necessitatibus dolore cupiditate
-          magnam. Consequatur, ad vitae? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Saepe, cupiditate odit. Corporis odit asperiores
-          cupiditate repudiandae nostrum neque et sed. Autem, rerum. Eaque,
-          assumenda nisi? Facere quasi culpa dolorem amet? Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Corporis, quasi commodi! Sit
-          adipisci quo rem delectus libero quas similique esse aliquid,
-          consectetur eos, deserunt blanditiis beatae! Accusamus voluptates
-          aliquam iusto. Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit. Ab mollitia, odit numquam accusamus cumque perferendis,
-          repellendus quis voluptate ad recusandae nostrum ipsa dolor,
-          necessitatibus dolore cupiditate magnam. Consequatur, ad vitae? Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Saepe, cupiditate
-          odit. Corporis odit asperiores cupiditate repudiandae nostrum neque et
-          sed. Autem, rerum. Eaque, assumenda nisi? Facere quasi culpa dolorem
-          amet? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Corporis, quasi commodi! Sit adipisci quo rem delectus libero quas
-          similique esse aliquid, consectetur eos, deserunt blanditiis beatae!
-          Accusamus voluptates aliquam iusto. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Ab mollitia, odit numquam accusamus
-          cumque perferendis, repellendus quis voluptate ad recusandae nostrum
-          ipsa dolor, necessitatibus dolore cupiditate magnam. Consequatur, ad
-          vitae? Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-          cupiditate odit. Corporis odit asperiores cupiditate repudiandae
-          nostrum neque et sed. Autem, rerum. Eaque, assumenda nisi? Facere
-          quasi culpa dolorem amet? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Corporis, quasi commodi! Sit adipisci quo rem
-          delectus libero quas similique esse aliquid, consectetur eos, deserunt
-          blanditiis beatae! Accusamus voluptates aliquam iusto. Lorem ipsum
-          dolor sit amet, consectetur adipisicing elit. Ab mollitia, odit
-          numquam accusamus cumque perferendis, repellendus quis voluptate ad
-          recusandae nostrum ipsa dolor, necessitatibus dolore cupiditate
-          magnam. Consequatur, ad vitae?
-        </div>
+        <div className={s.bigText}>ПРО НАС</div>У 2010 році двоє друзів,
+        Олександр та Володимир, закінчили університет і почали працювати в сфері
+        IT. Вони були захоплені новими технологіями та електронікою, але
+        засмучувалися, що в Україні не було надійного сайту для купівлі
+        електронних товарів. Тоді вони вирішили створити свій власний сайт з
+        продажу електроніки під назвою “Mozok”. Спочатку “Mozok” був маленьким
+        сайтом, який пропонував лише кілька товарів. Але Олександр та Володимир
+        працювали наполегливо, щоб розширити асортимент та покращити сервіс.
+        Вони також активно рекламували свій сайт у соцмережах та на форумах. З
+        часом “Mozok” став дедалі більш популярним серед українців. Люди
+        цінували широкий асортимент товарів, конкурентоспроможні ціни та швидку
+        доставку. Олександр та Володимир продовжували розвивати свій бізнес,
+        додаючи нові категорії товарів та пропонуючи регулярні акції та знижки.
+        Сьогодні “Mozok” є одним з найбільших сайтов з продажу електронники в
+        Україні. Олександр та Володимир пишаються своїм досягненням та
+        продовжують працювати над покращенням свого сайту, щоб задовольнити
+        потреби своїх клєнтов. Це приклад успеху двох друзей, яким вдалося
+        перетворити свою пристрасть на успехний бизнес.
       </div>
     </>
   );

@@ -3,15 +3,31 @@ import s from "./card.module.css";
 import Tilt from "react-parallax-tilt";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
-
+import SaleSVG from "../Images/sale.png";
 const Card = (item) => {
   let newTitle = item.item.title;
   const [heart, setHeart] = useState(true);
   const heartClick = () => {
     setHeart(!heart);
   };
+  console.log(item);
+  const textColor = () => {
+    if (item.item.hot === true) {
+      console.log(item.item);
+      return (
+        <>
+          <img className={s.salePNG} src={SaleSVG} alt="" />
+          <div className={s.price} style={{ color: "red" }}>
+            {item.item.price} ₴
+          </div>
+        </>
+      );
+    } else {
+      return <div className={s.price}>{item.item.price} ₴</div>;
+    }
+  };
   return (
-    <div className={s.productCard}>
+    <div className={s.productCard} key={item.item._id}>
       <Tilt
         className={s.parallaxEffect}
         glareEnable={true}
@@ -49,7 +65,8 @@ const Card = (item) => {
             Штрихкод: {item.item.characteristics["Штрихкод"]}
           </div>
           <div className={s.availability}>В наявності</div>
-          <div className={s.price}>{item.item.price} ₴</div>
+
+          {textColor()}
           <button type="submit" class={s.buyButton}>
             Купити
           </button>

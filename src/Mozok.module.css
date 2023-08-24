@@ -1,3 +1,8 @@
+:root {
+  --main-bg-color: rgb(20, 126, 197);
+  --main-text-color: black;
+}
+
 .mozok {
   text-align: center;
   font-family: "Roboto", sans-serif;
@@ -9,18 +14,27 @@
   align-items: center;
   text-decoration: none;
   background-color: white;
-  min-height: 12vh;
+  min-height: clamp(12vh, 12vh, 12vh);
   top: 0;
-  z-index: 10;
+  z-index: 15;
   left: 0;
   right: 0;
+  transition: all 15s ease-in-out;
 }
 
+.lineContainer {
+  max-width: clamp(100%, 80vw, 60%);
+  display: flex;
+  justify-content: center;
+}
 .line {
-  width: 80vw;
-  height: 2px;
-  background-color: black;
-  margin-left: 10vw;
+  position: relative;
+  display: flex;
+  justify-self: center;
+  width: clamp(80%, 80vw, 60%);
+  height: 1px;
+  background-color: var(--main-text-color);
+  align-self: center;
 }
 
 .Menu {
@@ -42,22 +56,25 @@
 
 .catalog {
   display: flex;
-  width: 11vw;
-  min-width: 8vw;
-  background-color: rgb(20, 126, 197);
+  width: clamp(11vw, 11vw, 11vw);
+  background-color: var(--main-bg-color);
   color: white;
   padding: 10px;
-  padding-right: 5px;
+  margin: 5px;
+  margin-left: 0;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .catalogText {
-  font-size: 0.85rem;
+  font-size: clamp(0.2em, 0.85em, 1em);
   font-weight: 800;
-  margin-left: 1vw;
+  margin-left: 10%;
 }
 .catalog:hover,
 .headerBtn:hover {
   cursor: pointer;
-  background-color: rgba(20, 126, 197, 0.61);
+  background-color: rgba(20, 126, 197, 0.497);
 }
 
 .logo {
@@ -93,14 +110,16 @@ svg:hover {
   position: absolute;
   top: 5vh;
   left: 21vw;
-  width: 250px;
-  height: 200px;
+  width: 300px;
+  height: 220px;
   font-size: 0.8rem;
-  border-radius: 15px;
-  border: 1px solid black;
+  border-radius: 0px 11px 11px 11px;
+  border: 1px solid var(--main-text-color);
   background-color: white;
   text-align: justify;
   padding: 10px;
+  z-index: 15;
+  box-shadow: 3px 1px 4px 1px rgba(0, 0, 0, 0.75);
 }
 .cities table {
   border-collapse: collapse;
@@ -112,7 +131,7 @@ svg:hover {
 
 .cities th,
 td {
-  padding: 4px;
+  margin: 5px;
 }
 .cities td:hover {
   cursor: pointer;
@@ -121,15 +140,7 @@ td {
 .changeCity {
   width: 135px;
 }
-.modalWindowCities {
-  height: 100dvh;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 55;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.2);
-}
+
 .dropDownBtn {
   background-color: transparent;
   border: none;
@@ -142,7 +153,7 @@ td {
   align-items: center;
   text-decoration: none;
   flex-grow: 1;
-  color: black;
+  color: var(--);
 }
 
 .Link {
@@ -152,7 +163,7 @@ td {
   align-items: center;
   text-decoration: none;
   flex-grow: 1;
-  color: black;
+  color: var(--main-text-color);
 }
 .HeaderBtns {
   position: relative;
@@ -170,12 +181,12 @@ td {
 }
 
 .modalHeader {
-  position: absolute;
+  position: fixed;
   top: 5vh;
   z-index: 1;
-  margin-right: -30%;
+  margin-left: 17%;
   border-radius: 0px 11px 11px 11px;
-  border: 1px solid black;
+  border: 1px solid var(--main-text-color);
   background-color: rgb(255, 255, 255);
   min-width: 150px;
   box-shadow: 3px 1px 4px 1px rgba(0, 0, 0, 0.75);
@@ -194,7 +205,7 @@ td {
 
 .modalHeader li:hover {
   cursor: pointer;
-  text-shadow: 0.1px 0 0 black;
+  text-shadow: 0.1px 0 0 var(--main-text-color);
 }
 .enterContainer {
   position: absolute;
@@ -207,18 +218,15 @@ td {
 }
 .enterBtn {
   margin-right: 5px;
-
-  height: 1em;
-  fill: black;
-}
-.enterContainer:hover svg {
-  font-weight: 600;
-  width: 1.1em;
-  height: 1.1em;
+  fill: var(--main-text-color);
 }
 .enterContainer:hover {
   font-weight: 600;
   font-size: 1rem;
+}
+.enterContainer svg {
+  width: 1.1em;
+  height: 1.1em;
 }
 .searchBar {
   position: relative;
@@ -253,6 +261,7 @@ td {
 .cart:hover {
   background-color: rgba(20, 126, 197, 0.05);
   text-shadow: 0.1px 0 0 black;
+  transform: scale(1.03);
 }
 .cart svg {
   font-size: 40px;
@@ -260,24 +269,25 @@ td {
   left: 0;
   filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.6));
 }
+.topBannersContainer {
+  position: relative;
+  display: flex;
+  width: 80vw;
+  margin-left: 10vw;
+}
 
 .topBannerHeader {
-  top: 0;
-  left: -1.7vw;
-  position: relative;
-  min-height: 50vh;
-}
-.topBannerHeader {
-  width: 13vw;
+  width: clamp(4vw, 11vw, 11vw);
+  border: 1px solid var(--main-bg-color);
+  background: white;
+  z-index: 10;
 }
 
 .topBannerHeader li {
-  font-size: 13px;
+  font-size: 0.813em;
   line-height: 20px;
   list-style: none;
-  background: white;
-  padding: 7px;
-  padding-right: 15px;
+  padding: 10px;
   color: #344150;
   cursor: pointer;
   display: flex;
@@ -297,8 +307,81 @@ td {
 }
 .topBannerHeader li:hover {
   font-weight: 600;
+  cursor: pointer;
+  transform: scale(1.03);
+  background-color: rgba(20, 126, 197, 0.11);
 }
 .footer {
-  width: 100vw;
+  max-width: 100vw;
   background: #f0f0ff;
+}
+.content {
+  text-align: center;
+  margin-top: 23vh;
+  max-width: 100vw;
+}
+.items {
+  margin-left: 13vw;
+  max-width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+.items div {
+  margin: 10px;
+}
+.ImageBanner {
+  position: absolute;
+  top: 32.2vh;
+  right: 21vw;
+  max-width: 262px;
+}
+.SlimImageBanner {
+  position: absolute;
+  top: 12vh;
+  right: 11vw;
+  max-width: 262px;
+}
+
+.bottomBannersContainer {
+  position: absolute;
+  display: flex;
+  max-width: 65vw;
+  margin-left: 22.7vw;
+  top: 55.5vh;
+  background-color: white;
+  box-shadow: 0px 0px 5px 1px rgba(20, 126, 197, 0.58);
+}
+.bottomBannersContainer li {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  font-size: 17px;
+  height: 55px;
+  line-height: 50px;
+  align-items: center;
+  width: 210px;
+  border: 1px solid var(--main-bg-color);
+}
+
+.bottomBannersContainer svg {
+  font-size: 17px;
+  height: 30px;
+  width: 30px;
+  margin: 0;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  color: rgb(20, 126, 197);
+  fill: rgb(20, 126, 197);
+}
+.bottomBannersContainer li:hover {
+  cursor: pointer;
+  background-color: rgba(20, 126, 197, 0.11);
+  transform: scale(1.03);
+}
+.bigText {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 20px;
 }

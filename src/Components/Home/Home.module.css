@@ -1,7 +1,13 @@
 .HomeContent {
-  min-height: 100vh;
+  min-height: 30vh;
   text-align: justify;
   width: 80%;
   margin: auto;
   position: relative;
+}
+.bigText {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 20px;
 }
