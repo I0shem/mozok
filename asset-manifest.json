@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mozok/static/css/main.e40363f2.css",
-    "main.js": "/mozok/static/js/main.ccee4bb5.js",
+    "main.js": "/mozok/static/js/main.fd71c422.js",
     "static/media/1.jpg": "/mozok/static/media/1.c70ad20f02b6d9b3e8c3.jpg",
     "static/media/3.jpg": "/mozok/static/media/3.62f2bc64fa6ded4c5f0d.jpg",
     "static/media/4.jpg": "/mozok/static/media/4.513cdeabac5f743c1f56.jpg",
@@ -45,10 +45,10 @@
     "static/media/fb.svg": "/mozok/static/media/fb.81be5f17ddfb9587213665446899ef16.svg",
     "static/media/phone.svg": "/mozok/static/media/phone.107fbc08105b646df44c9d1553a68ba4.svg",
     "main.e40363f2.css.map": "/mozok/static/css/main.e40363f2.css.map",
-    "main.ccee4bb5.js.map": "/mozok/static/js/main.ccee4bb5.js.map"
+    "main.fd71c422.js.map": "/mozok/static/js/main.fd71c422.js.map"
   },
   "entrypoints": [
     "static/css/main.e40363f2.css",
-    "static/js/main.ccee4bb5.js"
+    "static/js/main.fd71c422.js"
   ]
 }
