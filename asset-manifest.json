@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/mozok/static/css/main.e40363f2.css",
-    "main.js": "/mozok/static/js/main.fd71c422.js",
+    "main.css": "/mozok/static/css/main.abfec123.css",
+    "main.js": "/mozok/static/js/main.befbdbbe.js",
     "static/media/1.jpg": "/mozok/static/media/1.c70ad20f02b6d9b3e8c3.jpg",
     "static/media/3.jpg": "/mozok/static/media/3.62f2bc64fa6ded4c5f0d.jpg",
     "static/media/4.jpg": "/mozok/static/media/4.513cdeabac5f743c1f56.jpg",
+    "static/media/EPAM logo.png": "/mozok/static/media/EPAM logo.eeeeb6279d61446b8b96.png",
     "static/media/2.jpg": "/mozok/static/media/2.a8c54e2342c8c276ac07.jpg",
     "static/media/s3.jpg": "/mozok/static/media/s3.685539889f8c3e992a91.jpg",
     "static/media/s11.jpg": "/mozok/static/media/s11.0e3bdab0853cc503bb8a.jpg",
@@ -21,14 +22,18 @@
     "static/media/s1.jpg": "/mozok/static/media/s1.aae15c4b3fd475b8b14e.jpg",
     "static/media/rubik-latin-ext-400-normal.woff": "/mozok/static/media/rubik-latin-ext-400-normal.b22669ae614939bed8f4.woff",
     "static/media/viza.png": "/mozok/static/media/viza.56e274ae31cabd0537c1.png",
+    "static/media/SoftServe.png": "/mozok/static/media/SoftServe.bce538a4d1a76c938d8e.png",
     "static/media/rubik-latin-ext-400-italic.woff2": "/mozok/static/media/rubik-latin-ext-400-italic.9d418e8b264d43f170e8.woff2",
+    "static/media/nix.png": "/mozok/static/media/nix.c50f27fe552d011cec30.png",
     "static/media/rubik-cyrillic-400-italic.woff": "/mozok/static/media/rubik-cyrillic-400-italic.8af4350da71d6194ae2a.woff",
     "static/media/rubik-latin-ext-400-normal.woff2": "/mozok/static/media/rubik-latin-ext-400-normal.128f0ade4a0f37464020.woff2",
+    "static/media/Luxoft.png": "/mozok/static/media/Luxoft.2fdfde8eee25f2802e95.png",
     "static/media/rubik-cyrillic-400-normal.woff": "/mozok/static/media/rubik-cyrillic-400-normal.6051558aea94e6ef53ed.woff",
     "static/media/mozok_svg.svg": "/mozok/static/media/mozok_svg.438e3167e4e6999361b704fd99e0dbd9.svg",
     "static/media/rubik-cyrillic-ext-400-italic.woff": "/mozok/static/media/rubik-cyrillic-ext-400-italic.2f219e3b147a35684b38.woff",
     "static/media/rubik-cyrillic-400-italic.woff2": "/mozok/static/media/rubik-cyrillic-400-italic.86d3d18fb5d5115d40e2.woff2",
     "static/media/rubik-cyrillic-ext-400-normal.woff": "/mozok/static/media/rubik-cyrillic-ext-400-normal.42f32fa6be04a31cca47.woff",
+    "static/media/mozokcss_animated.svg": "/mozok/static/media/mozokcss_animated.644af24cbb3d2fe76857be2191962545.svg",
     "static/media/rubik-cyrillic-400-normal.woff2": "/mozok/static/media/rubik-cyrillic-400-normal.4518a3e43930ad13dfff.woff2",
     "static/media/rubik-cyrillic-ext-400-italic.woff2": "/mozok/static/media/rubik-cyrillic-ext-400-italic.da7fd479528ec83b88ce.woff2",
     "static/media/rubik-hebrew-400-italic.woff": "/mozok/static/media/rubik-hebrew-400-italic.1e8495f23abb17eb8532.woff",
@@ -44,11 +49,11 @@
     "static/media/mail.svg": "/mozok/static/media/mail.40f8718b636b2b4bc534a20884d1f66f.svg",
     "static/media/fb.svg": "/mozok/static/media/fb.81be5f17ddfb9587213665446899ef16.svg",
     "static/media/phone.svg": "/mozok/static/media/phone.107fbc08105b646df44c9d1553a68ba4.svg",
-    "main.e40363f2.css.map": "/mozok/static/css/main.e40363f2.css.map",
-    "main.fd71c422.js.map": "/mozok/static/js/main.fd71c422.js.map"
+    "main.abfec123.css.map": "/mozok/static/css/main.abfec123.css.map",
+    "main.befbdbbe.js.map": "/mozok/static/js/main.befbdbbe.js.map"
   },
   "entrypoints": [
-    "static/css/main.e40363f2.css",
-    "static/js/main.fd71c422.js"
+    "static/css/main.abfec123.css",
+    "static/js/main.befbdbbe.js"
   ]
 }
