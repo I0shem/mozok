@@ -21,6 +21,7 @@ import { BsFillBagHeartFill } from "react-icons/bs";
 import { PiScalesFill } from "react-icons/pi";
 import { GiShoppingCart } from "react-icons/gi";
 import Footer from "./Components/Footer/Footer";
+import Map from "./Components/map/Map";
 function Mozok() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -174,6 +175,7 @@ function Mozok() {
             <Route path="/mozok/service_centre" element={<ServiceCentre />} />
             <Route path="/mozok/promotion" element={<Promotion />} />
           </Routes>
+          <Map />
         </div>
       </main>
 
