@@ -11,3 +11,72 @@
   font-weight: 600;
   margin: 20px;
 }
+
+.items {
+  max-width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.items div {
+  margin: 10px;
+}
+.generalText {
+  margin-bottom: 2vh;
+  margin-bottom: 2vh;
+}
+.partnerBrands,
+.partnerClients {
+  background-color: rgba(20, 126, 197);
+  border: 1px solid white;
+  color: white;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  padding: 1vh;
+  text-align: center;
+}
+.largeText {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 2vh;
+}
+.partnerBrands svg,
+.partnerClients svg {
+  height: 100px;
+  width: 100px;
+}
+.partnerBrands ul,
+.partnerClients ul {
+  width: 90%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.partnerBrands li:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.75));
+}
+.ImageClient {
+  max-height: 10vh;
+  max-width: 10vw;
+  padding: 2vh;
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  mix-blend-mode: multiply;
+  filter: contrast(1);
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.partnerClients li {
+  max-height: 120px;
+  line-height: 100px;
+  display: flex;
+  align-self: center;
+  fill: white;
+  color: white;
+}
