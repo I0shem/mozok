@@ -26,11 +26,13 @@ import { IoIosPhonePortrait } from "react-icons/io";
 import { AiOutlineApple } from "react-icons/ai";
 import { BsTv, BsSpeaker } from "react-icons/bs";
 import Footer from "./Components/Footer/Footer";
+import Map from "./Components/map/Map";
 import SwiperBox from "./Components/SwiperBox/SwiperBox";
 import SmallSwiperBox from "./Components/SwiperBox/SmallSwiperBox1";
 import ImageBanner from "./Components/Images/s11.jpg";
 import SlimImageBanner from "./Components/Images/slimBanner.png";
 import { ReactComponent as LogoAnimatedSVG } from "./Components/Images/mozokcss_animated.svg";
+
 function Mozok() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -328,6 +330,21 @@ function Mozok() {
               <BsSpeaker />
             </li>
           </div>
+        </div>
+      </header>
+      <main className={s.content}>
+        <div id="content">
+          <Routes>
+            <Route path="/mozok/" element={<Home />} />
+            <Route path="/mozok/stores" element={<Stores />} />
+            <Route path="/mozok/users" element={<User />} />
+            <Route path="/mozok/loyalty_program" element={<LoyaltyProgram />} />
+            <Route path="/mozok/service_centre" element={<ServiceCentre />} />
+            <Route path="/mozok/promotion" element={<Promotion />} />
+          </Routes>
+          <Map />
+        </div>
+      </main>
           <main id="main" className={s.content}>
             <Routes>
               <Route path="/mozok/" element={<Home />} />
@@ -341,7 +358,6 @@ function Mozok() {
               <Route path="/mozok/promotion" element={<Promotion />} />
             </Routes>
           </main>
-
           <footer className={s.footer}>
             <Footer />
           </footer>
