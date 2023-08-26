@@ -32,6 +32,7 @@ img:hover {
 .map_box {
   width: 30vw;
   height: 21vw;
+  z-index: 1;
   /* border: 1px solid tomato; */
   flex-shrink: 0;
   border-radius: 20px;

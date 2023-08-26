@@ -26,7 +26,7 @@ import { IoIosPhonePortrait } from "react-icons/io";
 import { AiOutlineApple } from "react-icons/ai";
 import { BsTv, BsSpeaker } from "react-icons/bs";
 import Footer from "./Components/Footer/Footer";
-import Map from "./Components/map/Map";
+
 import SwiperBox from "./Components/SwiperBox/SwiperBox";
 import SmallSwiperBox from "./Components/SwiperBox/SmallSwiperBox1";
 import ImageBanner from "./Components/Images/s11.jpg";
@@ -39,24 +39,17 @@ function Mozok() {
   const [weight, setWeight] = useState(300);
   const [weight1, setWeight1] = useState(300);
 
-  useEffect(() => {
-    window.addEventListener("scroll", isSticky);
-    return () => {
-      window.removeEventListener("scroll", isSticky);
-    };
-  });
-
   const changeHeader = () => {
     const header = document.getElementById("header");
     const cont = document.getElementById("content");
-    header.style.position = "sticky";
-    cont.style.paddingTop = "20vh";
+    header.style.position = "fixed";
+    cont.style.marginTop = "5vh";
   };
   const changeHeaderBack = (header, cont) => {
     const catalog = document.getElementById("catalog");
     const main = document.getElementById("main");
     header.style.position = "absolute";
-    cont.style.paddingTop = "12.5vh";
+    cont.style.marginTop = "0vh";
     changeCatalogBack(catalog, main);
   };
   const isSticky = () => {
@@ -71,20 +64,14 @@ function Mozok() {
   const changeCatalog = (catalog, main) => {
     catalog.style.boxShadow = "0px 0px 5px 1px rgba(20, 126, 197,0.58)";
     catalog.style.position = "fixed";
-    catalog.style.paddingTop = "0";
-    catalog.style.top = "12.5vh";
+    catalog.style.marginTop = "13.5vh";
   };
   const changeCatalogBack = (catalog, main) => {
     setCClick(false);
-    main.style.paddingTop = "30vh";
+    main.style.marginTop = "20vh";
+    catalog.style.marginTop = "0vh";
     catalog.style.position = "absolute";
-    if (catalog.style.boxShadow === "0px 0px 5px 1px rgba(20, 126, 197,0.58)") {
-      catalog.style.paddingTop = "0";
-    } else {
-      catalog.style.boxShadow = "0px 0px 5px 1px rgba(20, 126, 197,0.58)";
-    }
-
-    catalog.style.top = "0";
+    catalog.style.boxShadow = "0px 0px 5px 1px rgba(20, 126, 197,0.58)";
   };
   const [cclick, setCClick] = useState(false);
   const handleClickCatalog = () => {
@@ -106,7 +93,15 @@ function Mozok() {
       setLogo(false);
     }, 3000);
   }, []);
-
+  useEffect(() => {
+    const element = document.getElementById("myBody");
+    if (element) {
+      window.addEventListener("scroll", isSticky);
+      return () => {
+        window.removeEventListener("scroll", isSticky);
+      };
+    }
+  });
   return (
     <>
       {logo ? (
@@ -115,237 +110,245 @@ function Mozok() {
           Одну хвилинку!
         </div>
       ) : (
-        <div className={s.mozok}>
-          <header className={s.header} id="header">
-            <div className={s.containerOne}>
-              <div className={s.logo} onClick={() => navigate(`/mozok/`)}>
-                <NavLink to="/mozok" end>
-                  <MyLogo className={s.logoImage} />
-                </NavLink>
-                Mozok
-              </div>
-              <div className={s.changeCity}>
-                <ModalCityWindow show={show} setShow={setShow} />
-              </div>
+        <body id="myBody" className={s.noScroll}>
+          <div className={s.mozok}>
+            <header className={s.header} id="header">
+              <div className={s.containerOne}>
+                <div className={s.logo} onClick={() => navigate(`/mozok/`)}>
+                  <NavLink to="/mozok" end>
+                    <MyLogo className={s.logoImage} />
+                  </NavLink>
+                  Mozok
+                </div>
+                <div className={s.changeCity}>
+                  <ModalCityWindow show={show} setShow={setShow} />
+                </div>
 
-              <div className={s.HeaderBtns}>
-                <NavLink
-                  to="/mozok/stores"
-                  className={s.Link}
-                  style={({ isActive }) => {
-                    return {
-                      fontWeight: isActive ? setWeight1(600) : setWeight1(300),
-                    };
-                  }}
-                >
+                <div className={s.HeaderBtns}>
+                  <NavLink
+                    to="/mozok/stores"
+                    className={s.Link}
+                    style={({ isActive }) => {
+                      return {
+                        fontWeight: isActive
+                          ? setWeight1(600)
+                          : setWeight1(300),
+                      };
+                    }}
+                  >
+                    <HeaderBtn
+                      displayModal={false}
+                      text="Магазини"
+                      weight={weight1}
+                    />
+                  </NavLink>
                   <HeaderBtn
-                    displayModal={false}
-                    text="Магазини"
-                    weight={weight1}
+                    displayModal={true}
+                    text="Програма лояльності"
+                    content={[
+                      "Про програму лояльності",
+                      "Подарункові сертифікати",
+                    ]}
                   />
-                </NavLink>
-                <HeaderBtn
-                  displayModal={true}
-                  text="Програма лояльності"
-                  content={[
-                    "Про програму лояльності",
-                    "Подарункові сертифікати",
-                  ]}
-                />
-                <HeaderBtn
-                  displayModal={true}
-                  text="Клієнтам"
-                  content={[
-                    "Уцінені товари",
-                    "Доставка та оплата",
-                    "Mozok Блог",
-                    "Публічна оферта",
-                    "Контакти",
-                    "Всі бренди",
-                  ]}
-                />
-                <HeaderBtn
-                  displayModal={true}
-                  text="Сервіс"
-                  content={["Сервісні центри", "Сервіс і гарантія"]}
-                />
-                <NavLink
-                  to="/mozok/promotion"
-                  className={s.Link}
-                  style={({ isActive }) => {
-                    return {
-                      fontWeight: isActive ? setWeight(600) : setWeight(300),
-                    };
-                  }}
-                >
                   <HeaderBtn
-                    displayModal={false}
-                    col="red"
-                    weight={weight}
-                    text="Акції"
+                    displayModal={true}
+                    text="Клієнтам"
+                    content={[
+                      "Уцінені товари",
+                      "Доставка та оплата",
+                      "Mozok Блог",
+                      "Публічна оферта",
+                      "Контакти",
+                      "Всі бренди",
+                    ]}
                   />
-                </NavLink>
+                  <HeaderBtn
+                    displayModal={true}
+                    text="Сервіс"
+                    content={["Сервісні центри", "Сервіс і гарантія"]}
+                  />
+                  <NavLink
+                    to="/mozok/promotion"
+                    className={s.Link}
+                    style={({ isActive }) => {
+                      return {
+                        fontWeight: isActive ? setWeight(600) : setWeight(300),
+                      };
+                    }}
+                  >
+                    <HeaderBtn
+                      displayModal={false}
+                      col="red"
+                      weight={weight}
+                      text="Акції"
+                    />
+                  </NavLink>
+                </div>
+                <div className={s.enterContainer}>
+                  <IconContext.Provider value={{ className: s.enterBtn }}>
+                    <IoEnterOutline />
+                  </IconContext.Provider>
+                  Увійти
+                </div>
               </div>
-              <div className={s.enterContainer}>
-                <IconContext.Provider value={{ className: s.enterBtn }}>
-                  <IoEnterOutline />
-                </IconContext.Provider>
-                Увійти
+              <div className={s.lineContainer}>
+                <div className={s.line} />
               </div>
-            </div>
-            <div className={s.lineContainer}>
-              <div className={s.line} />
+
+              <div className={s.topContainerTwo}>
+                <div
+                  role="button"
+                  className={s.catalog}
+                  onClick={() => handleClickCatalog()}
+                >
+                  <IconContext.Provider value={{ className: s.headerBtn }}>
+                    <FaBars />
+                  </IconContext.Provider>
+                  <div className={s.catalogText}>КАТАЛОГ ТОВАРІВ</div>
+                </div>
+
+                <SearchBar
+                  className={s.searchBar}
+                  onChange={() => console.log("onChange")}
+                  onRequestSearch={() => console.log("onRequestSearch")}
+                  placeholder="Знайти..."
+                />
+                <div className={s.orderCall}>
+                  <BiPhoneCall />
+                  <div> Замовити дзвінок</div>
+                </div>
+                <div className={s.searchOrder}>
+                  <TbMapSearch />
+                  <div> Відстежити замовлення</div>
+                </div>
+                <div className={s.wishedProducts}>
+                  <BsFillBagHeartFill />
+                  <div> Бажані товари</div>
+                </div>
+                <div className={s.comperedProducts}>
+                  <PiScalesFill />
+                  <div> Порівняти товари</div>
+                </div>
+                <div className={s.cart}>
+                  <GiShoppingCart />
+                </div>
+              </div>
+            </header>
+            <div id="content" className={s.fixContent} />
+            <div className={s.topBannersContainer}>
+              <div id="catalog" className={s.topBannerHeader}>
+                <li>
+                  <AiOutlineLaptop />
+                  Ноутбуки і комп'ютери
+                </li>
+                <hr />
+                <li>
+                  <GPUSVG />
+                  Комплектуючі для ПК
+                </li>
+                <hr />
+                <li>
+                  <IoIosPhonePortrait />
+                  Смартфони та планшети
+                </li>
+                <hr />
+                <li>
+                  <AiOutlineApple />
+                  Техніка Apple
+                </li>
+                <hr />
+                <li>
+                  <BsTv />
+                  Монітори та аксесуари
+                </li>
+                <hr />
+                <li>
+                  <BsTv />
+                  Телевізори і проектори
+                </li>
+                <hr />
+                <li>
+                  <BsSpeaker />
+                  Аудіо обладнання
+                </li>
+                <hr />
+                <li>
+                  <GPUSVG />
+                  Комплектуючі для ПК
+                </li>
+                <hr />
+                <li>
+                  <IoIosPhonePortrait />
+                  Смартфони та планшети
+                </li>
+                <hr />
+                <li>
+                  <AiOutlineApple />
+                  Техніка Apple
+                </li>
+                <hr />
+                <li>
+                  <BsTv />
+                  Монітори та аксесуари
+                </li>
+              </div>
             </div>
 
-            <div className={s.topContainerTwo}>
-              <div
-                role="button"
-                className={s.catalog}
-                onClick={() => handleClickCatalog()}
-              >
-                <IconContext.Provider value={{ className: s.headerBtn }}>
-                  <FaBars />
-                </IconContext.Provider>
-                <div className={s.catalogText}>КАТАЛОГ ТОВАРІВ</div>
-              </div>
+            <SwiperBox></SwiperBox>
+            <SmallSwiperBox></SmallSwiperBox>
+            <img className={s.ImageBanner} src={ImageBanner} alt="picture1" />
 
-              <SearchBar
-                className={s.searchBar}
-                onChange={() => console.log("onChange")}
-                onRequestSearch={() => console.log("onRequestSearch")}
-                placeholder="Знайти..."
-              />
-              <div className={s.orderCall}>
-                <BiPhoneCall />
-                <div> Замовити дзвінок</div>
-              </div>
-              <div className={s.searchOrder}>
-                <TbMapSearch />
-                <div> Відстежити замовлення</div>
-              </div>
-              <div className={s.wishedProducts}>
-                <BsFillBagHeartFill />
-                <div> Бажані товари</div>
-              </div>
-              <div className={s.comperedProducts}>
-                <PiScalesFill />
-                <div> Порівняти товари</div>
-              </div>
-              <div className={s.cart}>
-                <GiShoppingCart />
-              </div>
-            </div>
-          </header>
-          <div id="content"></div>
-          <div className={s.topBannersContainer}>
-            <div id="catalog" className={s.topBannerHeader}>
+            <img
+              className={s.SlimImageBanner}
+              src={SlimImageBanner}
+              alt="picture2"
+            />
+            <div className={s.bottomBannersContainer}>
               <li>
                 <AiOutlineLaptop />
-                Ноутбуки і комп'ютери
               </li>
-              <hr />
+
               <li>
                 <GPUSVG />
-                Комплектуючі для ПК
               </li>
-              <hr />
+
               <li>
                 <IoIosPhonePortrait />
-                Смартфони та планшети
               </li>
-              <hr />
+
               <li>
                 <AiOutlineApple />
-                Техніка Apple
               </li>
-              <hr />
+
               <li>
                 <BsTv />
-                Монітори та аксесуари
               </li>
-              <hr />
-              <li>
-                <BsTv />
-                Телевізори і проектори
-              </li>
-              <hr />
+
               <li>
                 <BsSpeaker />
-                Аудіо обладнання
-              </li>
-              <hr />
-              <li>
-                <GPUSVG />
-                Комплектуючі для ПК
-              </li>
-              <hr />
-              <li>
-                <IoIosPhonePortrait />
-                Смартфони та планшети
-              </li>
-              <hr />
-              <li>
-                <AiOutlineApple />
-                Техніка Apple
-              </li>
-              <hr />
-              <li>
-                <BsTv />
-                Монітори та аксесуари
               </li>
             </div>
           </div>
 
-          <SwiperBox></SwiperBox>
-          <SmallSwiperBox></SmallSwiperBox>
-          <img className={s.ImageBanner} src={ImageBanner} alt="picture1" />
+          <main id="main" className={s.content}>
+            <Routes>
+              <Route path="/mozok/" element={<Home />} />
+              <Route path="/mozok/stores" element={<Stores />} />
+              <Route path="/mozok/users" element={<User />} />
+              <Route
+                path="/mozok/loyalty_program"
+                element={<LoyaltyProgram />}
+              />
+              <Route path="/mozok/service_centre" element={<ServiceCentre />} />
+              <Route path="/mozok/promotion" element={<Promotion />} />
+            </Routes>
+          </main>
 
-          <img
-            className={s.SlimImageBanner}
-            src={SlimImageBanner}
-            alt="picture2"
-          />
-          <div className={s.bottomBannersContainer}>
-            <li>
-              <AiOutlineLaptop />
-            </li>
-
-            <li>
-              <GPUSVG />
-            </li>
-
-            <li>
-              <IoIosPhonePortrait />
-            </li>
-
-            <li>
-              <AiOutlineApple />
-            </li>
-
-            <li>
-              <BsTv />
-            </li>
-
-            <li>
-              <BsSpeaker />
-            </li>
-          </div>
-        </div>
+          <footer className={s.footer}>
+            <Footer />
+          </footer>
+        </body>
       )}
-      <main id="main" className={s.content}>
-        <Routes>
-          <Route path="/mozok/" element={<Home />} />
-          <Route path="/mozok/stores" element={<Stores />} />
-          <Route path="/mozok/users" element={<User />} />
-          <Route path="/mozok/loyalty_program" element={<LoyaltyProgram />} />
-          <Route path="/mozok/service_centre" element={<ServiceCentre />} />
-          <Route path="/mozok/promotion" element={<Promotion />} />
-        </Routes>
-      </main>
-      <Map />
-      <footer className={s.footer}>
-        <Footer />
-      </footer>
     </>
   );
 }

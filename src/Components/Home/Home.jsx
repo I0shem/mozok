@@ -16,6 +16,7 @@ import GlobalLogic from "../Images/GlobalLogic.png";
 import SoftServe from "../Images/SoftServe.png";
 import Luxoft from "../Images/Luxoft.png";
 import NIX from "../Images/nix.png";
+import Map from "../map/Map";
 
 const Home = () => {
   const data = MongoDBDataFetcher("sales");
@@ -71,24 +72,32 @@ const Home = () => {
           нас для задоволення своїх потреб у техніці!
           <ul>
             <li>
-              <img className={s.ImageClient} src={EPAM} alt="picture" />
+              <img className={s.ImageClient} src={EPAM} alt="ImageClient" />
             </li>
             <li>
-              <img className={s.ImageClient} src={SoftServe} alt="picture" />
+              <img
+                className={s.ImageClient}
+                src={SoftServe}
+                alt="ImageClient"
+              />
             </li>
             <li>
-              <img className={s.ImageClient} src={GlobalLogic} alt="picture" />
+              <img
+                className={s.ImageClient}
+                src={GlobalLogic}
+                alt="ImageClient"
+              />
             </li>
 
             <li>
-              <img className={s.ImageClient} src={NIX} alt="picture" />
+              <img className={s.ImageClient} src={NIX} alt="ImageClient" />
             </li>
             <li>
-              <img className={s.ImageClient} src={Luxoft} alt="picture" />
+              <img className={s.ImageClient} src={Luxoft} alt="ImageClient" />
             </li>
           </ul>
         </div>
-
+        <Map />
         <div className={s.bigText}>ПРО НАС</div>
 
         <div className={s.generalText}>
@@ -97,6 +106,7 @@ const Home = () => {
           товарів від провідних виробників, а також гарантує якісне
           обслуговування та оперативну доставку.
         </div>
+
         <div className={s.bigText}>ІСТОРІЯ СТВОРЕННЯ</div>
 
         <div className={s.generalText}>

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const MongoDBDataFetcher = (name) => {
-  console.log(name);
   const [data, setData] = useState([]);
   async function fetchData() {
     const response = await axios.get(

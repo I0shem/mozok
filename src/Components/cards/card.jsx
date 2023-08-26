@@ -10,10 +10,8 @@ const Card = (item) => {
   const heartClick = () => {
     setHeart(!heart);
   };
-  console.log(item);
   const textColor = () => {
     if (item.item.hot === true) {
-      console.log(item.item);
       return (
         <>
           <img className={s.salePNG} src={SaleSVG} alt="" />
@@ -28,7 +26,7 @@ const Card = (item) => {
     }
   };
   return (
-    <div className={s.productCard} key={item.item._id}>
+    <div className={s.productCard} id={item.item._id}>
       <Tilt
         className={s.parallaxEffect}
         glareEnable={true}
@@ -68,7 +66,7 @@ const Card = (item) => {
           <div className={s.availability}>В наявності</div>
 
           {textColor()}
-          <button type="submit" class={s.buyButton}>
+          <button type="submit" className={s.buyButton}>
             Купити
           </button>
         </div>
