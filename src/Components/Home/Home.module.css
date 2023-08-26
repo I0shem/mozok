@@ -1,43 +1,82 @@
 .HomeContent {
-  min-height: 100vh;
+  min-height: 30vh;
   text-align: justify;
   width: 80%;
   margin: auto;
   position: relative;
 }
-.topBannerHeader {
-  left: -1.7vw;
-  position: relative;
-  min-height: 50vh;
-}
-.topBannerHeader {
-  width: 13vw;
+.bigText {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 20px;
 }
 
-.topBannerHeader li {
-  font-size: 13px;
-  line-height: 20px;
-  list-style: none;
-  background: white;
-  padding: 7px;
-  padding-right: 15px;
-  color: #344150;
-  cursor: pointer;
+.items {
+  max-width: 100%;
   display: flex;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.topBannerHeader hr {
-  margin: 0;
+.items div {
+  margin: 10px;
 }
-.topBannerHeader svg {
-  font-size: 17px;
-  height: 17px;
-  width: 25px;
-  margin: 0;
-  margin-right: 10px;
-  display: flex;
-  color: rgb(20, 126, 197);
-  fill: rgb(20, 126, 197);
+.generalText {
+  margin-bottom: 2vh;
+  margin-bottom: 2vh;
 }
-.topBannerHeader li:hover {
+.partnerBrands,
+.partnerClients {
+  background-color: rgba(20, 126, 197);
+  border: 1px solid white;
+  color: white;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  padding: 1vh;
+  text-align: center;
+}
+.largeText {
+  font-size: 28px;
   font-weight: 600;
+  margin-bottom: 2vh;
+}
+.partnerBrands svg,
+.partnerClients svg {
+  height: 100px;
+  width: 100px;
+}
+.partnerBrands ul,
+.partnerClients ul {
+  width: 90%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.partnerBrands li:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.75));
+}
+.ImageClient {
+  max-height: 10vh;
+  max-width: 10vw;
+  padding: 2vh;
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  mix-blend-mode: multiply;
+  filter: contrast(1);
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.partnerClients li {
+  max-height: 120px;
+  line-height: 100px;
+  display: flex;
+  align-self: center;
+  fill: white;
+  color: white;
 }

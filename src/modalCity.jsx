@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import s from "./Mozok.module.css";
 import { BiChevronDown } from "react-icons/bi";
+import Backgound from "./Components/Background/Backgound";
 const ModalCityWindow = ({ show, setShow }) => {
   const [chosenCity, setChosenCity] = useState("Київ");
   const setCity = (text) => {
@@ -19,20 +20,23 @@ const ModalCityWindow = ({ show, setShow }) => {
   return (
     <>
       {show ? (
-        <div className={s.modalWindowCities} onClick={() => setShow(false)}>
-          <div className={s.city} onClick={() => setShow(true)}>
-            {chosenCity} <BiChevronDown className={s.cityBtn} />
+        <>
+          <div className={s.modalContainer}>
+            <Backgound setShow={setShow} />
+            <div className={s.city} onClick={() => setShow(true)}>
+              {chosenCity} <BiChevronDown className={s.cityBtn} />
+            </div>
+            <div className={s.cities}>
+              <table>
+                <tr>{cityReturn("Київ", "Харків", "Одеса")}</tr>
+                <tr>{cityReturn("Дніпро", "Донецьк", "Запоріжжя")}</tr>
+                <tr>{cityReturn("Луцьк", "Горлівка", "Івано-Франківськ")}</tr>
+                <tr>{cityReturn("Львів", "Кривий ріг", "Миколаїв")}</tr>
+                <tr>{cityReturn("Вінниця", "Севастополь", "Тернопіль")}</tr>
+              </table>
+            </div>{" "}
           </div>
-          <div className={s.cities}>
-            <table>
-              <tr>{cityReturn("Київ", "Харків", "Одеса")}</tr>
-              <tr>{cityReturn("Дніпро", "Донецьк", "Запоріжжя")}</tr>
-              <tr>{cityReturn("Луцьк", "Горлівка", "Івано-Франківськ")}</tr>
-              <tr>{cityReturn("Львів", "Кривий ріг", "Миколаїв")}</tr>
-              <tr>{cityReturn("Вінниця", "Севастополь", "Тернопіль")}</tr>
-            </table>
-          </div>
-        </div>
+        </>
       ) : (
         <div className={s.city} onClick={() => setShow(true)}>
           {chosenCity} <BiChevronDown className={s.cityBtn} />
