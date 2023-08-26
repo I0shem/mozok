@@ -296,12 +296,12 @@ function Mozok() {
 
           <SwiperBox></SwiperBox>
           <SmallSwiperBox></SmallSwiperBox>
-          <img className={s.ImageBanner} src={ImageBanner} alt="picture" />
+          <img className={s.ImageBanner} src={ImageBanner} alt="picture1" />
 
           <img
             className={s.SlimImageBanner}
             src={SlimImageBanner}
-            alt="picture"
+            alt="picture2"
           />
           <div className={s.bottomBannersContainer}>
             <li>
