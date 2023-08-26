@@ -331,38 +331,21 @@ function Mozok() {
             </li>
           </div>
         </div>
-      </header>
-      <main className={s.content}>
-        <div id="content">
-          <Routes>
-            <Route path="/mozok/" element={<Home />} />
-            <Route path="/mozok/stores" element={<Stores />} />
-            <Route path="/mozok/users" element={<User />} />
-            <Route path="/mozok/loyalty_program" element={<LoyaltyProgram />} />
-            <Route path="/mozok/service_centre" element={<ServiceCentre />} />
-            <Route path="/mozok/promotion" element={<Promotion />} />
-          </Routes>
-          <Map />
-        </div>
-      </main>
-          <main id="main" className={s.content}>
-            <Routes>
-              <Route path="/mozok/" element={<Home />} />
-              <Route path="/mozok/stores" element={<Stores />} />
-              <Route path="/mozok/users" element={<User />} />
-              <Route
-                path="/mozok/loyalty_program"
-                element={<LoyaltyProgram />}
-              />
-              <Route path="/mozok/service_centre" element={<ServiceCentre />} />
-              <Route path="/mozok/promotion" element={<Promotion />} />
-            </Routes>
-          </main>
-          <footer className={s.footer}>
-            <Footer />
-          </footer>
-        </div>
       )}
+      <main id="main" className={s.content}>
+        <Routes>
+          <Route path="/mozok/" element={<Home />} />
+          <Route path="/mozok/stores" element={<Stores />} />
+          <Route path="/mozok/users" element={<User />} />
+          <Route path="/mozok/loyalty_program" element={<LoyaltyProgram />} />
+          <Route path="/mozok/service_centre" element={<ServiceCentre />} />
+          <Route path="/mozok/promotion" element={<Promotion />} />
+        </Routes>
+      </main>
+      <Map />
+      <footer className={s.footer}>
+        <Footer />
+      </footer>
     </>
   );
 }
