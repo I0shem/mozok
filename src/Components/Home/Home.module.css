@@ -1,8 +1,9 @@
 .HomeContent {
-  min-height: 30vh;
+  min-height: 50vh;
   text-align: justify;
   width: 80%;
   margin: auto;
+  margin-top: 5vh;
   position: relative;
 }
 .bigText {
@@ -40,6 +41,7 @@
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 2vh;
+  font-family: Rubik;
 }
 .partnerBrands svg,
 .partnerClients svg {

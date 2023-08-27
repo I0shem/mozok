@@ -1,8 +1,7 @@
 import React from "react";
 import s from "./footer.module.css";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as MyLogo } from "../../Components/Images/mozok_svg.svg";
-import y from "../../Mozok.module.css";
+import { ReactComponent as MyLogo } from "../Images/mozok_svg.svg";
 import inst from "../Images/social/inst.svg";
 import fb from "../Images/social/fb.svg";
 import ws from "../Images/social/ws.svg";
@@ -19,12 +18,12 @@ const Footer = () => {
   return (
     <div className={s.footer_container}>
       <div className={s.logo_box}>
-        <NavLink to="/mozok">
-          <MyLogo className={y.logoImage} />
+        <NavLink to="/mozok" end>
+          <MyLogo className={s.logoImage} />
         </NavLink>
         <p className={s.logo_text}>
-          Mozok - надійний постачальник компʼютерної техніки поряд з вами, з
-          великим досвідом
+          <b>Mozok</b> - надійний постачальник компʼютерної техніки поряд з
+          вами, з великим досвідом
         </p>
       </div>
       <ul className={s.category}>

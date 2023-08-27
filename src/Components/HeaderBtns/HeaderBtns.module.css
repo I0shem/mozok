@@ -1,0 +1,60 @@
+.btnsContainer {
+  position: relative;
+  display: flex;
+  margin-left: 20vw;
+  margin-right: auto;
+}
+
+.dropDownBtn,
+.Link {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.headerBtn {
+  margin-left: 5px;
+}
+
+.headerBtn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.modalHeader {
+  position: relative;
+  top: 5vh;
+  width: max-content;
+  z-index: 1;
+  margin-left: 17%;
+  border-radius: 0px 11px 11px 11px;
+  border: 1px solid var(--main-text-color);
+  background-color: rgb(255, 255, 255);
+  min-width: 150px;
+  box-shadow: 3px 1px 4px 1px rgba(0, 0, 0, 0.75);
+}
+
+.modalHeader li {
+  position: relative;
+  display: flex;
+  left: -20px;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  list-style: none;
+  min-width: 155%;
+}
+
+.modalHeader li:hover {
+  cursor: pointer;
+  text-shadow: 0.1px 0 0 var(--main-text-color);
+}
+.modalBackground {
+  position: fixed;
+  height: 100dvh;
+  width: 100vw;
+  left: 0px;
+  top: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.2);
+}

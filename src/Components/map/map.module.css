@@ -1,23 +1,23 @@
 .map_container {
   width: 80vw;
-  height: 34vw;
-  margin: 0 auto 3vw auto;
+  height: auto;
+  margin: 0;
   /* border: 3px solid #1f347b56; */
-  padding: 2vw 0vw 0 8vw;
-  overflow: visible;
+  padding: 5vh 0vh 3vh 15vh;
+  cursor: default;
+  z-index: 1;
 }
 .map_content_box {
   display: flex;
 }
 .mao_info_box {
-  width: 42%;
-  margin-top: 3vw;
+  width: 40%;
+  margin-top: 10vh;
 }
 .contacts_list_item {
   display: flex;
   align-items: center;
-  margin-bottom: 14px;
-
+  margin-bottom: 2vh;
   color: #4a4d4a;
   font-size: 16px;
   font-style: normal;
@@ -25,14 +25,13 @@
   line-height: normal;
 }
 
-img:hover {
-  fill: #00e676;
+a:hover span {
+  color: #6f6f6fd6;
   cursor: pointer;
 }
 .map_box {
   width: 30vw;
   height: 21vw;
-  z-index: 1;
   /* border: 1px solid tomato; */
   flex-shrink: 0;
   border-radius: 20px;
@@ -42,7 +41,8 @@ img:hover {
 h1 {
   color: var(--unnamed, #4a4d4a);
   text-align: center;
-
+  margin-left: -15vh;
+  width: 80vw;
   /* H2 medium */
   font-family: Rubik;
   font-size: 28px;
@@ -57,7 +57,7 @@ h1 {
   flex-shrink: 0;
 }
 .pr_svg {
-  width: 100%;
-  height: 100%;
-  margin: auto;
+  width: 80vw;
+  height: 72vh;
+  margin: 0;
 }

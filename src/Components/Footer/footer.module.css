@@ -30,7 +30,15 @@ li {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  text-align: justify;
 }
+.logoImage {
+  display: flex;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+
 .category {
   width: 20%;
 }
