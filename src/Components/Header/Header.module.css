@@ -10,9 +10,14 @@
   right: 0;
   position: relative;
 }
-
+.headerContainer {
+  position: relative;
+  display: block;
+  width: 80vw;
+  margin: 0 auto;
+}
 .lineContainer {
-  max-width: clamp(100%, 80vw, 60%);
+  max-width: 80vw;
   display: flex;
   justify-content: center;
 }
@@ -20,7 +25,7 @@
   position: relative;
   display: flex;
   justify-self: center;
-  width: clamp(80%, 80vw, 60%);
+  width: 80vw;
   height: 1px;
   background-color: var(--main-text-color);
   align-self: center;
@@ -32,13 +37,11 @@
 }
 
 .containerOne {
-  margin-left: 10vw;
   max-height: 7.5vh;
   display: flex;
 }
 .topContainerTwo {
   display: flex;
-  margin-left: 10vw;
   width: 80vw;
   min-height: 40px;
   background-color: rgba(255, 255, 255, 0.149);
@@ -166,104 +169,6 @@ svg:hover {
   left: 0;
   filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.6));
 }
-.topBannersContainer {
-  position: relative;
-  display: flex;
-  width: 80vw;
-  margin-left: 10vw;
-}
-
-.topBannerHeader {
-  width: clamp(4vw, 11vw, 11vw);
-  border: 1px solid var(--main-bg-color);
-  background: white;
-  z-index: 4;
-  position: relative;
-  padding-top: 0;
-  box-shadow: 0px 0px 5px 1px rgba(20, 126, 197, 0);
-}
-
-.topBannerHeader li {
-  font-size: 0.813em;
-  line-height: 20px;
-  list-style: none;
-  padding: 10px;
-  color: #344150;
-  cursor: pointer;
-
-  display: flex;
-}
-.topBannerHeader hr {
-  margin: 0;
-}
-.topBannerHeader svg {
-  font-size: 17px;
-  height: 17px;
-  width: 25px;
-  margin: 0;
-  margin-right: 10px;
-  display: flex;
-  color: rgb(20, 126, 197);
-  fill: rgb(20, 126, 197);
-}
-.topBannerHeader li:hover {
-  font-weight: 600;
-  cursor: pointer;
-  transform: scale(1.03);
-  background-color: rgba(20, 126, 197, 0.11);
-}
-
 .PageContent {
   position: relative;
-}
-.ImageBanner {
-  position: absolute;
-  top: 32.2vh;
-  right: 21vw;
-  max-width: 262px;
-}
-.SlimImageBanner {
-  position: absolute;
-  top: 12vh;
-  right: 11vw;
-  max-width: 262px;
-}
-
-.bottomBannersContainer {
-  position: absolute;
-  display: flex;
-  max-width: 65vw;
-  margin-left: 22.7vw;
-  top: 55.5vh;
-  background-color: white;
-  box-shadow: 0px 0px 5px 1px rgba(20, 126, 197, 0.58);
-}
-.bottomBannersContainer li {
-  justify-content: center;
-  text-align: center;
-  display: flex;
-  margin: 0 auto;
-  font-size: 17px;
-  height: 55px;
-  line-height: 50px;
-  align-items: center;
-  width: 210px;
-  border: 1px solid var(--main-bg-color);
-}
-
-.bottomBannersContainer svg {
-  font-size: 17px;
-  height: 30px;
-  width: 30px;
-  margin: 0;
-  margin-right: 10px;
-  display: flex;
-  flex-direction: row;
-  color: rgb(20, 126, 197);
-  fill: rgb(20, 126, 197);
-}
-.bottomBannersContainer li:hover {
-  cursor: pointer;
-  background-color: rgba(20, 126, 197, 0.11);
-  transform: scale(1.03);
 }

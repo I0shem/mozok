@@ -2,7 +2,8 @@
   position: absolute;
   display: flex;
   height: 100dvh;
-  width: 100%;
+  width: 120dvw;
+  margin-left: -20vw;
   left: 0;
   top: 0;
   z-index: 5;

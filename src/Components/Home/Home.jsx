@@ -17,6 +17,15 @@ import SoftServe from "../Images/SoftServe.png";
 import Luxoft from "../Images/Luxoft.png";
 import NIX from "../Images/nix.png";
 import Map from "../map/Map";
+import SwiperBox from "../SwiperBox/SwiperBox";
+import SmallSwiperBox from "../SwiperBox/SmallSwiperBox1";
+import ImageBanner from "../Images/s11.jpg";
+import SlimImageBanner from "../Images/slimBanner.png";
+import { AiOutlineLaptop } from "react-icons/ai";
+import { ReactComponent as GPUSVG } from "../Images/video-card-svgrepo-com.svg";
+import { IoIosPhonePortrait } from "react-icons/io";
+import { AiOutlineApple } from "react-icons/ai";
+import { BsTv, BsSpeaker } from "react-icons/bs";
 
 const Home = () => {
   const data = MongoDBDataFetcher("sales");
@@ -25,8 +34,105 @@ const Home = () => {
   const secondHalf = data.slice(halfLength, data.length);
   return (
     <>
+      <div className={s.homeHeaderContainer}>
+        <div className={s.topBannersContainer}>
+          <div id="catalog" className={s.topBannerHeader}>
+            <li>
+              <AiOutlineLaptop />
+              Ноутбуки і комп'ютери
+            </li>
+
+            <li>
+              <GPUSVG />
+              Комплектуючі для ПК
+            </li>
+
+            <li>
+              <IoIosPhonePortrait />
+              Смартфони та планшети
+            </li>
+
+            <li>
+              <AiOutlineApple />
+              Техніка Apple
+            </li>
+
+            <li>
+              <BsTv />
+              Монітори та аксесуари
+            </li>
+
+            <li>
+              <BsTv />
+              Телевізори і проектори
+            </li>
+
+            <li>
+              <BsSpeaker />
+              Аудіо обладнання
+            </li>
+
+            <li>
+              <GPUSVG />
+              Комплектуючі для ПК
+            </li>
+
+            <li>
+              <IoIosPhonePortrait />
+              Смартфони та планшети
+            </li>
+
+            <li>
+              <AiOutlineApple />
+              Техніка Apple
+            </li>
+
+            <li>
+              <BsTv />
+              Монітори та аксесуари
+            </li>
+          </div>
+        </div>
+
+        <SwiperBox></SwiperBox>
+        <SmallSwiperBox></SmallSwiperBox>
+        <img className={s.ImageBanner} src={ImageBanner} alt="picture1" />
+
+        <img
+          className={s.SlimImageBanner}
+          src={SlimImageBanner}
+          alt="picture2"
+        />
+        <div className={s.bottomBannersContainer}>
+          <li>
+            <AiOutlineLaptop />
+          </li>
+
+          <li>
+            <GPUSVG />
+          </li>
+
+          <li>
+            <IoIosPhonePortrait />
+          </li>
+
+          <li>
+            <AiOutlineApple />
+          </li>
+
+          <li>
+            <BsTv />
+          </li>
+
+          <li>
+            <BsSpeaker />
+          </li>
+        </div>
+      </div>
       <div className={s.HomeContent}>
-        <div className={s.bigText}>ПОПУЛЯРНІ ТОВАРИ</div>
+        <div id="homecontent" className={s.bigText}>
+          ПОПУЛЯРНІ ТОВАРИ
+        </div>
         <div className={s.items}>
           {firstHalf.map((item) => (
             <Card item={item} />

@@ -26,8 +26,8 @@
   top: 5vh;
   width: max-content;
   z-index: 1;
-  margin-left: 17%;
-  border-radius: 0px 11px 11px 11px;
+  margin-left: 46%;
+  border-radius: 11px;
   border: 1px solid var(--main-text-color);
   background-color: rgb(255, 255, 255);
   min-width: 150px;
@@ -37,12 +37,12 @@
 .modalHeader li {
   position: relative;
   display: flex;
-  left: -20px;
   margin: auto;
   margin-bottom: 5px;
   margin-top: 5px;
   list-style: none;
-  min-width: 155%;
+  margin-left: -20px;
+  min-width: 165px;
 }
 
 .modalHeader li:hover {
@@ -57,4 +57,7 @@
   top: 0;
   z-index: 5;
   background-color: rgba(0, 0, 0, 0.2);
+}
+.headerBtnContainer button {
+  min-width: 100px;
 }

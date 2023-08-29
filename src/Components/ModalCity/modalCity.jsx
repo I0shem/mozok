@@ -19,34 +19,41 @@ const ModalCityWindow = ({ show, setShow }) => {
   return (
     <div>
       {show ? (
-        <div className={s.modalContainer}>
+        <>
           <Backgound setShow={setShow} />
-          <div className={s.city} onClick={() => setShow(true)}>
-            {chosenCity} <BiChevronDown style={style} className={s.cityBtn} />
+          <div className={s.modalContainer}>
+            <div className={s.city} onClick={() => setShow(true)}>
+              {chosenCity} <BiChevronDown style={style} className={s.cityBtn} />
+            </div>
+            <div className={s.cities}>
+              <table>
+                <tr>{ModalCitiesRow("Київ", "Харків", "Одеса", setCity)}</tr>
+                <tr>
+                  {ModalCitiesRow("Дніпро", "Донецьк", "Запоріжжя", setCity)}
+                </tr>
+                <tr>
+                  {ModalCitiesRow(
+                    "Луцьк",
+                    "Горлівка",
+                    "Івано-Франківськ",
+                    setCity
+                  )}
+                </tr>
+                <tr>
+                  {ModalCitiesRow("Львів", "Кривий ріг", "Миколаїв", setCity)}
+                </tr>
+                <tr>
+                  {ModalCitiesRow(
+                    "Вінниця",
+                    "Севастополь",
+                    "Тернопіль",
+                    setCity
+                  )}
+                </tr>
+              </table>
+            </div>
           </div>
-          <div className={s.cities}>
-            <table>
-              <tr>{ModalCitiesRow("Київ", "Харків", "Одеса", setCity)}</tr>
-              <tr>
-                {ModalCitiesRow("Дніпро", "Донецьк", "Запоріжжя", setCity)}
-              </tr>
-              <tr>
-                {ModalCitiesRow(
-                  "Луцьк",
-                  "Горлівка",
-                  "Івано-Франківськ",
-                  setCity
-                )}
-              </tr>
-              <tr>
-                {ModalCitiesRow("Львів", "Кривий ріг", "Миколаїв", setCity)}
-              </tr>
-              <tr>
-                {ModalCitiesRow("Вінниця", "Севастополь", "Тернопіль", setCity)}
-              </tr>
-            </table>
-          </div>
-        </div>
+        </>
       ) : (
         <div className={s.city} onClick={() => setShow(true)}>
           {chosenCity} <BiChevronDown className={s.cityBtn} />
