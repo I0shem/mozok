@@ -26,7 +26,7 @@ import { ReactComponent as GPUSVG } from "../Images/video-card-svgrepo-com.svg";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { AiOutlineApple } from "react-icons/ai";
 import { BsTv, BsSpeaker } from "react-icons/bs";
-
+import { NavLink } from "react-router-dom";
 const Home = () => {
   const data = MongoDBDataFetcher("sales");
   const halfLength = Math.ceil(data.length / 2);
@@ -72,11 +72,12 @@ const Home = () => {
               Аудіо обладнання
             </li>
 
-            <li>
-              <GPUSVG />
-              Комплектуючі для ПК
-            </li>
-
+            <NavLink to="/mozok/productpage/motherboards" className={s.Link}>
+              <li>
+                <GPUSVG />
+                Комплектуючі для ПК
+              </li>
+            </NavLink>
             <li>
               <IoIosPhonePortrait />
               Смартфони та планшети

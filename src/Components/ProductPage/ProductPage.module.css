@@ -1,0 +1,81 @@
+.productPageContent {
+  min-height: 100dvh;
+  max-width: 80vw;
+  margin: 0 auto;
+}
+.cards {
+  max-width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cards div {
+  margin: 10px;
+}
+.pageItem a,
+.prevLink a,
+.nextLink a {
+  padding: 0 10px;
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.pageLink a {
+  padding: 0 10px;
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.pagination {
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto;
+  border-radius: 11px;
+  max-width: min-content;
+  line-height: 30px;
+  padding: 0;
+}
+
+.pageItem {
+  padding: 1px;
+}
+.pageItem a:hover {
+  font-size: 16px;
+  border-radius: 25px;
+  background-color: rgba(20, 126, 197, 0.304);
+}
+.active {
+  font-size: 16px;
+  font-weight: 700;
+}
+.nextLink,
+.prevLink {
+  margin: 0 10px;
+  padding: 1px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.nextLink:hover,
+.prevLink:hover {
+  font-size: 21px;
+  font-weight: 700;
+}
+.searchInput {
+  display: flex;
+  min-width: 50vw;
+  margin: 20px auto;
+  line-height: 30px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.searchInput::placeholder {
+  text-align: center;
+}

@@ -4,7 +4,7 @@
 .swiperContainer {
   position: absolute;
   top: 12.5vh;
-  left: 21.5vw;
+  left: 22.8vw;
   max-width: 800px;
   max-height: 350px;
 }
@@ -16,7 +16,7 @@
   max-height: 350px;
 }
 .mySwiper {
-  max-width: 800px;
+  max-width: 756px;
   max-height: 375px;
 }
 .mySmallSwiper {

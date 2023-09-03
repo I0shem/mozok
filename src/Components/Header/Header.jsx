@@ -20,56 +20,56 @@ const Header = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
-  const changeHeader = (catalog, content) => {
-    const header = document.getElementById("header");
-    header.style.position = "fixed";
-    content.style.marginTop = "12vh";
-  };
-  const changeHeaderBack = (header, cont) => {
-    const catalog = document.getElementById("catalog");
-    const content = document.getElementById("content");
-    header.style.position = "relative";
-    content.style.marginTop = "0vh";
-    changeCatalogBack(catalog, content);
-  };
-  const isSticky = () => {
-    const header = document.getElementById("header");
-    const cont = document.getElementById("content");
-    const scrollTop = window.pageYOffset;
-    scrollTop >= 500
-      ? changeHeader(header, cont)
-      : changeHeaderBack(header, cont);
-  };
+  // const changeHeader = (catalog, content) => {
+  //   const header = document.getElementById("header");
+  //   header.style.position = "fixed";
+  //   content.style.marginTop = "12vh";
+  // };
+  // const changeHeaderBack = (header, cont) => {
+  //   const catalog = document.getElementById("catalog");
+  //   const content = document.getElementById("content");
+  //   header.style.position = "relative";
+  //   content.style.marginTop = "0vh";
+  //   changeCatalogBack(catalog, content);
+  // };
+  // const isSticky = () => {
+  //   const header = document.getElementById("header");
+  //   const cont = document.getElementById("content");
+  //   const scrollTop = window.pageYOffset;
+  //   scrollTop >= 500
+  //     ? changeHeader(header, cont)
+  //     : changeHeaderBack(header, cont);
+  // };
 
-  const changeCatalog = (catalog, content) => {
-    catalog.style.boxShadow = "0px 0px 5px 1px rgba(20, 126, 197,0.58)";
-    catalog.style.position = "fixed";
-    content.style.marginTop = "12.5vh";
-  };
-  const changeCatalogBack = (catalog, content) => {
-    setCClick(false);
-    catalog.style.position = "relative";
-    catalog.style.boxShadow = "0px 0px 5px 1px rgba(20, 126, 197,0.58)";
-    content.style.marginTop = "0vh";
-  };
-  const [cclick, setCClick] = useState(false);
-  const handleClickCatalog = () => {
-    setCClick(true);
-    const catalog = document.getElementById("catalog");
-    const main = document.getElementById("content");
-    const scrollTop = window.pageYOffset;
-    if (cclick === true) {
-      changeCatalogBack(catalog, main);
-    } else {
-      scrollTop >= 500 ? changeCatalog(catalog, main) : setCClick(false);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", isSticky);
-    return () => {
-      window.removeEventListener("scroll", isSticky);
-    };
-  });
+  // const changeCatalog = (catalog, content) => {
+  //   catalog.style.boxShadow = "0px 0px 5px 1px rgba(20, 126, 197,0.58)";
+  //   catalog.style.position = "fixed";
+  //   content.style.marginTop = "12.5vh";
+  // };
+  // const changeCatalogBack = (catalog, content) => {
+  //   setCClick(false);
+  //   catalog.style.position = "relative";
+  //   catalog.style.boxShadow = "0px 0px 5px 1px rgba(20, 126, 197,0.58)";
+  //   content.style.marginTop = "0vh";
+  // };
+  // const [cclick, setCClick] = useState(false);
+  // const handleClickCatalog = () => {
+  //   setCClick(true);
+  //   const catalog = document.getElementById("catalog");
+  //   const main = document.getElementById("content");
+  //   const scrollTop = window.pageYOffset;
+  //   if (cclick === true) {
+  //     changeCatalogBack(catalog, main);
+  //   } else {
+  //     scrollTop >= 500 ? changeCatalog(catalog, main) : setCClick(false);
+  //   }
+  // };
+  // useEffect(() => {
+  //   window.addEventListener("scroll", isSticky);
+  //   return () => {
+  //     window.removeEventListener("scroll", isSticky);
+  //   };
+  // });
 
   return (
     <>
@@ -104,7 +104,7 @@ const Header = () => {
             <div
               role="button"
               className={s.catalog}
-              onClick={() => handleClickCatalog()}
+              // onClick={() => handleClickCatalog()}
             >
               <IconContext.Provider value={{ className: s.headerBtn }}>
                 <FaBars />

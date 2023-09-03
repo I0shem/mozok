@@ -1,5 +1,5 @@
 import s from "./Mozok.module.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Stores from "./Components/Stores/Stores";
 import User from "./Components/User/User";
 import ServiceCentre from "./Components/ServiceCentre/ServiceCentre";
@@ -10,6 +10,7 @@ import React, { useState, useEffect } from "react";
 import Footer from "./Components/Footer/Footer";
 import { ReactComponent as LogoAnimatedSVG } from "./Components/Images/mozokcss_animated.svg";
 import Header from "./Components/Header/Header";
+import ProductPage from "./Components/ProductPage/ProductPage";
 
 function Mozok() {
   const [logo, setLogo] = useState(true);
@@ -28,7 +29,7 @@ function Mozok() {
           Одну хвилинку!
         </div>
       ) : (
-        <body id="myBody" className={s.noScroll}>
+        <div id="myBody" className={s.noScroll}>
           <Header />
           <main id="content" className={s.PageContent}>
             <Routes>
@@ -39,6 +40,10 @@ function Mozok() {
                 path="/mozok/loyalty_program"
                 element={<LoyaltyProgram />}
               />
+              <Route
+                path="/mozok/productpage/:productName"
+                element={<ProductPage />}
+              />
               <Route path="/mozok/service_centre" element={<ServiceCentre />} />
               <Route path="/mozok/promotion" element={<Promotion />} />
             </Routes>
@@ -46,7 +51,7 @@ function Mozok() {
           <footer className={s.footer}>
             <Footer />
           </footer>
-        </body>
+        </div>
       )}
     </>
   );
