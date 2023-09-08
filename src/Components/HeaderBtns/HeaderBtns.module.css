@@ -1,8 +1,13 @@
-.btnsContainer {
-  position: relative;
+.headerBtnContainer {
+  min-width: 30vw;
   display: flex;
-  margin-left: 20vw;
-  margin-right: auto;
+  list-style: none;
+  text-decoration: none;
+  flex-grow: 1;
+  color: black;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropDownBtn,
