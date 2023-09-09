@@ -7,7 +7,7 @@ import { AiOutlineApple } from "react-icons/ai";
 import { BsTv, BsSpeaker } from "react-icons/bs";
 import s from "./Header.module.css";
 
-const CatalogHeader = ({ position }) => {
+const CatalogHeader = () => {
   return (
     <div className={s.topBannersContainer}>
       <div id="catalog" className={s.topBannerHeader}>

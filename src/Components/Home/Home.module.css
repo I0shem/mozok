@@ -136,3 +136,154 @@
 .homeHeaderContainer {
   min-height: 457px;
 }
+.itemModal {
+  position: fixed;
+  top: 0;
+  z-index: 15;
+  display: flex;
+  background-color: rgba(4, 23, 36, 0.25);
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.innerItemModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  max-width: 80vw;
+  max-height: 80vh;
+  background-color: white;
+  border-radius: 25px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.innerItemModal img {
+  max-width: 30vw;
+  max-height: 30vh;
+  position: relative;
+  left: 0;
+}
+.innerItemModal table {
+  font-size: 14px;
+  position: relative;
+  max-width: 40vw;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin: 10px;
+}
+.innerItemModal th,
+td {
+  width: 20vw;
+  border: 1px solid black;
+  text-align: justify;
+}
+.innerItemModalContainer {
+  display: flex;
+  max-width: 50vw;
+  margin: 5vh;
+}
+.innerItemModalFirstContainer {
+  width: clamp(10vw, 15vw, 30vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(20, 126, 197);
+  border-radius: 25px;
+  padding: 10px;
+}
+.innerItemModalSecondContainer {
+  position: relative;
+  width: 20vw;
+  text-align: center;
+  margin-left: 50px;
+}
+.buyButton {
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  position: relative;
+
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 150ms;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+.closeButton {
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2vh auto;
+  display: flex;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 150ms;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+.buyButton:hover,
+.closeButton:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  background-color: rgb(20, 126, 197);
+  color: rgb(255, 255, 255);
+}
+
+.buyButton:hover,
+.closeButton:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(1px 1px 5px rgba(20, 126, 197, 1));
+}
+
+.buyButton:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.75);
+}
+.price {
+  position: relative;
+  margin-top: 3vh;
+}
+.availability {
+  margin-top: 3vh;
+  color: green;
+  font-size: 12px;
+}
+.innerItemModalCloseBtn {
+  position: absolute;
+  right: 0;
+  margin: 10px;
+  font-size: 24px;
+}
+.innerItemModalCloseBtn:hover {
+  transform: scale(1.2);
+  fill: black;
+}
+.characteristicsModal {
+  margin: 0;
+}

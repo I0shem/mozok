@@ -173,6 +173,7 @@ svg:hover {
 }
 .ContainerModal {
   display: grid;
+  z-index: 9999;
 }
 .topBannersContainerModal {
   position: fixed;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./Home.module.css";
 import Card from "../cards/card";
 import MongoDBDataFetcher from "../useData";
@@ -24,15 +24,33 @@ import SlimImageBanner from "../Images/slimBanner.png";
 import { AiOutlineLaptop } from "react-icons/ai";
 import { ReactComponent as GPUSVG } from "../Images/video-card-svgrepo-com.svg";
 import { IoIosPhonePortrait } from "react-icons/io";
-import { AiOutlineApple } from "react-icons/ai";
+import { AiOutlineApple, AiOutlineClose } from "react-icons/ai";
 import { BsTv, BsSpeaker } from "react-icons/bs";
-
+import { AnimatePresence, motion } from "framer-motion";
 import CatalogHeader from "../Header/CatalogHeader";
+
 const Home = () => {
   const data = MongoDBDataFetcher("sales");
   const halfLength = Math.ceil(data.length / 2);
   const firstHalf = data.slice(0, halfLength);
   const secondHalf = data.slice(halfLength, data.length);
+  const [selectedItem, setSelectedItemId] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const CharacteristicsTable = (characteristics) => (
+    <table>
+      {Object.entries(characteristics).map(([key, value]) => (
+        <tr key={key}>
+          <th>{key}</th>
+          <td>{value}</td>
+        </tr>
+      ))}
+    </table>
+  );
+  const closeModalWindow = () => {
+    const body = document.querySelector("body");
+    body.style.overflow = "auto";
+    setOpenModal(null);
+  };
   return (
     <>
       <div className={s.homeHeaderContainer}>
@@ -77,8 +95,12 @@ const Home = () => {
           ПОПУЛЯРНІ ТОВАРИ
         </div>
         <div className={s.items}>
-          {firstHalf.map((item) => (
-            <Card item={item} />
+          {firstHalf.map((i) => (
+            <Card
+              item={i}
+              setSelectedItemId={setSelectedItemId}
+              setOpenModal={setOpenModal}
+            />
           ))}
         </div>
 
@@ -111,8 +133,12 @@ const Home = () => {
           </ul>
         </div>
         <div className={s.items}>
-          {secondHalf.map((item) => (
-            <Card item={item} />
+          {secondHalf.map((i) => (
+            <Card
+              item={i}
+              setSelectedItemId={setSelectedItemId}
+              setOpenModal={setOpenModal}
+            />
           ))}
         </div>
         <div className={s.partnerClients}>
@@ -173,6 +199,60 @@ const Home = () => {
           магазини.
         </div>
       </div>
+      <AnimatePresence>
+        {openModal && (
+          <motion.div
+            layoutId={selectedItem._id}
+            className={s.itemModal}
+            onClick={() => closeModalWindow()}
+          >
+            <motion.div
+              className={s.innerItemModal}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <AiOutlineClose
+                className={s.innerItemModalCloseBtn}
+                onClick={() => closeModalWindow()}
+              />
+              <motion.div className={s.innerItemModalContainer}>
+                <motion.div className={s.innerItemModalFirstContainer}>
+                  <motion.img
+                    src={selectedItem.image}
+                    alt="failedToLoad"
+                  ></motion.img>
+                </motion.div>
+                <motion.div className={s.innerItemModalSecondContainer}>
+                  <motion.h2>{selectedItem.title}</motion.h2>{" "}
+                  <motion.div className={s.availability}>
+                    В наявності
+                  </motion.div>
+                  <motion.h3 className={s.price}>
+                    Ціна: {selectedItem.price} грн.
+                  </motion.h3>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    type="submit"
+                    className={s.buyButton}
+                  >
+                    Купити
+                  </motion.button>
+                </motion.div>
+              </motion.div>
+              <motion.h3 className={s.characteristicsModal}>
+                Характеристики:
+              </motion.h3>
+              {CharacteristicsTable(selectedItem.characteristics)}
+              <motion.button
+                className={s.closeButton}
+                onClick={() => closeModalWindow()}
+              >
+                Закрити{" "}
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

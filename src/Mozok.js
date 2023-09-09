@@ -1,5 +1,5 @@
 import s from "./Mozok.module.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Stores from "./Components/Stores/Stores";
 import User from "./Components/User/User";
 import ServiceCentre from "./Components/ServiceCentre/ServiceCentre";

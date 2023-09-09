@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import s from "./Header.module.css";
 import CatalogHeaderModal from "./CatalogHeaderModal";
-
+import { motion } from "framer-motion";
 const Header = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -119,7 +119,13 @@ const Header = () => {
           </div>
         </div>
       </header>{" "}
-      {cclick ? <CatalogHeaderModal /> : <></>}
+      {cclick ? (
+        <motion.div>
+          <CatalogHeaderModal />
+        </motion.div>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

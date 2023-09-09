@@ -4,29 +4,50 @@ import Tilt from "react-parallax-tilt";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import SaleSVG from "../Images/sale.png";
-const Card = (item) => {
-  let newTitle = item.item.title;
+import { motion } from "framer-motion";
+
+const Card = ({ item, setSelectedItemId, setOpenModal }) => {
+  let newTitle = item.title;
   const [heart, setHeart] = useState(true);
   const heartClick = () => {
     setHeart(!heart);
   };
   const textColor = () => {
-    if (item.item.hot === true) {
+    if (item.hot === true) {
       return (
-        <>
+        <React.Fragment onClick={(e) => e.stopPropagation()}>
           <img className={s.salePNG} src={SaleSVG} alt="" />
-          <div className={s.price} style={{ color: "red" }}>
+          <div
+            className={s.price}
+            style={{ color: "red" }}
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* модифікувати відображення ціни: зверху зліва малими чорними цифарми, закреслена ціна збільшена на 20%; по центру червона ціна - знижка*/}
-            {item.item.price} ₴
+            {item.price} ₴
           </div>
-        </>
+        </React.Fragment>
       );
     } else {
-      return <div className={s.price}>{item.item.price} ₴</div>;
+      return (
+        <div className={s.price} onClick={(e) => e.stopPropagation()}>
+          {item.price} ₴
+        </div>
+      );
     }
   };
+  const HandleClick = (id) => {
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
+    console.log(item);
+    setSelectedItemId(id);
+    setOpenModal(true);
+  };
   return (
-    <div className={s.productCard} id={item.item._id}>
+    <div
+      className={s.productCard}
+      id={item._id}
+      onClick={() => HandleClick(item)}
+    >
       <Tilt
         className={s.parallaxEffect}
         glareEnable={true}
@@ -39,36 +60,57 @@ const Card = (item) => {
         tiltMaxAngleX={1}
         perspective={500}
       >
-        <img src={item.item.image} alt="pic" className={s.cardImage} />
+        <img src={item.image} alt="pic" className={s.cardImage} />
         {heart ? (
-          <>
+          <React.Fragment onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
               value={{ className: s.heartBtn, size: "2.5rem" }}
             >
-              <BsHeart onClick={heartClick} />
+              <BsHeart
+                onClick={(e) => {
+                  heartClick();
+                  e.stopPropagation();
+                }}
+              />
             </IconContext.Provider>
-          </>
+          </React.Fragment>
         ) : (
-          <>
+          <React.Fragment onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
               value={{ className: s.heartBtn, size: "2.5rem" }}
             >
-              <BsHeartFill onClick={heartClick} />
+              <BsHeartFill
+                onClick={(e) => {
+                  heartClick();
+                  e.stopPropagation();
+                }}
+              />
             </IconContext.Provider>
-          </>
+          </React.Fragment>
         )}
 
         <div className={s.innerElement}>
           <div className={s.title}>{newTitle}</div>
-          <div className={s.article}>
-            Штрихкод: {item.item.characteristics["Штрихкод"]}
+          <div className={s.article} onClick={(e) => e.stopPropagation()}>
+            Штрихкод: {item.characteristics["Штрихкод"]}
           </div>
-          <div className={s.availability}>В наявності</div>
+          <div className={s.availability} onClick={(e) => e.stopPropagation()}>
+            В наявності
+          </div>
 
           {textColor()}
-          <button type="submit" className={s.buyButton}>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="submit"
+            className={s.buyButton}
+            onClick={(e) => {
+              console.log(item._id);
+              e.stopPropagation();
+            }}
+          >
             Купити
-          </button>
+          </motion.button>
         </div>
       </Tilt>
     </div>

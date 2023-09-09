@@ -6,10 +6,10 @@ import { IoIosPhonePortrait } from "react-icons/io";
 import { AiOutlineApple } from "react-icons/ai";
 import { BsTv, BsSpeaker } from "react-icons/bs";
 import s from "./Header.module.css";
-
+import { motion } from "framer-motion";
 const CatalogHeaderModal = () => {
   return (
-    <div className={s.ContainerModal}>
+    <motion.div className={s.ContainerModal}>
       <div className={s.topBannersContainerModal}>
         <div id="catalog" className={s.topBannerHeader}>
           <li>
@@ -69,7 +69,7 @@ const CatalogHeaderModal = () => {
           </li>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
