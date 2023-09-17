@@ -11,6 +11,7 @@ import Footer from "./Components/Footer/Footer";
 import { ReactComponent as LogoAnimatedSVG } from "./Components/Images/mozokcss_animated.svg";
 import Header from "./Components/Header/Header";
 import ProductPage from "./Components/ProductPage/ProductPage";
+import AuthDetails from "./Components/Auth/AuthDetails";
 
 function Mozok() {
   const [logo, setLogo] = useState(true);
@@ -51,6 +52,7 @@ function Mozok() {
           <footer className={s.footer}>
             <Footer />
           </footer>
+          <AuthDetails />
         </div>
       )}
     </>

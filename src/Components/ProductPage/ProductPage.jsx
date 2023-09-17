@@ -5,6 +5,57 @@ import { useParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
 
+// Acoustic system - /acoustic_system
+// Motherboards - /motherboards
+// Apple Headphones - /apple_headphones
+// Apple Keyboards - /apple_keyboards
+// Apple Trackpads - /apple_trackpads
+// Apple Mouse - /apple_mouse
+// Apple Laptops - /apple_laptops
+// Apple Phones - /apple_phones
+// Apple Tablets - /apple_tablets
+// Brackets - /brackets
+// CPU fans - /cpu_fans
+// CPUs - /cpus
+// E-books cases - /ebookscases
+// E-books - /ebooks
+// Game Manipulators - /gamemanipulators
+// GPUs - /gpus
+// Graphic Tablets - /graphic_tablets
+// Graphic Tablet Pens - /graphictabletpens
+// PC Glasses  - /pcglasses
+// HDDs - /hdds
+// Headphones - /headphones
+// Interactive Boards - /interactiveboards
+// Keyboards - /keyboards
+// Keaboards and Mouses - /keaboardsandmouses
+// LCD Panels - /lcdpanels
+// Liquid Cooling Systems - /liquidcoolingsystems
+// Mediaplayers - /mediaplayers
+// Multimedia Cabels - /multimediacabels
+// Monitors - /monitors
+// Microphones - /microphones
+// Mouses - /mouses
+// Mouse Carpets - /mousecarpets
+// Laptops - /laptops
+// PC Cases - /pccases
+// PC Fans - /pcfans
+// PCs - /pcs
+// Projector Brackets - /projectorbrackets
+// Projectors - /projectors
+// Projector Screens - /projectorscreens
+// Power Supplies - /powersupplies
+// RAMs - /rams
+// Monitor Stands - /monitorstands
+// Phones - /phones
+// SSDs - /ssds
+// Tablets - /tablets
+// Thermopaste - /thermopaste
+// TVs - /tvs
+// TVBrackets - /tvbrackets
+// TVTuners - /tvtuners
+// Universal Remote Control - /universalremotecontrol
+
 const ProductPage = () => {
   const { productName } = useParams();
   const itemsPerPage = 20;

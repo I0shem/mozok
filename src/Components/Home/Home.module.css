@@ -141,7 +141,7 @@
   top: 0;
   z-index: 15;
   display: flex;
-  background-color: rgba(4, 23, 36, 0.25);
+  background-color: rgba(4, 23, 36, 0.075);
   align-items: center;
   justify-content: center;
   width: 100vw;
@@ -159,6 +159,7 @@
   border-radius: 25px;
   overflow-x: hidden;
   overflow-y: scroll;
+  border: 1px solid black;
 }
 .innerItemModal img {
   max-width: 30vw;
@@ -190,7 +191,7 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(20, 126, 197);
+  border: 1px solid black;
   border-radius: 25px;
   padding: 10px;
 }

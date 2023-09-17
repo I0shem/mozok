@@ -119,12 +119,12 @@ svg:hover {
   width: 1.1em;
   height: 1.1em;
 }
-.searchBar {
+.searchBar span {
   position: relative;
   max-height: 39px;
-  left: 20px;
+  left: 30px;
   box-shadow: none;
-  width: 29vw;
+  width: 22vw;
   margin: 5px;
 }
 .orderCall,
@@ -196,7 +196,7 @@ svg:hover {
 .topBannerHeader li {
   font-size: 0.75em;
   line-height: 2dvh;
-  height: 2.2dvh;
+  height: 4.4dvh;
   list-style: none;
   padding: 10px;
   color: #344150;

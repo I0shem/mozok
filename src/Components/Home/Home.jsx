@@ -34,22 +34,43 @@ const Home = () => {
   const halfLength = Math.ceil(data.length / 2);
   const firstHalf = data.slice(0, halfLength);
   const secondHalf = data.slice(halfLength, data.length);
-  const [selectedItem, setSelectedItemId] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(1);
   const [openModal, setOpenModal] = useState(false);
   const CharacteristicsTable = (characteristics) => (
-    <table>
+    <motion.table variants={ModalInfoVariants}>
       {Object.entries(characteristics).map(([key, value]) => (
         <tr key={key}>
           <th>{key}</th>
           <td>{value}</td>
         </tr>
       ))}
-    </table>
+    </motion.table>
   );
   const closeModalWindow = () => {
     const body = document.querySelector("body");
     body.style.overflow = "auto";
     setOpenModal(null);
+  };
+  const modalVariants = {
+    open: {
+      opacity: 1,
+      transition: { staggerChildren: 0.5, delayChildren: 0.2 },
+    },
+    closed: { opacity: 0 },
+  };
+  const imageVariants = {
+    open: {
+      opacity: 1,
+      y: "0vh",
+    },
+    closed: { opacity: 0, y: "-10vh" },
+  };
+  const ModalInfoVariants = {
+    open: {
+      opacity: 1,
+      x: 0,
+    },
+    closed: { opacity: 0, x: "10%" },
   };
   return (
     <>
@@ -98,7 +119,7 @@ const Home = () => {
           {firstHalf.map((i) => (
             <Card
               item={i}
-              setSelectedItemId={setSelectedItemId}
+              setSelectedItem={setSelectedItem}
               setOpenModal={setOpenModal}
             />
           ))}
@@ -136,7 +157,7 @@ const Home = () => {
           {secondHalf.map((i) => (
             <Card
               item={i}
-              setSelectedItemId={setSelectedItemId}
+              setSelectedItem={setSelectedItem}
               setOpenModal={setOpenModal}
             />
           ))}
@@ -201,12 +222,10 @@ const Home = () => {
       </div>
       <AnimatePresence>
         {openModal && (
-          <motion.div
-            layoutId={selectedItem._id}
-            className={s.itemModal}
-            onClick={() => closeModalWindow()}
-          >
+          <div className={s.itemModal} onClick={() => closeModalWindow()}>
             <motion.div
+              variants={modalVariants}
+              layoutId={selectedItem._id}
               className={s.innerItemModal}
               onClick={(e) => e.stopPropagation()}
             >
@@ -215,11 +234,11 @@ const Home = () => {
                 onClick={() => closeModalWindow()}
               />
               <motion.div className={s.innerItemModalContainer}>
-                <motion.div className={s.innerItemModalFirstContainer}>
-                  <motion.img
-                    src={selectedItem.image}
-                    alt="failedToLoad"
-                  ></motion.img>
+                <motion.div
+                  className={s.innerItemModalFirstContainer}
+                  variants={imageVariants}
+                >
+                  <img src={selectedItem.image} alt="failedToLoad"></img>
                 </motion.div>
                 <motion.div className={s.innerItemModalSecondContainer}>
                   <motion.h2>{selectedItem.title}</motion.h2>{" "}
@@ -250,7 +269,7 @@ const Home = () => {
                 Закрити{" "}
               </motion.button>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </>

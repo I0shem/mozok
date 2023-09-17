@@ -6,7 +6,7 @@ import { IconContext } from "react-icons";
 import SaleSVG from "../Images/sale.png";
 import { motion } from "framer-motion";
 
-const Card = ({ item, setSelectedItemId, setOpenModal }) => {
+const Card = ({ item, setSelectedItem, setOpenModal }) => {
   let newTitle = item.title;
   const [heart, setHeart] = useState(true);
   const heartClick = () => {
@@ -15,7 +15,7 @@ const Card = ({ item, setSelectedItemId, setOpenModal }) => {
   const textColor = () => {
     if (item.hot === true) {
       return (
-        <React.Fragment onClick={(e) => e.stopPropagation()}>
+        <div onClick={(e) => e.stopPropagation()}>
           <img className={s.salePNG} src={SaleSVG} alt="" />
           <div
             className={s.price}
@@ -25,7 +25,7 @@ const Card = ({ item, setSelectedItemId, setOpenModal }) => {
             {/* модифікувати відображення ціни: зверху зліва малими чорними цифарми, закреслена ціна збільшена на 20%; по центру червона ціна - знижка*/}
             {item.price} ₴
           </div>
-        </React.Fragment>
+        </div>
       );
     } else {
       return (
@@ -35,17 +35,20 @@ const Card = ({ item, setSelectedItemId, setOpenModal }) => {
       );
     }
   };
-  const HandleClick = (id) => {
+
+  const HandleClick = (item) => {
     const body = document.querySelector("body");
     body.style.overflow = "hidden";
-    console.log(item);
-    setSelectedItemId(id);
+    setSelectedItem(item);
+    console.log(item._id);
     setOpenModal(true);
   };
   return (
-    <div
+    <motion.div
       className={s.productCard}
       id={item._id}
+      layoutId={item._id}
+      layout="position"
       onClick={() => HandleClick(item)}
     >
       <Tilt
@@ -62,7 +65,7 @@ const Card = ({ item, setSelectedItemId, setOpenModal }) => {
       >
         <img src={item.image} alt="pic" className={s.cardImage} />
         {heart ? (
-          <React.Fragment onClick={(e) => e.stopPropagation()}>
+          <div onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
               value={{ className: s.heartBtn, size: "2.5rem" }}
             >
@@ -73,9 +76,9 @@ const Card = ({ item, setSelectedItemId, setOpenModal }) => {
                 }}
               />
             </IconContext.Provider>
-          </React.Fragment>
+          </div>
         ) : (
-          <React.Fragment onClick={(e) => e.stopPropagation()}>
+          <div onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
               value={{ className: s.heartBtn, size: "2.5rem" }}
             >
@@ -86,7 +89,7 @@ const Card = ({ item, setSelectedItemId, setOpenModal }) => {
                 }}
               />
             </IconContext.Provider>
-          </React.Fragment>
+          </div>
         )}
 
         <div className={s.innerElement}>
@@ -99,7 +102,7 @@ const Card = ({ item, setSelectedItemId, setOpenModal }) => {
           </div>
 
           {textColor()}
-          <motion.button
+          <button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             type="submit"
@@ -110,10 +113,10 @@ const Card = ({ item, setSelectedItemId, setOpenModal }) => {
             }}
           >
             Купити
-          </motion.button>
+          </button>
         </div>
       </Tilt>
-    </div>
+    </motion.div>
   );
 };
 export default Card;

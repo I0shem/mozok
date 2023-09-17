@@ -67,7 +67,7 @@ export function HeaderBtns() {
               onClick={() => setShowModal(false)}
               className={s.modalBackground}
             >
-              <div className={s.modalHeader}>
+              <div className={s.modalHeader0}>
                 <ul>
                   {loyaltyContent.map((i) => (
                     <li>{i}</li>
@@ -95,7 +95,7 @@ export function HeaderBtns() {
               onClick={() => setShowModal1(false)}
               className={s.modalBackground}
             >
-              <div className={s.modalHeader}>
+              <div className={s.modalHeader1}>
                 <ul>
                   {clientsContent.map((i) => (
                     <li>{i}</li>
@@ -118,8 +118,8 @@ export function HeaderBtns() {
         <BiChevronDown
           className={s.headerBtn}
           id="btn"
-          onClick={() => setShowModal2(!showModal)}
           style={style2}
+          onClick={() => setShowModal2(!showModal)}
         />
         {showModal2 ? (
           <>
@@ -127,7 +127,7 @@ export function HeaderBtns() {
               onClick={() => setShowModal2(false)}
               className={s.modalBackground}
             >
-              <div className={s.modalHeader}>
+              <div className={s.modalHeader2}>
                 <ul>
                   {serviceContent.map((i) => (
                     <li>{i}</li>

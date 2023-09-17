@@ -26,20 +26,43 @@
   transform: scale(1.05);
 }
 
-.modalHeader {
+.modalHeader0 {
   position: relative;
   top: 5vh;
   width: max-content;
   z-index: 1;
-  margin-left: 46%;
+  margin-left: 51%;
   border-radius: 11px;
   border: 1px solid var(--main-text-color);
   background-color: rgb(255, 255, 255);
   min-width: 150px;
   box-shadow: 3px 1px 4px 1px rgba(0, 0, 0, 0.75);
 }
-
-.modalHeader li {
+.modalHeader1 {
+  position: relative;
+  top: 5vh;
+  width: max-content;
+  z-index: 1;
+  margin-left: 56%;
+  border-radius: 11px;
+  border: 1px solid var(--main-text-color);
+  background-color: rgb(255, 255, 255);
+  min-width: 150px;
+  box-shadow: 3px 1px 4px 1px rgba(0, 0, 0, 0.75);
+}
+.modalHeader2 {
+  position: relative;
+  top: 5vh;
+  width: max-content;
+  z-index: 1;
+  margin-left: 60%;
+  border-radius: 11px;
+  border: 1px solid var(--main-text-color);
+  background-color: rgb(255, 255, 255);
+  min-width: 150px;
+  box-shadow: 3px 1px 4px 1px rgba(0, 0, 0, 0.75);
+}
+.modalBackground li {
   position: relative;
   display: flex;
   margin: auto;
@@ -50,7 +73,7 @@
   min-width: 165px;
 }
 
-.modalHeader li:hover {
+.modalBackground li:hover {
   cursor: pointer;
   text-shadow: 0.1px 0 0 var(--main-text-color);
 }
@@ -58,7 +81,7 @@
   position: fixed;
   height: 100dvh;
   width: 100vw;
-  left: 0px;
+  left: 0;
   top: 0;
   z-index: 5;
   background-color: rgba(0, 0, 0, 0.2);

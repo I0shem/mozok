@@ -1,0 +1,95 @@
+.SignInContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(131, 131, 131, 0.556);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.InnerSignInContainer {
+  width: 25%;
+  height: 70%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  position: relative;
+}
+.InnerSignInContainer form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.InnerSignInText {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 27px;
+}
+.InnerSignInContainer input {
+  margin: 20px;
+  width: 14vw;
+  min-height: 4vh;
+  font-size: 15px;
+  text-align: center;
+}
+
+.BtnLogin {
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2vh auto;
+  display: flex;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 150ms;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+.BtnLogin:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  background-color: rgb(20, 126, 197);
+  color: rgb(255, 255, 255);
+}
+
+.BtnLogin:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(1px 1px 5px rgba(20, 126, 197, 1));
+}
+.CloseBtn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 20px;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.CloseBtn:hover {
+  cursor: pointer;
+  color: white;
+  text-shadow: #01aaff 0px 2px 5px, #008cff 0px 0px 10px, #1d98ea 0px 0px 15px,
+    #24b8fc 0px 0px 20px, #24b8fc 0px 0px 30px, #24b8fc 0px 0px 40px,
+    #24b8fc 0px 0px 50px, #24b8fc 0px 0px 75px;
+  font-weight: 600;
+}

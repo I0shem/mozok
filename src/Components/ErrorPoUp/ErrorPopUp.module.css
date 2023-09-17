@@ -1,0 +1,18 @@
+.ErrorPopUpContainer {
+  position: absolute;
+  width: 20%;
+  height: 10%;
+  top: 0;
+  background-color: white;
+  z-index: 99;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
