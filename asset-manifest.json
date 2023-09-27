@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mozok/static/css/main.793e646f.css",
+    "main.css": "/mozok/static/css/main.fb306399.css",
     "main.js": "/mozok/static/js/main.b65d71ee.js",
     "static/js/356.704b0636.chunk.js": "/mozok/static/js/356.704b0636.chunk.js",
     "static/media/tv.png": "/mozok/static/media/tv.f35fd75a60772223062a.png",
@@ -62,12 +62,12 @@
     "static/media/clock.svg": "/mozok/static/media/clock.638810859df6332f5450699a214783a1.svg",
     "static/media/fb.svg": "/mozok/static/media/fb.81be5f17ddfb9587213665446899ef16.svg",
     "static/media/phone.svg": "/mozok/static/media/phone.107fbc08105b646df44c9d1553a68ba4.svg",
-    "main.793e646f.css.map": "/mozok/static/css/main.793e646f.css.map",
+    "main.fb306399.css.map": "/mozok/static/css/main.fb306399.css.map",
     "main.b65d71ee.js.map": "/mozok/static/js/main.b65d71ee.js.map",
     "356.704b0636.chunk.js.map": "/mozok/static/js/356.704b0636.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.793e646f.css",
+    "static/css/main.fb306399.css",
     "static/js/main.b65d71ee.js"
   ]
 }
