@@ -1,14 +1,16 @@
 {
   "files": {
     "main.css": "/mozok/static/css/main.a1a2237e.css",
-    "main.js": "/mozok/static/js/main.cff68312.js",
+    "main.js": "/mozok/static/js/main.587474c6.js",
     "static/js/356.704b0636.chunk.js": "/mozok/static/js/356.704b0636.chunk.js",
     "static/media/tv.png": "/mozok/static/media/tv.f35fd75a60772223062a.png",
     "static/media/smartphones-and-tablets.png": "/mozok/static/media/smartphones-and-tablets.b2055aa323fbbe41e6f4.png",
+    "static/media/apple.png": "/mozok/static/media/apple.7bceed1d8c8ce59baa50.png",
     "static/media/pc-parts.png": "/mozok/static/media/pc-parts.9b7455d9c4eaeda214fb.png",
     "static/media/mediaplayers.png": "/mozok/static/media/mediaplayers.c8ec23aa7338b7aeeb12.png",
     "static/media/monitor.png": "/mozok/static/media/monitor.03fbe364872d22fdbead.png",
     "static/media/headphones.png": "/mozok/static/media/headphones.5f4220a506cf4c49c153.png",
+    "static/media/projectors.png": "/mozok/static/media/projectors.414b789c07ed0a2602ec.png",
     "static/media/Peripherals.webp": "/mozok/static/media/Peripherals.9e1d95a74dc70bc988ae.webp",
     "static/media/ebooks.png": "/mozok/static/media/ebooks.4b35a86bdc91579e85b0.png",
     "static/media/1.jpg": "/mozok/static/media/1.c70ad20f02b6d9b3e8c3.jpg",
@@ -24,8 +26,6 @@
     "static/media/slimBanner.png": "/mozok/static/media/slimBanner.402ba1d34023ae843d20.png",
     "static/media/rubik-arabic-400-italic.woff": "/mozok/static/media/rubik-arabic-400-italic.73e5d7ef2f17b9073b3c.woff",
     "static/media/rubik-arabic-400-normal.woff": "/mozok/static/media/rubik-arabic-400-normal.9b7e86b9f74ba1c2e5a6.woff",
-    "static/media/projectors.avif": "/mozok/static/media/projectors.c776a40aac6a2820ea3c.avif",
-    "static/media/apple.avif": "/mozok/static/media/apple.12cec7d6000f6f9b0639.avif",
     "static/media/rubik-latin-400-italic.woff2": "/mozok/static/media/rubik-latin-400-italic.693f2bb91f712d73f05b.woff2",
     "static/media/rubik-latin-400-normal.woff2": "/mozok/static/media/rubik-latin-400-normal.5903a23647de7c1c373f.woff2",
     "static/media/rubik-arabic-400-italic.woff2": "/mozok/static/media/rubik-arabic-400-italic.c1e55410613913f0fe85.woff2",
@@ -63,11 +63,11 @@
     "static/media/fb.svg": "/mozok/static/media/fb.81be5f17ddfb9587213665446899ef16.svg",
     "static/media/phone.svg": "/mozok/static/media/phone.107fbc08105b646df44c9d1553a68ba4.svg",
     "main.a1a2237e.css.map": "/mozok/static/css/main.a1a2237e.css.map",
-    "main.cff68312.js.map": "/mozok/static/js/main.cff68312.js.map",
+    "main.587474c6.js.map": "/mozok/static/js/main.587474c6.js.map",
     "356.704b0636.chunk.js.map": "/mozok/static/js/356.704b0636.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a1a2237e.css",
-    "static/js/main.cff68312.js"
+    "static/js/main.587474c6.js"
   ]
 }
