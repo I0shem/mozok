@@ -2,7 +2,7 @@ import React from "react";
 import ModalCityWindow from "../ModalCity/modalCity";
 import { NavLink } from "react-router-dom";
 import { IoEnterOutline } from "react-icons/io5";
-import ReactSearchBox from "react-search-box";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { BiPhoneCall } from "react-icons/bi";
 import { TbMapSearch } from "react-icons/tb";
 import { BsFillBagHeartFill } from "react-icons/bs";
@@ -21,12 +21,14 @@ import SignIn from "../Auth/SignIn";
 import WelcomePoUp from "../WelcomePoUp/WelcomePoUp";
 import { auth } from "../Auth/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+
 const Header = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   const [isUserSignIn, setIsUserSignIn] = useState(false);
   const [myUser, setMyUser] = useState(null);
+
   const closeSignIn = () => {
     setShowAuth(false);
     const body = document.querySelector("body");
@@ -59,8 +61,11 @@ const Header = () => {
 
   const [cclick, setCClick] = useState(false);
   const handleClickCatalog = () => {
+    const catalog = document.getElementById("catalog");
     const scrollTop = window.pageYOffset;
-    scrollTop >= 500 ? setCClick(!cclick) : <></>;
+    if (!catalog || scrollTop >= 500) {
+      setCClick(!cclick);
+    }
   };
   useEffect(() => {
     window.addEventListener("scroll", isSticky);
@@ -91,6 +96,55 @@ const Header = () => {
         setTimeout(() => setShowPopUpLoggedOutUser(false), 5000);
       })
       .catch((error) => console.log(error));
+  };
+
+  ///search
+  const handleOnSearch = (string, results) => {
+    // onSearch will have as the first callback parameter
+    // the string searched and for the second the results.
+    console.log(string, results);
+  };
+
+  const handleOnHover = (result) => {
+    // the item hovered
+    console.log(result);
+  };
+
+  const handleOnSelect = (item) => {
+    // the item selected
+    console.log(item);
+  };
+  const formatResult = (item) => {
+    return (
+      <>
+        <span style={{ display: "block", textAlign: "left" }}>{item.name}</span>
+      </>
+    );
+  };
+  const items = [
+    {
+      id: 0,
+      name: "Cobol",
+    },
+    {
+      id: 1,
+      name: "JavaScript",
+    },
+    {
+      id: 2,
+      name: "Basic",
+    },
+    {
+      id: 3,
+      name: "PHP",
+    },
+    {
+      id: 4,
+      name: "Java",
+    },
+  ];
+  const handleOnFocus = () => {
+    console.log("Focused");
   };
   return (
     <>
@@ -144,12 +198,17 @@ const Header = () => {
               <div className={s.catalogText}>КАТАЛОГ ТОВАРІВ</div>
             </div>
             <div className={s.searchBar}>
-              <ReactSearchBox
-                placeholder="Знайти..."
-
-                // data={this.data} An array of objects which acts as the source of data for the dropdown. This prop is required
-                // onChange={() => console.log("onChange")}
-                // callback={(record) => console.log(record)}
+              <ReactSearchAutocomplete
+                items={items}
+                onSearch={handleOnSearch}
+                onHover={handleOnHover}
+                onSelect={handleOnSelect}
+                formatResult={formatResult}
+                onFocus={handleOnFocus}
+                autoFocus
+                styling={{ height: "36px", borderRadius: "1px" }}
+                placeholder="Пошук товарів..."
+                showNoResultsText="Не знайдено"
               />
             </div>
 
@@ -174,25 +233,19 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </header>{" "}
-      {cclick ? (
+      </header>
+      {cclick && (
         <motion.div>
           <CatalogHeaderModal />
         </motion.div>
-      ) : (
-        <></>
       )}
-      {showAuth ? (
+      {showAuth && (
         <>
           <SignIn closeSignIn={closeSignIn} />
         </>
-      ) : (
-        <></>
-      )}{" "}
-      {showPopUpLoggedOutUser ? (
+      )}
+      {showPopUpLoggedOutUser && (
         <WelcomePoUp ftext="Успішний вихід" stext="До нових покупок!" />
-      ) : (
-        <></>
       )}
     </>
   );

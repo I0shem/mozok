@@ -5,18 +5,23 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import SaleSVG from "../Images/sale.png";
 import { motion } from "framer-motion";
-
+import { PiScalesFill, PiScalesLight } from "react-icons/pi";
 const Card = ({ item, setSelectedItem, setOpenModal }) => {
   let newTitle = item.title;
   const [heart, setHeart] = useState(true);
+
+  const [scales, setScales] = useState(true);
   const heartClick = () => {
     setHeart(!heart);
+  };
+  const scalesClick = () => {
+    setScales(!scales);
   };
   const textColor = () => {
     if (item.hot === true) {
       return (
         <div onClick={(e) => e.stopPropagation()}>
-          <img className={s.salePNG} src={SaleSVG} alt="" />
+          <img className={s.salePNG} src={SaleSVG} loading="lazy" alt="" />
           <div
             className={s.price}
             style={{ color: "red" }}
@@ -38,7 +43,9 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
 
   const HandleClick = (item) => {
     const body = document.querySelector("body");
+    const main = document.querySelector("main");
     body.style.overflow = "hidden";
+    main.style.paddingRight = "20px";
     setSelectedItem(item);
     console.log(item._id);
     setOpenModal(true);
@@ -46,7 +53,7 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
   return (
     <motion.div
       className={s.productCard}
-      id={item._id}
+      key={item._id}
       layoutId={item._id}
       layout="position"
       onClick={() => HandleClick(item)}
@@ -63,7 +70,12 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
         tiltMaxAngleX={1}
         perspective={500}
       >
-        <img src={item.image} alt="pic" className={s.cardImage} />
+        <img
+          src={item.image}
+          alt="pic"
+          className={s.cardImage}
+          loading="lazy"
+        />
         {heart ? (
           <div onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
@@ -91,7 +103,33 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
             </IconContext.Provider>
           </div>
         )}
-
+        {scales ? (
+          <div onClick={(e) => e.stopPropagation()}>
+            <IconContext.Provider
+              value={{ className: s.scalesBtn, size: "2.5rem" }}
+            >
+              <PiScalesLight
+                onClick={(e) => {
+                  scalesClick();
+                  e.stopPropagation();
+                }}
+              />
+            </IconContext.Provider>
+          </div>
+        ) : (
+          <div onClick={(e) => e.stopPropagation()}>
+            <IconContext.Provider
+              value={{ className: s.scalesBtn, size: "2.5rem" }}
+            >
+              <PiScalesFill
+                onClick={(e) => {
+                  scalesClick();
+                  e.stopPropagation();
+                }}
+              />
+            </IconContext.Provider>
+          </div>
+        )}
         <div className={s.innerElement}>
           <div className={s.title}>{newTitle}</div>
           <div className={s.article} onClick={(e) => e.stopPropagation()}>

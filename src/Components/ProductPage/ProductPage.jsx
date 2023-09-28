@@ -1,150 +1,247 @@
 import React, { useState, useEffect } from "react";
 import s from "./ProductPage.module.css";
 import Card from "../cards/card";
-import { useParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import axios from "axios";
-
-// Acoustic system - /acoustic_system
-// Motherboards - /motherboards
-// Apple Headphones - /apple_headphones
-// Apple Keyboards - /apple_keyboards
-// Apple Trackpads - /apple_trackpads
-// Apple Mouse - /apple_mouse
-// Apple Laptops - /apple_laptops
-// Apple Phones - /apple_phones
-// Apple Tablets - /apple_tablets
-// Brackets - /brackets
-// CPU fans - /cpu_fans
-// CPUs - /cpus
-// E-books cases - /ebookscases
-// E-books - /ebooks
-// Game Manipulators - /gamemanipulators
-// GPUs - /gpus
-// Graphic Tablets - /graphic_tablets
-// Graphic Tablet Pens - /graphictabletpens
-// PC Glasses  - /pcglasses
-// HDDs - /hdds
-// Headphones - /headphones
-// Interactive Boards - /interactiveboards
-// Keyboards - /keyboards
-// Keaboards and Mouses - /keaboardsandmouses
-// LCD Panels - /lcdpanels
-// Liquid Cooling Systems - /liquidcoolingsystems
-// Mediaplayers - /mediaplayers
-// Multimedia Cabels - /multimediacabels
-// Monitors - /monitors
-// Microphones - /microphones
-// Mouses - /mouses
-// Mouse Carpets - /mousecarpets
-// Laptops - /laptops
-// PC Cases - /pccases
-// PC Fans - /pcfans
-// PCs - /pcs
-// Projector Brackets - /projectorbrackets
-// Projectors - /projectors
-// Projector Screens - /projectorscreens
-// Power Supplies - /powersupplies
-// RAMs - /rams
-// Monitor Stands - /monitorstands
-// Phones - /phones
-// SSDs - /ssds
-// Tablets - /tablets
-// Thermopaste - /thermopaste
-// TVs - /tvs
-// TVBrackets - /tvbrackets
-// TVTuners - /tvtuners
-// Universal Remote Control - /universalremotecontrol
-
+import MongoDBDataFetcher from "../useData";
+import MyFilter from "../Filter/MyFilter";
+import { useParams } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { AiOutlineClose } from "react-icons/ai";
 const ProductPage = () => {
-  const { productName } = useParams();
   const itemsPerPage = 20;
-
-  const [data, setData] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  async function fetchData() {
-    try {
-      const response = await axios.get(
-        `https://eu-west-2.aws.data.mongodb-api.com/app/mozok-store-yrvzc/endpoint/${productName}`
-      );
-      setPageCount(Math.ceil(response.data.length / itemsPerPage));
-      const newCurrentItems = response.data.slice(
-        itemOffset,
-        itemOffset + itemsPerPage
-      );
-      setCurrentItems(newCurrentItems);
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
-
-  function handleSearch() {
-    const filteredData = data.filter((item) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setPageCount(Math.ceil(filteredData.length / itemsPerPage));
-    const newCurrentItems = filteredData.slice(
-      itemOffset,
-      itemOffset + itemsPerPage
-    );
-    setCurrentItems(newCurrentItems);
-  }
+  const [filters, setFilters] = useState({});
+  const [filterOptions, setFilterOptions] = useState({});
+  const [searchQuery, setSearchQuery] = useState(""); // Added search state
+  const { productName } = useParams();
+  const data = MongoDBDataFetcher(productName);
 
   useEffect(() => {
-    if (!searchQuery && !itemOffset) {
-      fetchData();
+    if (!data.length) return;
+
+    let filteredData = data.filter((item) => {
+      if (!item.title.toLowerCase().includes(searchQuery.toLowerCase()))
+        return false;
+      for (const [key, value] of Object.entries(filters)) {
+        if (item.characteristics[key] !== value) return false;
+      }
+      return true;
+    });
+
+    setPageCount(Math.ceil(filteredData.length / itemsPerPage));
+    setCurrentItems(filteredData.slice(itemOffset, itemOffset + itemsPerPage));
+
+    const updatedFilterOptions = {};
+    const characteristics = data[0]?.characteristics || {};
+    for (const key in characteristics) {
+      updatedFilterOptions[key] = {
+        key,
+        values: getUniqueFilterOptions(filteredData, key),
+      };
     }
-    handleSearch();
-  }, [productName, itemOffset, searchQuery]);
+    setFilterOptions(updatedFilterOptions);
+  }, [data, filters, itemOffset, searchQuery]); // Added searchQuery to dependency array
 
-  const handlePageClick = (event) => {
-    const newOffset = event.selected * itemsPerPage;
-    setItemOffset(newOffset);
+  const getUniqueFilterOptions = (currentData, filterKey) => {
+    const uniqueOptions = new Set();
+    currentData.forEach((item) =>
+      uniqueOptions.add(item.characteristics[filterKey])
+    );
+    return Array.from(uniqueOptions);
   };
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
+  const handleFilterChange = (key, value) => {
+    setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
+  const handleClearFilters = () => {
+    setFilters({});
+    setSearchQuery(""); // Clear search when clearing filters
+  };
+  const modalVariants = {
+    open: {
+      opacity: 1,
+      transition: { staggerChildren: 0.5, delayChildren: 0.2 },
+    },
+    closed: { opacity: 0 },
+  };
+  const imageVariants = {
+    open: {
+      opacity: 1,
+      y: "0vh",
+    },
+    closed: { opacity: 0, y: "-10vh" },
+  };
+  const ModalInfoVariants = {
+    open: {
+      opacity: 1,
+      x: 0,
+    },
+    closed: { opacity: 0, x: "10%" },
+  };
+  const [selectedItem, setSelectedItem] = useState(1);
+  const [openModal, setOpenModal] = useState(false);
+  const CharacteristicsTable = (characteristics) => (
+    <motion.table variants={ModalInfoVariants}>
+      {Object.entries(characteristics).map(([key, value]) => (
+        <tr key={key}>
+          <th>{key}</th>
+          <td>{value}</td>
+        </tr>
+      ))}
+    </motion.table>
+  );
+  const closeModalWindow = () => {
+    const body = document.querySelector("body");
+    const main = document.querySelector("main");
+    main.style.paddingRight = "0px";
+    body.style.overflow = "auto";
+    setOpenModal(null);
+  };
+  const textColor = (item) => {
+    if (item.hot === true) {
+      return (
+        <>
+          <div onClick={(e) => e.stopPropagation()}>
+            <div
+              className={s.price}
+              style={{ color: "red" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className={s.price}> Ціна: {item.price} грн.</h3>
+            </div>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <div className={s.price} onClick={(e) => e.stopPropagation()}>
+          Ціна: {item.price} грн.
+        </div>
+      );
+    }
+  };
   return (
     <div className={s.productPageContent}>
       <input
         type="text"
-        placeholder="Пошук товврів..."
+        placeholder="Пошук товарів..."
         value={searchQuery}
-        onChange={handleSearchChange}
+        onChange={(e) => setSearchQuery(e.target.value)}
         className={s.searchInput}
       />
-      <div className={s.cards}>
-        {currentItems.map((item) => (
-          <Card item={item} key={item.id} />
+      <div className={s.MyFilters}>
+        {Object.keys(filters).length > 0 && (
+          <>
+            <h4>Обрані фільтри:</h4>
+            {Object.entries(filters).map(([key, value], index) => (
+              <div className={s.activeFilter} key={index}>
+                {key}: {value}
+              </div>
+            ))}
+            <button
+              className={s.clearFiltersButton}
+              onClick={handleClearFilters}
+            >
+              Скинути фільтри
+            </button>
+          </>
+        )}
+
+        <p>Фільтри:</p>
+        {Object.keys(filterOptions).map((key) => (
+          <MyFilter
+            key={key}
+            filterKey={key}
+            uniqueOptions={filterOptions[key].values}
+            onChange={handleFilterChange}
+            disabled={!!filters[key]}
+          />
         ))}
       </div>
-      <ReactPaginate
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
-        pageCount={pageCount}
-        previousLabel="<"
-        pageClassName={s.pageItem}
-        pageLinkClassName={s.pageLink}
-        previousClassName={s.prevLink}
-        previousLinkClassName={s.prevLink}
-        nextClassName={s.nextLink}
-        nextLinkClassName={s.nextLink}
-        breakLabel="..."
-        breakClassName={s.pageItem}
-        breakLinkClassName={s.pageLink}
-        containerClassName={s.pagination}
-        activeClassName={s.active}
-        renderOnZeroPageCount={null}
-      />
+      <div className={s.cards}>
+        {currentItems.map((item) => (
+          <Card
+            item={item}
+            setSelectedItem={setSelectedItem}
+            setOpenModal={setOpenModal}
+          />
+        ))}{" "}
+      </div>{" "}
+      <div className={s.paginationContainer}>
+        <ReactPaginate
+          nextLabel=">"
+          onPageChange={(event) => setItemOffset(event.selected * itemsPerPage)}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={2}
+          pageCount={pageCount}
+          previousLabel="<"
+          pageClassName={s.pageItem}
+          pageLinkClassName={s.pageLink}
+          previousClassName={s.prevLink}
+          previousLinkClassName={s.prevLink}
+          nextClassName={s.nextLink}
+          nextLinkClassName={s.nextLink}
+          breakLabel="..."
+          breakClassName={s.pageItem}
+          breakLinkClassName={s.pageLink}
+          containerClassName={s.pagination}
+          activeClassName={s.active}
+          renderOnZeroPageCount={null}
+        />
+      </div>
+      <AnimatePresence>
+        {openModal && (
+          <div className={s.itemModal} onClick={() => closeModalWindow()}>
+            <motion.div
+              variants={modalVariants}
+              layoutId={selectedItem._id}
+              className={s.innerItemModal}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <AiOutlineClose
+                className={s.innerItemModalCloseBtn}
+                onClick={() => closeModalWindow()}
+              />
+              <motion.div className={s.innerItemModalContainer}>
+                <motion.div
+                  className={s.innerItemModalFirstContainer}
+                  variants={imageVariants}
+                >
+                  <img src={selectedItem.image} alt="failedToLoad"></img>
+                </motion.div>
+                <motion.div className={s.innerItemModalSecondContainer}>
+                  <motion.h2>{selectedItem.title}</motion.h2>{" "}
+                  <motion.div className={s.availability}>
+                    В наявності
+                  </motion.div>
+                  {textColor(selectedItem)}
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    type="submit"
+                    className={s.buyButton}
+                  >
+                    Купити
+                  </motion.button>
+                </motion.div>
+              </motion.div>
+              <motion.h3 className={s.characteristicsModal}>
+                Характеристики:
+              </motion.h3>
+              {CharacteristicsTable(selectedItem.characteristics)}
+              <motion.button
+                className={s.closeButton}
+                onClick={() => closeModalWindow()}
+              >
+                Закрити{" "}
+              </motion.button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

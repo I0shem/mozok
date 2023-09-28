@@ -33,6 +33,8 @@ export function HeaderBtns() {
     "Всі бренди",
   ];
   const serviceContent = ["Сервісні центри", "Сервіс і гарантія"];
+
+  const openModal = (state) => {};
   return (
     <div className={s.headerBtnContainer}>
       <NavLink
@@ -53,21 +55,23 @@ export function HeaderBtns() {
         </button>
       </NavLink>
 
-      <button type="button" className={s.dropDownBtn}>
+      <button
+        type="button"
+        className={s.dropDownBtn}
+        onClick={() => setShowModal(!showModal)}
+      >
         Програма лояльності
-        <BiChevronDown
-          className={s.headerBtn}
-          id="btn"
-          onClick={() => setShowModal(!showModal)}
-          style={style}
-        />
+        <BiChevronDown className={s.headerBtn} id="btn" style={style} />
         {showModal ? (
           <>
             <div
-              onClick={() => setShowModal(false)}
+              onClick={() => setShowModal(!showModal)}
               className={s.modalBackground}
             >
-              <div className={s.modalHeader0}>
+              <div
+                className={s.modalHeader0}
+                onClick={(e) => e.stopPropagation()}
+              >
                 <ul>
                   {loyaltyContent.map((i) => (
                     <li>{i}</li>
@@ -81,18 +85,17 @@ export function HeaderBtns() {
         )}
       </button>
 
-      <button type="button" className={s.dropDownBtn}>
+      <button
+        type="button"
+        className={s.dropDownBtn}
+        onClick={() => setShowModal1(!showModal1)}
+      >
         Клієнтам
-        <BiChevronDown
-          className={s.headerBtn}
-          id="btn"
-          onClick={() => setShowModal1(!showModal)}
-          style={style1}
-        />
+        <BiChevronDown className={s.headerBtn} id="btn" style={style1} />
         {showModal1 ? (
           <>
             <div
-              onClick={() => setShowModal1(false)}
+              onClick={() => setShowModal1(!showModal1)}
               className={s.modalBackground}
             >
               <div className={s.modalHeader1}>
@@ -113,18 +116,14 @@ export function HeaderBtns() {
         type="button"
         className={s.dropDownBtn}
         style={{ fontWeight: weight }}
+        onClick={() => setShowModal2(!showModal2)}
       >
         Сервіс
-        <BiChevronDown
-          className={s.headerBtn}
-          id="btn"
-          style={style2}
-          onClick={() => setShowModal2(!showModal)}
-        />
+        <BiChevronDown className={s.headerBtn} id="btn" style={style2} />
         {showModal2 ? (
           <>
             <div
-              onClick={() => setShowModal2(false)}
+              onClick={() => setShowModal2(!showModal2)}
               className={s.modalBackground}
             >
               <div className={s.modalHeader2}>

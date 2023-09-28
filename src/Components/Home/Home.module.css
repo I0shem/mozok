@@ -85,24 +85,24 @@
 
 .ImageBanner {
   position: absolute;
-  top: 32.2vh;
+  top: 32vh;
   right: 21vw;
   max-width: 262px;
 }
 .SlimImageBanner {
   position: absolute;
-  top: 12vh;
+  top: 13vh;
   right: 11vw;
   max-width: 262px;
+  max-height: 365px;
 }
 .bottomBannersContainer {
   position: absolute;
   display: flex;
   max-width: 65vw;
   margin-left: 22.7vw;
-  top: 55.5vh;
+  top: 56.9dvh;
   background-color: white;
-  box-shadow: 0px 0px 5px 1px rgba(20, 126, 197, 0.58);
 }
 .bottomBannersContainer li {
   justify-content: center;
@@ -110,10 +110,10 @@
   display: flex;
   margin: 0 auto;
   font-size: 17px;
-  height: 55px;
-  line-height: 50px;
+  height: 4.3dvh;
   align-items: center;
   width: 210px;
+  box-shadow: 0px 0px 5px 1px rgba(20, 126, 197, 0.58);
   border: 1px solid var(--main-bg-color);
 }
 
@@ -153,12 +153,13 @@
   flex-direction: column;
   align-items: center;
   position: fixed;
-  max-width: 80vw;
-  max-height: 80vh;
+  min-width: 95dvw;
+  height: 95dvh;
   background-color: white;
   border-radius: 25px;
   overflow-x: hidden;
   overflow-y: scroll;
+  scrollbar-gutter: stable both-edges;
   border: 1px solid black;
 }
 .innerItemModal img {
@@ -216,7 +217,7 @@ td {
   font-weight: 600;
   line-height: 1.25;
   position: relative;
-
+  margin: 40px auto;
   min-height: 3rem;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   text-decoration: none;
@@ -276,10 +277,10 @@ td {
   font-size: 12px;
 }
 .innerItemModalCloseBtn {
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: 3dvw;
   margin: 10px;
-  font-size: 24px;
+  font-size: 26px;
 }
 .innerItemModalCloseBtn:hover {
   transform: scale(1.2);
@@ -287,4 +288,8 @@ td {
 }
 .characteristicsModal {
   margin: 0;
+}
+.salePNG {
+  position: absolute;
+  display: flex;
 }

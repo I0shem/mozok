@@ -49,12 +49,13 @@
 
 .catalog {
   display: flex;
-  width: clamp(11vw, 11vw, 11vw);
+  width: clamp(10vw, 10vw, 15vw);
   background-color: var(--main-bg-color);
   color: white;
   padding: 10px;
   margin: 5px;
   margin-left: 0;
+  max-width: 10vw;
   -khtml-user-select: none;
   -o-user-select: none;
   -moz-user-select: none;
@@ -75,6 +76,7 @@
   font-size: 2rem;
   font-weight: 800;
   padding: 10px;
+  z-index: 16;
 }
 .logo:hover,
 svg:hover {
@@ -119,13 +121,16 @@ svg:hover {
   width: 1.1em;
   height: 1.1em;
 }
-.searchBar span {
+.searchBar {
   position: relative;
-  max-height: 39px;
-  left: 30px;
-  box-shadow: none;
-  width: 22vw;
+  max-height: 35px;
+  left: 2%;
+  padding-right: 30px;
+  width: 330px;
   margin: 5px;
+}
+.searchBar span:hover {
+  cursor: pointer;
 }
 .orderCall,
 .searchOrder,
@@ -170,6 +175,7 @@ svg:hover {
   display: flex;
   width: 80vw;
   margin: 0 auto;
+  top: 0.5vh;
 }
 .ContainerModal {
   display: grid;
@@ -178,13 +184,14 @@ svg:hover {
 .topBannersContainerModal {
   position: fixed;
   width: 80vw;
-  top: 12.5vh;
+  display: flex;
   justify-self: center;
   z-index: 15;
+  margin-top: 13vh;
 }
 
 .topBannerHeader {
-  width: clamp(4vw, 11vw, 11vw);
+  width: clamp(4vw, 11vw, 15vw);
   border: 1px solid var(--main-bg-color);
   background: white;
   z-index: 4;
@@ -196,7 +203,7 @@ svg:hover {
 .topBannerHeader li {
   font-size: 0.75em;
   line-height: 2dvh;
-  height: 4.4dvh;
+  height: 2.15dvh;
   list-style: none;
   padding: 10px;
   color: #344150;
@@ -222,4 +229,45 @@ svg:hover {
   cursor: pointer;
   transform: scale(1.03);
   background-color: rgba(20, 126, 197, 0.11);
+}
+.catalogModalWindow {
+  position: relative;
+  display: flex;
+  width: 86%;
+  left: 0;
+  height: 452px;
+  background-color: rgba(20, 126, 197, 1);
+  z-index: 99999;
+}
+.catalogItemSP {
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.catalogItemFP {
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.catalogImage {
+  max-height: 80%;
+  max-width: 80%;
+}
+.link {
+  color: white;
+  text-decoration: none;
+}
+.link p:hover {
+  transform: scale(1.05);
+  text-decoration: underline;
+}
+.linkActive {
+  color: black;
+  font-weight: bold;
 }

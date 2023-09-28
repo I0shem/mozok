@@ -1,0 +1,29 @@
+.filters {
+  max-width: 170px;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  position: relative;
+}
+
+.filters label {
+  margin-bottom: 4px;
+  padding: 4px;
+  text-align: center;
+}
+
+.filters .select {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.options {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 180px;
+}

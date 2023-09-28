@@ -1,10 +1,11 @@
 .productPageContent {
-  min-height: 100dvh;
+  min-height: 230dvh;
   max-width: 80vw;
   margin: 0 auto;
 }
 .cards {
-  max-width: 100%;
+  max-width: 90%;
+  left: 10%;
   display: flex;
   position: relative;
   justify-content: center;
@@ -29,13 +30,20 @@
   align-content: center;
   justify-content: center;
 }
-
+.paginationContainer {
+  max-width: 90%;
+  left: 10%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .pagination {
   cursor: pointer;
   font-size: 15px;
   display: flex;
   flex-direction: row;
-  margin: 20px auto;
+  margin: 40px auto;
   border-radius: 11px;
   max-width: min-content;
   line-height: 30px;
@@ -68,8 +76,9 @@
 }
 .searchInput {
   display: flex;
-  min-width: 50vw;
-  margin: 20px auto;
+  min-width: 100%;
+  margin: 0 auto;
+  margin-top: 2vh;
   line-height: 30px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -78,4 +87,227 @@
 }
 .searchInput::placeholder {
   text-align: center;
+}
+.MyFilters {
+  position: absolute;
+}
+.MyFilters p {
+  font-weight: 600;
+  text-align: center;
+  margin: 10px;
+}
+.clearFiltersButton {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 10px auto;
+  min-height: 2rem;
+  padding: calc(0.475rem - 1px) calc(1.2rem - 1px);
+  bottom: 0;
+  text-decoration: none;
+  transition: all 150ms;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+
+.clearFiltersButton:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  background-color: rgb(20, 126, 197);
+  color: rgb(255, 255, 255);
+}
+
+.clearFiltersButton:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(1px 1px 5px rgba(20, 126, 197, 1));
+}
+
+.clearFiltersButton:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.itemModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 15;
+  display: flex;
+  background-color: rgba(4, 23, 36, 0.075);
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.innerItemModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  min-width: 95dvw;
+  height: 95dvh;
+  background-color: white;
+  border-radius: 25px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-gutter: stable both-edges;
+  border: 1px solid black;
+}
+.innerItemModal img {
+  max-width: 30vw;
+  max-height: 30vh;
+  position: relative;
+  left: 0;
+}
+.innerItemModal table {
+  font-size: 14px;
+  position: relative;
+  max-width: 40vw;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin: 10px;
+}
+.innerItemModal th,
+td {
+  width: 20vw;
+  border: 1px solid black;
+  text-align: justify;
+}
+.innerItemModalContainer {
+  display: flex;
+  max-width: 50vw;
+  margin: 5vh;
+}
+.innerItemModalFirstContainer {
+  width: clamp(10vw, 15vw, 30vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 10px;
+}
+.innerItemModalSecondContainer {
+  position: relative;
+  width: 20vw;
+  text-align: center;
+  margin-left: 50px;
+}
+
+.buyButton {
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  position: relative;
+  margin: 50px auto;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 150ms;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+.closeButton {
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2vh auto;
+  display: flex;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 150ms;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+.buyButton:hover,
+.closeButton:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  background-color: rgb(20, 126, 197);
+  color: rgb(255, 255, 255);
+}
+
+.buyButton:hover,
+.closeButton:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(1px 1px 5px rgba(20, 126, 197, 1));
+}
+
+.buyButton:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.75);
+}
+.price {
+  position: relative;
+  margin-top: 3vh;
+}
+.availability {
+  margin-top: 3vh;
+  color: green;
+  font-size: 12px;
+}
+.innerItemModalCloseBtn {
+  position: fixed;
+  right: 3dvw;
+  margin: 10px;
+  font-size: 26px;
+}
+.innerItemModalCloseBtn:hover {
+  transform: scale(1.2);
+  fill: black;
+}
+.characteristicsModal {
+  margin: 0;
+}
+.salePNG {
+  position: absolute;
+  display: flex;
+}
+.activeFilter {
+  background-color: rgba(0, 0, 0, 0.078);
+  border-radius: 24px;
+  padding: 4px;
+  font-size: 13px;
+  text-align: center;
+  margin: 5px;
+  max-width: 170px;
+}
+.MyFilters h4 {
+  text-align: center;
+  margin: 10px;
 }

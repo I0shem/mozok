@@ -7,6 +7,15 @@
   cursor: default;
   z-index: 1;
 }
+.stores_map_container {
+  width: 80vw;
+  height: auto;
+  margin: 40px 0;
+  /* border: 3px solid #1f347b56; */
+  padding: 5vh 0vh 3vh 15vh;
+  cursor: default;
+  z-index: 1;
+}
 .map_content_box {
   display: flex;
 }
@@ -38,6 +47,15 @@ a:hover span {
   box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
+.stores_map_box {
+  width: 30vw;
+  height: 35dvh;
+  /* border: 1px solid tomato; */
+  flex-shrink: 0;
+  border-radius: 20px;
+  box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
 h1 {
   color: var(--unnamed, #4a4d4a);
   text-align: center;
@@ -46,6 +64,41 @@ h1 {
   /* H2 medium */
   font-family: Rubik;
   font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 123.4%; /* 37.02px */
+}
+.stores_map_container h1 {
+  color: var(--unnamed, #4a4d4a);
+  text-align: center;
+  margin-left: -15vh;
+  margin-top: 20px;
+  width: 80vw;
+  /* H2 medium */
+  font-family: Rubik;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 123.4%; /* 37.02px */
+}
+.stores_map_container h1:hover {
+  color: var(--unnamed, #000000);
+  text-shadow: rgba(20, 126, 197) 1px 1px 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.stores_map_container svg {
+  z-index: -1;
+}
+.stores_map_container h2 {
+  color: var(--unnamed, #4a4d4a);
+  text-align: center;
+  margin-left: -15vh;
+  margin-bottom: 30px;
+  width: 80vw;
+  /* H2 medium */
+  font-family: Rubik;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 123.4%; /* 37.02px */

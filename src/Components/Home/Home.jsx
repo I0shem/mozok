@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import s from "./Home.module.css";
 import Card from "../cards/card";
 import MongoDBDataFetcher from "../useData";
@@ -24,12 +24,16 @@ import SlimImageBanner from "../Images/slimBanner.png";
 import { AiOutlineLaptop } from "react-icons/ai";
 import { ReactComponent as GPUSVG } from "../Images/video-card-svgrepo-com.svg";
 import { IoIosPhonePortrait } from "react-icons/io";
-import { AiOutlineApple, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineApple } from "react-icons/ai";
 import { BsTv, BsSpeaker } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 import CatalogHeader from "../Header/CatalogHeader";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
+  const LazyLoadedModalComponent = React.lazy(() =>
+    import("./ProductModalWindow")
+  );
   const data = MongoDBDataFetcher("sales");
   const halfLength = Math.ceil(data.length / 2);
   const firstHalf = data.slice(0, halfLength);
@@ -48,6 +52,8 @@ const Home = () => {
   );
   const closeModalWindow = () => {
     const body = document.querySelector("body");
+    const main = document.querySelector("main");
+    main.style.paddingRight = "0px";
     body.style.overflow = "auto";
     setOpenModal(null);
   };
@@ -72,6 +78,26 @@ const Home = () => {
     },
     closed: { opacity: 0, x: "10%" },
   };
+  const textColor = (item) => {
+    if (item.hot === true) {
+      return (
+        <div
+          className={s.price}
+          style={{ color: item.hot ? "red" : "inherit" }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          Ціна: {item.price} грн.
+        </div>
+      );
+    } else {
+      return (
+        <div className={s.price} onClick={(e) => e.stopPropagation()}>
+          Ціна: {item.price} грн.
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <div className={s.homeHeaderContainer}>
@@ -86,29 +112,32 @@ const Home = () => {
           alt="picture2"
         />
         <div className={s.bottomBannersContainer}>
-          <li>
-            <AiOutlineLaptop />
-          </li>
-
+          <NavLink to="/mozok/productpage/laptops" className={s.Link}>
+            <li>
+              <AiOutlineLaptop />
+            </li>
+          </NavLink>
           <li>
             <GPUSVG />
           </li>
-
-          <li>
-            <IoIosPhonePortrait />
-          </li>
-
+          <NavLink to="/mozok/productpage/apple_phones" className={s.Link}>
+            <li>
+              <IoIosPhonePortrait />
+            </li>
+          </NavLink>
           <li>
             <AiOutlineApple />
           </li>
-
-          <li>
-            <BsTv />
-          </li>
-
-          <li>
-            <BsSpeaker />
-          </li>
+          <NavLink to="/mozok/productpage/tvs" className={s.Link}>
+            <li>
+              <BsTv />
+            </li>
+          </NavLink>
+          <NavLink to="/mozok/productpage/acoustic_system" className={s.Link}>
+            <li>
+              <BsSpeaker />
+            </li>
+          </NavLink>
         </div>
       </div>
       <div className={s.HomeContent}>
@@ -133,6 +162,7 @@ const Home = () => {
             <li>
               <AiFillApple />
             </li>
+
             <li>
               <SiSamsung />
             </li>
@@ -222,54 +252,16 @@ const Home = () => {
       </div>
       <AnimatePresence>
         {openModal && (
-          <div className={s.itemModal} onClick={() => closeModalWindow()}>
-            <motion.div
-              variants={modalVariants}
-              layoutId={selectedItem._id}
-              className={s.innerItemModal}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <AiOutlineClose
-                className={s.innerItemModalCloseBtn}
-                onClick={() => closeModalWindow()}
-              />
-              <motion.div className={s.innerItemModalContainer}>
-                <motion.div
-                  className={s.innerItemModalFirstContainer}
-                  variants={imageVariants}
-                >
-                  <img src={selectedItem.image} alt="failedToLoad"></img>
-                </motion.div>
-                <motion.div className={s.innerItemModalSecondContainer}>
-                  <motion.h2>{selectedItem.title}</motion.h2>{" "}
-                  <motion.div className={s.availability}>
-                    В наявності
-                  </motion.div>
-                  <motion.h3 className={s.price}>
-                    Ціна: {selectedItem.price} грн.
-                  </motion.h3>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    type="submit"
-                    className={s.buyButton}
-                  >
-                    Купити
-                  </motion.button>
-                </motion.div>
-              </motion.div>
-              <motion.h3 className={s.characteristicsModal}>
-                Характеристики:
-              </motion.h3>
-              {CharacteristicsTable(selectedItem.characteristics)}
-              <motion.button
-                className={s.closeButton}
-                onClick={() => closeModalWindow()}
-              >
-                Закрити{" "}
-              </motion.button>
-            </motion.div>
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyLoadedModalComponent
+              closeModalWindow={closeModalWindow}
+              modalVariants={modalVariants}
+              imageVariants={imageVariants}
+              textColor={textColor}
+              selectedItem={selectedItem}
+              CharacteristicsTable={CharacteristicsTable}
+            />
+          </Suspense>
         )}
       </AnimatePresence>
     </>

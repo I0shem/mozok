@@ -2,6 +2,7 @@
   width: 320px;
   height: 450px;
   text-align: center;
+  padding: 10px;
 }
 .parallaxEffect {
   width: 320px;
@@ -20,19 +21,18 @@
 }
 .innerElement {
   display: block;
-  transform: translateZ(60px);
+  position: relative;
   width: 90%;
-  height: 45%;
-
+  height: auto;
   text-align: center;
 }
 .cardImage {
-  max-height: 45%;
+  max-height: 37%;
   max-width: 80%;
-  padding: 2vh;
+  padding: 1vh;
   position: relative;
   display: flex;
-  margin: 0 auto;
+  margin: 30px auto;
   mix-blend-mode: multiply;
   filter: contrast(1);
   -khtml-user-select: none;
@@ -130,7 +130,19 @@
   -webkit-user-select: none;
   user-select: none;
 }
-.heartBtn:hover {
+.scalesBtn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 5px;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.heartBtn:hover,
+.scalesBtn:hover {
   filter: drop-shadow(1px 1px 5px rgba(20, 126, 197, 1));
 }
 .salePNG {

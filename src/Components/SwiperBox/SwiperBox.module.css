@@ -3,25 +3,25 @@
 }
 .swiperContainer {
   position: absolute;
-  top: 12.5vh;
+  top: 13vh;
   left: 22.8vw;
   max-width: 800px;
   max-height: 350px;
 }
 .smallSwiperContainer {
   position: absolute;
-  top: 12.5vh;
+  top: 13vh;
   right: 21vw;
   max-width: 262px;
   max-height: 350px;
 }
 .mySwiper {
   max-width: 756px;
-  max-height: 375px;
+  max-height: 365px;
 }
 .mySmallSwiper {
   max-width: 300px;
-  max-height: 20vh;
+  max-height: 180px;
 }
 .swiperSlide {
   text-align: center;

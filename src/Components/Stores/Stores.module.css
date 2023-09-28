@@ -1,5 +1,15 @@
 .StoresContent {
-  margin-top: 10vh;
   position: relative;
   min-height: 100vh;
+  max-width: 80%;
+  display: grid;
+  margin-left: 10%;
+  margin-bottom: 5%;
+}
+.InnerContainer {
+  text-align: center;
+}
+.InnerContainer ul {
+  margin-left: 0;
+  padding-left: 0;
 }

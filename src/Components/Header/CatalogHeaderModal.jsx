@@ -1,73 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AiOutlineLaptop } from "react-icons/ai";
-import { ReactComponent as GPUSVG } from "../Images/video-card-svgrepo-com.svg";
-import { IoIosPhonePortrait } from "react-icons/io";
-import { AiOutlineApple } from "react-icons/ai";
-import { BsTv, BsSpeaker } from "react-icons/bs";
 import s from "./Header.module.css";
 import { motion } from "framer-motion";
+import CatalogData from "./CatalogData";
 const CatalogHeaderModal = () => {
+  const [activeItem, setActiveItem] = useState(null);
+  const [timeoutId, setTimeoutId] = useState(null);
+  const handleMouseEnter = (item) => {
+    if (timeoutId) clearTimeout(timeoutId);
+    setActiveItem(item);
+  };
+
+  const handleMouseLeave = () => {
+    const id = setTimeout(() => setActiveItem(null), 300);
+    setTimeoutId(id);
+  };
   return (
     <motion.div className={s.ContainerModal}>
-      <div className={s.topBannersContainerModal}>
-        <div id="catalog" className={s.topBannerHeader}>
-          <li>
-            <AiOutlineLaptop />
-            Ноутбуки і комп'ютери
-          </li>
-
-          <li>
-            <GPUSVG />
-            Комплектуючі для ПК
-          </li>
-
-          <li>
-            <IoIosPhonePortrait />
-            Смартфони та планшети
-          </li>
-
-          <li>
-            <AiOutlineApple />
-            Техніка Apple
-          </li>
-
-          <li>
-            <BsTv />
-            Монітори та аксесуари
-          </li>
-
-          <li>
-            <BsTv />
-            Телевізори і проектори
-          </li>
-
-          <li>
-            <BsSpeaker />
-            Аудіо обладнання
-          </li>
-
-          <NavLink to="/mozok/productpage/motherboards" className={s.Link}>
-            <li>
-              <GPUSVG />
-              Комплектуючі для ПК
+      <div
+        className={s.topBannersContainerModal}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className={s.topBannerHeader}>
+          {CatalogData.map((item, index) => (
+            <li key={index} onMouseEnter={() => handleMouseEnter(item)}>
+              {item.icon}
+              {item.title}
             </li>
-          </NavLink>
-          <li>
-            <IoIosPhonePortrait />
-            Смартфони та планшети
-          </li>
-
-          <li>
-            <AiOutlineApple />
-            Техніка Apple
-          </li>
-
-          <li>
-            <BsTv />
-            Монітори та аксесуари
-          </li>
+          ))}
         </div>
+
+        {activeItem && (
+          <div className={s.catalogModalWindow}>
+            <div className={s.catalogItemFP}>
+              <ul>
+                {activeItem.links.map((link, index) => (
+                  <NavLink
+                    key={index}
+                    to={link.to}
+                    className={s.link}
+                    activeClassName={s.linkActive}
+                  >
+                    <p>{link.label}</p>
+                  </NavLink>
+                ))}
+              </ul>
+            </div>
+
+            <div className={s.catalogItemSP}>
+              <img
+                className={s.catalogImage}
+                src={activeItem.productImage}
+                alt={activeItem.title}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );
