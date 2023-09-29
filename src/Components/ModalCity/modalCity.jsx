@@ -27,29 +27,31 @@ const ModalCityWindow = ({ show, setShow }) => {
             </div>
             <div className={s.cities}>
               <table>
-                <tr>{ModalCitiesRow("Київ", "Харків", "Одеса", setCity)}</tr>
-                <tr>
-                  {ModalCitiesRow("Дніпро", "Донецьк", "Запоріжжя", setCity)}
-                </tr>
-                <tr>
-                  {ModalCitiesRow(
-                    "Луцьк",
-                    "Горлівка",
-                    "Івано-Франківськ",
-                    setCity
-                  )}
-                </tr>
-                <tr>
-                  {ModalCitiesRow("Львів", "Кривий ріг", "Миколаїв", setCity)}
-                </tr>
-                <tr>
-                  {ModalCitiesRow(
-                    "Вінниця",
-                    "Севастополь",
-                    "Тернопіль",
-                    setCity
-                  )}
-                </tr>
+                <tbody>
+                  <tr>{ModalCitiesRow("Київ", "Харків", "Одеса", setCity)}</tr>
+                  <tr>
+                    {ModalCitiesRow("Дніпро", "Донецьк", "Запоріжжя", setCity)}
+                  </tr>
+                  <tr>
+                    {ModalCitiesRow(
+                      "Луцьк",
+                      "Горлівка",
+                      "Івано-Франківськ",
+                      setCity
+                    )}
+                  </tr>
+                  <tr>
+                    {ModalCitiesRow("Львів", "Кривий ріг", "Миколаїв", setCity)}
+                  </tr>
+                  <tr>
+                    {ModalCitiesRow(
+                      "Вінниця",
+                      "Севастополь",
+                      "Тернопіль",
+                      setCity
+                    )}
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>

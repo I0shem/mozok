@@ -12,6 +12,15 @@
 }
 .InnerSignInContainer {
   width: 25%;
+  height: 50%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  position: relative;
+}
+.InnerSignUpContainer {
+  width: 25%;
   height: 70%;
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -19,7 +28,8 @@
   border-radius: 25px;
   position: relative;
 }
-.InnerSignInContainer form {
+.InnerSignInContainer form,
+.InnerSignUpContainer form {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -32,7 +42,8 @@
   margin-bottom: 20px;
   font-size: 27px;
 }
-.InnerSignInContainer input {
+.InnerSignInContainer input,
+.InnerSignUpContainer input {
   margin: 20px;
   width: 14vw;
   min-height: 4vh;
@@ -48,20 +59,22 @@
   box-sizing: border-box;
   color: rgb(0, 0, 0);
   cursor: pointer;
-  display: inline-flex;
   font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
     Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.25;
   margin: 2vh auto;
-  display: flex;
+  min-width: 8.5vw;
   min-height: 3rem;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   text-decoration: none;
   transition: all 150ms;
   touch-action: manipulation;
-  vertical-align: baseline;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 .BtnLogin:hover {
   border-color: rgba(0, 0, 0, 0.15);
@@ -92,4 +105,14 @@
     #24b8fc 0px 0px 20px, #24b8fc 0px 0px 30px, #24b8fc 0px 0px 40px,
     #24b8fc 0px 0px 50px, #24b8fc 0px 0px 75px;
   font-weight: 600;
+}
+.messageE {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 0, 0, 0.111);
+  font-weight: 600;
+  margin: 0;
+  font-size: 13px;
+  width: 100%;
+  text-align: center;
 }

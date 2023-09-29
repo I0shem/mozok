@@ -3,11 +3,10 @@ import s from "./auth.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { motion } from "framer-motion";
-import SignUp from "./SignUp";
 import ErrorPopUp from "./../ErrorPoUp/ErrorPopUp";
 import { AnimatePresence } from "framer-motion";
 // rafce
-const SignIn = ({ closeSignIn }) => {
+const SignIn = ({ closeSignIn, setShowSignUp }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [popError, setPopError] = useState(false);
@@ -23,6 +22,11 @@ const SignIn = ({ closeSignIn }) => {
         setTimeout(() => setPopError(false), 5000);
         console.log(err);
       });
+  };
+  const openSignUp = () => {
+    setShowSignUp(true);
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
   };
   return (
     <div className={s.SignInContainer} onClick={() => closeSignIn()}>
@@ -64,7 +68,18 @@ const SignIn = ({ closeSignIn }) => {
             Увійти
           </motion.button>
         </form>
-        <SignUp />
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          type="submit"
+          className={s.BtnLogin}
+          onClick={() => {
+            closeSignIn();
+            openSignUp();
+          }}
+        >
+          Зареєструватися
+        </motion.button>
       </div>
     </div>
   );

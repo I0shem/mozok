@@ -15,8 +15,17 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
-
+.dropDownBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.dropDownBtn:hover {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+}
 .headerBtn {
   margin-left: 5px;
 }
@@ -31,7 +40,7 @@
   top: 5vh;
   width: max-content;
   z-index: 1;
-  margin-left: 51%;
+  margin-left: 46%;
   border-radius: 11px;
   border: 1px solid var(--main-text-color);
   background-color: rgb(255, 255, 255);
@@ -43,7 +52,7 @@
   top: 5vh;
   width: max-content;
   z-index: 1;
-  margin-left: 56%;
+  margin-left: 51%;
   border-radius: 11px;
   border: 1px solid var(--main-text-color);
   background-color: rgb(255, 255, 255);
@@ -55,7 +64,7 @@
   top: 5vh;
   width: max-content;
   z-index: 1;
-  margin-left: 60%;
+  margin-left: 56%;
   border-radius: 11px;
   border: 1px solid var(--main-text-color);
   background-color: rgb(255, 255, 255);

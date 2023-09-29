@@ -101,25 +101,27 @@ svg:hover {
   z-index: 15;
 }
 .enterContainer {
-  position: absolute;
-  right: 10vw;
-  top: 2.5vh;
-  cursor: pointer;
   display: flex;
-  line-height: 19px;
-  font-size: 0.95rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
+
+.exitContainer,
+.userContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
 .enterBtn {
-  margin-right: 5px;
-  fill: var(--main-text-color);
+  margin-right: 8px;
 }
-.enterContainer:hover {
-  font-weight: 600;
-  font-size: 1rem;
-}
-.enterContainer svg {
-  width: 1.1em;
-  height: 1.1em;
+
+.exitContainer:hover,
+.userContainer:hover {
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 .searchBar {
   position: relative;

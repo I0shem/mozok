@@ -1,46 +1,124 @@
 import React, { useState } from "react";
 import s from "./auth.module.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
 import { motion } from "framer-motion";
+import { doc, setDoc } from "firebase/firestore";
 // rafce
-const SignUp = ({ setShowAuth }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const SignUp = ({ openSignIn, setShowSignUp }) => {
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userSurname, setUserSurname] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState([]);
   const SignUp = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+
+    if (
+      !userEmail ||
+      !userPassword ||
+      !userName ||
+      !userSurname ||
+      !userPhone
+    ) {
+      setError("Заповніть усі поля!");
+      return;
+    }
+    setLoading(true);
+    createUserWithEmailAndPassword(auth, userEmail, userPassword)
+      .then(async (userCredential) => {
         console.log(userCredential);
+        const uid = userCredential.user.uid;
+
+        const userDocRef = doc(db, "users", uid);
+
+        await setDoc(userDocRef, {
+          name: userName,
+          surname: userSurname,
+          phone: userPhone,
+          email: userEmail,
+          password: userPassword,
+        });
+        setLoading(false);
+        closeSignUp();
       })
+
       .catch((err) => {
         console.log(err);
+        setError([
+          "Помилка при створенні аккаунту.",
+          "Перевірте дані та спробуйте знову.",
+        ]);
+        setLoading(false);
       });
   };
+  const closeSignUp = () => {
+    setShowSignUp(false);
+    const body = document.querySelector("body");
+    body.style.overflow = "auto";
+  };
   return (
-    <form action="" onSubmit={SignUp}>
-      <div className={s.InnerSignInText}>Створити аккаунт:</div>
-      <input
-        type="email"
-        placeholder="Уведіть зареєстровану ел. пошту"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Уведіть пароль"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        type="submit"
-        className={s.BtnLogin}
+    <div className={s.SignInContainer} onClick={() => closeSignUp()}>
+      <div
+        className={s.InnerSignUpContainer}
+        onClick={(e) => e.stopPropagation()}
       >
-        Зареєструватися
-      </motion.button>
-    </form>
+        <div className={s.messageE}>
+          {loading && <p>Loading...</p>}
+
+          {error && error.map((errMsg, index) => <p key={index}>{errMsg}</p>)}
+        </div>
+        <form action="" onSubmit={SignUp}>
+          <div className={s.InnerSignInText}>Створити аккаунт:</div>
+          <input
+            type="text"
+            placeholder="Ім'я"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Прізвище"
+            value={userSurname}
+            onChange={(e) => setUserSurname(e.target.value)}
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Телефон"
+            value={userPhone}
+            onChange={(e) => setUserPhone(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="Ел. пошта"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Пароль"
+            value={userPassword}
+            onChange={(e) => setUserPassword(e.target.value)}
+            required
+          />
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="submit"
+            className={s.BtnLogin}
+            required
+          >
+            Зареєструватися
+          </motion.button>
+        </form>{" "}
+      </div>
+    </div>
   );
 };
 

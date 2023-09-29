@@ -218,7 +218,7 @@ td {
   line-height: 1.25;
   position: relative;
   margin: 40px auto;
-  min-height: 3rem;
+  min-height: 48px;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   text-decoration: none;
   transition: all 150ms;
@@ -241,7 +241,7 @@ td {
   line-height: 1.25;
   margin: 2vh auto;
   display: flex;
-  min-height: 3rem;
+  min-height: 48px;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   text-decoration: none;
   transition: all 150ms;

@@ -79,7 +79,7 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
         {heart ? (
           <div onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
-              value={{ className: s.heartBtn, size: "2.5rem" }}
+              value={{ className: s.heartBtn, size: "40px" }}
             >
               <BsHeart
                 onClick={(e) => {
@@ -92,7 +92,7 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
         ) : (
           <div onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
-              value={{ className: s.heartBtn, size: "2.5rem" }}
+              value={{ className: s.heartBtn, size: "40px" }}
             >
               <BsHeartFill
                 onClick={(e) => {
@@ -106,7 +106,7 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
         {scales ? (
           <div onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
-              value={{ className: s.scalesBtn, size: "2.5rem" }}
+              value={{ className: s.scalesBtn, size: "40px" }}
             >
               <PiScalesLight
                 onClick={(e) => {
@@ -119,7 +119,7 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
         ) : (
           <div onClick={(e) => e.stopPropagation()}>
             <IconContext.Provider
-              value={{ className: s.scalesBtn, size: "2.5rem" }}
+              value={{ className: s.scalesBtn, size: "40px" }}
             >
               <PiScalesFill
                 onClick={(e) => {

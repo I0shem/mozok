@@ -8,7 +8,7 @@ import { TbMapSearch } from "react-icons/tb";
 import { BsFillBagHeartFill } from "react-icons/bs";
 import { PiScalesFill } from "react-icons/pi";
 import { GiShoppingCart } from "react-icons/gi";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaRegUser } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { ReactComponent as MyLogo } from "../Images/mozok_svg.svg";
 import { HeaderBtns } from "../HeaderBtns/HeaderBtns";
@@ -19,15 +19,15 @@ import CatalogHeaderModal from "./CatalogHeaderModal";
 import { motion } from "framer-motion";
 import SignIn from "../Auth/SignIn";
 import WelcomePoUp from "../WelcomePoUp/WelcomePoUp";
-import { auth } from "../Auth/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-
+import { onAuthStateChanged, getAuth, signOut } from "firebase/auth";
+import SignUp from "./../Auth/SignUp";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 const Header = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
   const [isUserSignIn, setIsUserSignIn] = useState(false);
-  const [myUser, setMyUser] = useState(null);
 
   const closeSignIn = () => {
     setShowAuth(false);
@@ -77,10 +77,8 @@ const Header = () => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsUserSignIn(true);
-        setMyUser(user);
       } else {
         setIsUserSignIn(false);
-        setMyUser(null);
       }
     });
     return () => {
@@ -144,8 +142,46 @@ const Header = () => {
     },
   ];
   const handleOnFocus = () => {
-    console.log("Focused");
+    // console.log("Focused");
   };
+
+  const auth = getAuth();
+  const [userID, setUserID] = useState("");
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserID(user.uid);
+        console.log("User ID: ", user.uid);
+      } else {
+        console.log("No user is signed in.");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const db = getFirestore();
+  const [loggedUser, setLoggedUser] = useState();
+  useEffect(() => {
+    if (userID) {
+      // Check if userID is defined and non-empty
+      const userDocRef = doc(db, "users", userID);
+
+      const getUserData = async () => {
+        const docSnap = await getDoc(userDocRef);
+
+        if (docSnap.exists()) {
+          console.log("User data:", docSnap.data());
+          setLoggedUser(docSnap.data());
+        } else {
+          console.log("No such document!");
+        }
+      };
+
+      getUserData();
+    }
+  }, [userID, db]);
+
   return (
     <>
       <header className={s.header} id="header">
@@ -162,15 +198,20 @@ const Header = () => {
             </div>
             <HeaderBtns />
             {isUserSignIn ? (
-              <>
-                <div className={s.enterContainer} onClick={() => SignOut()}>
+              <div className={s.enterContainer}>
+                <div className={s.exitContainer} onClick={() => SignOut()}>
                   <IconContext.Provider value={{ className: s.enterBtn }}>
                     <IoEnterOutline />
                   </IconContext.Provider>
                   Вийти
-                  <div> {myUser.email}</div>
                 </div>
-              </>
+                <div className={s.userContainer}>
+                  <IconContext.Provider value={{ className: s.enterBtn }}>
+                    <FaRegUser />
+                  </IconContext.Provider>
+                  {loggedUser && loggedUser.name}
+                </div>
+              </div>
             ) : (
               <>
                 <div className={s.enterContainer} onClick={() => openSignIn()}>
@@ -241,7 +282,12 @@ const Header = () => {
       )}
       {showAuth && (
         <>
-          <SignIn closeSignIn={closeSignIn} />
+          <SignIn closeSignIn={closeSignIn} setShowSignUp={setShowSignUp} />
+        </>
+      )}
+      {showSignUp && (
+        <>
+          <SignUp openSignIn={openSignIn} setShowSignUp={setShowSignUp} />
         </>
       )}
       {showPopUpLoggedOutUser && (
