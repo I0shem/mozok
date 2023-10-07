@@ -33,7 +33,6 @@ const CatalogData = [
     links: [
       { to: "/mozok/productpage/cpus", label: "Центральні процесори (CPU)" },
       { to: "/mozok/productpage/gpus", label: "Графічні процесори (GPU)" },
-      { to: "/mozok/productpage/gpus", label: "Графічні процесори (GPU)" },
       { to: "/mozok/productpage/motherboards", label: "Материнські плати" },
       {
         to: "/mozok/productpage/cpu_fans",
@@ -60,7 +59,7 @@ const CatalogData = [
     icon: <IoIosPhonePortrait />,
     links: [
       { to: "/mozok/productpage/apple_phones", label: "Смартфони Apple" },
-      { to: "/mozok/productpage/phones", label: "Телефони" },
+      { to: "/mozok/productpage/phones", label: "Смартфони та телефони" },
       { to: "/mozok/productpage/tablets", label: "Планшети" },
     ],
     productImage: SmartphonesAndTab,

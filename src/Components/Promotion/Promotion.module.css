@@ -1,3 +1,48 @@
-.BasketContent {
-  min-height: 100vh;
+.Promotion {
+  min-height: 100dvh;
+  width: 80vw;
+  margin-left: 10%;
+  position: relative;
+}
+
+.Promotion section {
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: rgba(20, 126, 197, 0.1);
+  text-align: justify;
+}
+.Promotion li {
+  list-style: disc;
+}
+.Promotion h2 {
+  font-size: 24px;
+  color: #333;
+  margin: 10px auto;
+}
+
+.Promotion p {
+  font-size: 16px;
+  color: #555;
+}
+.Promotion article {
+  border: 1px solid #e0e0e0;
+  background-color: rgba(20, 126, 197, 0.1);
+  border-radius: 8px;
+  margin: 10px;
+  padding: 5px;
+}
+.Promotion h3 {
+  text-align: center;
+  margin: 10px auto;
+  font-weight: 500;
+}
+.Promotion h3::before,
+h3::after {
+  content: "''";
+}
+h1 {
+  font-size: 27px;
+  margin: 30px auto;
 }

@@ -33,50 +33,122 @@ const Footer = () => {
         >
           Популярні категорії
         </li>
-        <li className={s.contacts_list_item}>
-          Компʼютерні постачання та комплектуючі
-        </li>
-        <li className={s.contacts_list_item}>Принтери та МФУ</li>
-        <li className={s.contacts_list_item}>Відеокарти</li>
-        <li className={s.contacts_list_item}>Картриджі</li>
-        <li className={s.contacts_list_item}>Акції</li>
+        <NavLink
+          to="/mozok/productpage/cpus"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Центральні процесори (CPU)</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/productpage/gpus"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Графічні процесори (GPU)</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/productpage/motherboards"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Материнські плати</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/productpage/tablets"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Смартфони та телефони</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/productpage/phones"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Планшети</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/promotion"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item} style={{ color: "red" }}>
+            Акції
+          </li>
+        </NavLink>
       </ul>
+
       <ul className={s.service}>
+        <NavLink
+          to="/mozok/loyalty_program"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li
+            className={`${s.category_text} ${s.contacts_list_item}`}
+            style={{ fontWeight: "bold" }}
+          >
+            Програма лояльності
+          </li>
+        </NavLink>
+        <NavLink
+          to="/mozok/loyalty_program#loyalty-program-section"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Про програму лояльності</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/loyalty_program#gift-certificates-section"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Подарункові сертифікати</li>
+        </NavLink>
+
         <li
           className={`${s.category_text} ${s.contacts_list_item}`}
           style={{ fontWeight: "bold" }}
         >
-          Послуги
+          Сервіс
         </li>
-        <li className={s.contacts_list_item}>Доставка картриджів в офіс</li>
-        <li className={s.contacts_list_item}>
-          Запуск та налаштування обладнання
-        </li>
-        <li className={s.contacts_list_item}>Обслуговування офісної техніки</li>
+        <li className={s.contacts_list_item}>Сервісні центри</li>
+        <li className={s.contacts_list_item}>Сервіс і гарантія</li>
       </ul>
       <ul className={s.info}>
         <li
           className={`${s.category_text} ${s.contacts_list_item}`}
           style={{ fontWeight: "bold" }}
         >
-          Інформація
+          Клієнтам
         </li>
+        <li className={s.contacts_list_item}>Уцінені товари</li>
         <li className={s.contacts_list_item}>Доставка та оплата</li>
-        <li className={s.contacts_list_item}>Гарантія</li>
-        <li className={s.contacts_list_item}>Відгуки</li>
-        <li className={s.contacts_list_item}>Про компанію Mozok</li>
-        <li className={s.contacts_list_item}>Політика конфіденційності</li>
+        <li className={s.contacts_list_item}>Публічна оферта</li>
+        <li className={s.contacts_list_item}>Контакти</li>
+        <li className={s.contacts_list_item}>Всі бренди</li>
       </ul>
       <ul className={s.social}>
-        <li className={s.contacts_list_item}>
-          <img src={inst} alt="" className={s.social_icon} />
-        </li>
-        <li className={s.contacts_list_item}>
-          <img src={fb} alt="" className={s.social_icon} />
-        </li>
-        <li className={s.contacts_list_item}>
-          <img src={ws} alt="" className={s.social_icon} />
-        </li>
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+          <li className={s.contacts_list_item}>
+            <img src={inst} alt="" className={s.social_icon} />
+          </li>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
+          <li className={s.contacts_list_item}>
+            <img src={fb} alt="" className={s.social_icon} />
+          </li>
+        </a>
+        <a
+          href="https://www.whatsapp.com/?lang=uk_UA"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <li className={s.contacts_list_item}>
+            <img src={ws} alt="" className={s.social_icon} />
+          </li>
+        </a>
       </ul>
       <ul className={s.contacts}>
         <li

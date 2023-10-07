@@ -139,13 +139,14 @@
 .itemModal {
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 15;
   display: flex;
   background-color: rgba(4, 23, 36, 0.075);
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   overflow: hidden;
 }
 .innerItemModal {
@@ -292,4 +293,9 @@ td {
 .salePNG {
   position: absolute;
   display: flex;
+}
+.stars {
+  position: relative;
+  display: flex;
+  margin: auto 30%;
 }

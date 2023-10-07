@@ -3,13 +3,11 @@ import s from "./auth.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { motion } from "framer-motion";
-import ErrorPopUp from "./../ErrorPoUp/ErrorPopUp";
-import { AnimatePresence } from "framer-motion";
+import { toast } from "sonner";
 // rafce
 const SignIn = ({ closeSignIn, setShowSignUp }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [popError, setPopError] = useState(false);
   const SignIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -18,8 +16,9 @@ const SignIn = ({ closeSignIn, setShowSignUp }) => {
         closeSignIn();
       })
       .catch((err) => {
-        setPopError(true);
-        setTimeout(() => setPopError(false), 5000);
+        toast.error(
+          "Неправильний пароль або електронна пошта. Перевірте дані та спробуйте ще раз."
+        );
         console.log(err);
       });
   };
@@ -30,14 +29,6 @@ const SignIn = ({ closeSignIn, setShowSignUp }) => {
   };
   return (
     <div className={s.SignInContainer} onClick={() => closeSignIn()}>
-      {popError ? (
-        <AnimatePresence>
-          <ErrorPopUp setPopError={setPopError} />
-        </AnimatePresence>
-      ) : (
-        <></>
-      )}
-
       <div
         className={s.InnerSignInContainer}
         onClick={(e) => e.stopPropagation()}

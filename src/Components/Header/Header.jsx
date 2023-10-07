@@ -18,11 +18,12 @@ import s from "./Header.module.css";
 import CatalogHeaderModal from "./CatalogHeaderModal";
 import { motion } from "framer-motion";
 import SignIn from "../Auth/SignIn";
-import WelcomePoUp from "../WelcomePoUp/WelcomePoUp";
 import { onAuthStateChanged, getAuth, signOut } from "firebase/auth";
 import SignUp from "./../Auth/SignUp";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-const Header = () => {
+import { toast } from "sonner";
+
+const Header = ({ setUserID, userID }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
@@ -38,6 +39,7 @@ const Header = () => {
     setShowAuth(true);
     const body = document.querySelector("body");
     body.style.overflow = "hidden";
+    body.style.scrollbarGutter = "stable";
   };
   const changeHeader = (catalog, content) => {
     const header = document.getElementById("header");
@@ -67,6 +69,7 @@ const Header = () => {
       setCClick(!cclick);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", isSticky);
     return () => {
@@ -85,13 +88,14 @@ const Header = () => {
       listen();
     };
   }, []);
-  const [showPopUpLoggedOutUser, setShowPopUpLoggedOutUser] = useState(false);
+
   const SignOut = () => {
     signOut(auth)
       .then(() => {
         console.log("Користувач вийшов");
-        setShowPopUpLoggedOutUser(true);
-        setTimeout(() => setShowPopUpLoggedOutUser(false), 5000);
+        toast(
+          "Помилка при створенні аккаунту. Перевірте дані та спробуйте знову."
+        );
       })
       .catch((error) => console.log(error));
   };
@@ -146,12 +150,12 @@ const Header = () => {
   };
 
   const auth = getAuth();
-  const [userID, setUserID] = useState("");
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserID(user.uid);
-        console.log("User ID: ", user.uid);
+        console.log("User ID: ", userID);
       } else {
         console.log("No user is signed in.");
       }
@@ -205,12 +209,14 @@ const Header = () => {
                   </IconContext.Provider>
                   Вийти
                 </div>
-                <div className={s.userContainer}>
-                  <IconContext.Provider value={{ className: s.enterBtn }}>
-                    <FaRegUser />
-                  </IconContext.Provider>
-                  {loggedUser && loggedUser.name}
-                </div>
+                <NavLink to="/mozok/user">
+                  <div className={s.userContainer}>
+                    <IconContext.Provider value={{ className: s.enterBtn }}>
+                      <FaRegUser />
+                    </IconContext.Provider>
+                    {loggedUser && loggedUser.name}
+                  </div>
+                </NavLink>
               </div>
             ) : (
               <>
@@ -289,9 +295,6 @@ const Header = () => {
         <>
           <SignUp openSignIn={openSignIn} setShowSignUp={setShowSignUp} />
         </>
-      )}
-      {showPopUpLoggedOutUser && (
-        <WelcomePoUp ftext="Успішний вихід" stext="До нових покупок!" />
       )}
     </>
   );

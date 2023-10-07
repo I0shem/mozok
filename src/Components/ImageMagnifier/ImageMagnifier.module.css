@@ -1,0 +1,13 @@
+.img_magnifier_container {
+  position: relative;
+}
+.magnifier {
+  position: absolute;
+  border: 1px solid #ccc;
+  cursor: none;
+  width: 200px;
+  height: 200px;
+  display: none;
+  background-size: 250%;
+  border-radius: 50%;
+}

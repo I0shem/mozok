@@ -6,7 +6,10 @@ import MongoDBDataFetcher from "../useData";
 import MyFilter from "../Filter/MyFilter";
 import { useParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { AiOutlineClose } from "react-icons/ai";
+import ProductModalWindow from "../ProductModalWindow/ProductModalWindow.jsx";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import axios from "axios";
+import LoadingLogo from "../LoadingLogo/LoadingLogo";
 const ProductPage = () => {
   const itemsPerPage = 20;
   const [pageCount, setPageCount] = useState(0);
@@ -16,11 +19,11 @@ const ProductPage = () => {
   const [filterOptions, setFilterOptions] = useState({});
   const [searchQuery, setSearchQuery] = useState(""); // Added search state
   const { productName } = useParams();
+  console.log("productName:", productName);
   const data = MongoDBDataFetcher(productName);
 
   useEffect(() => {
     if (!data.length) return;
-
     let filteredData = data.filter((item) => {
       if (!item.title.toLowerCase().includes(searchQuery.toLowerCase()))
         return false;
@@ -123,126 +126,138 @@ const ProductPage = () => {
       );
     }
   };
-  return (
-    <div className={s.productPageContent}>
-      <input
-        type="text"
-        placeholder="Пошук товарів..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className={s.searchInput}
-      />
-      <div className={s.MyFilters}>
-        {Object.keys(filters).length > 0 && (
-          <>
-            <h4>Обрані фільтри:</h4>
-            {Object.entries(filters).map(([key, value], index) => (
-              <div className={s.activeFilter} key={index}>
-                {key}: {value}
-              </div>
-            ))}
-            <button
-              className={s.clearFiltersButton}
-              onClick={handleClearFilters}
-            >
-              Скинути фільтри
-            </button>
-          </>
-        )}
+  const [userId, setUserId] = useState([]);
+  const auth = getAuth();
+  const [likedProducts, setLikedProducts] = useState([]);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => {
+      if (u) {
+        const endpoint = `https://eu-west-2.aws.data.mongodb-api.com/app/mozok-store-yrvzc/endpoint/getlikedItems`;
+        setUserId(u.uid);
+        axios
+          .get(endpoint, {
+            params: { userId: u.uid },
+            headers: { "Content-Type": "application/json" },
+          })
+          .then((response) => {
+            console.log("API response data:", response.data);
 
-        <p>Фільтри:</p>
-        {Object.keys(filterOptions).map((key) => (
-          <MyFilter
-            key={key}
-            filterKey={key}
-            uniqueOptions={filterOptions[key].values}
-            onChange={handleFilterChange}
-            disabled={!!filters[key]}
-          />
-        ))}
-      </div>
-      <div className={s.cards}>
-        {currentItems.map((item) => (
-          <Card
-            item={item}
-            setSelectedItem={setSelectedItem}
-            setOpenModal={setOpenModal}
-          />
-        ))}{" "}
-      </div>{" "}
-      <div className={s.paginationContainer}>
-        <ReactPaginate
-          nextLabel=">"
-          onPageChange={(event) => setItemOffset(event.selected * itemsPerPage)}
-          pageRangeDisplayed={3}
-          marginPagesDisplayed={2}
-          pageCount={pageCount}
-          previousLabel="<"
-          pageClassName={s.pageItem}
-          pageLinkClassName={s.pageLink}
-          previousClassName={s.prevLink}
-          previousLinkClassName={s.prevLink}
-          nextClassName={s.nextLink}
-          nextLinkClassName={s.nextLink}
-          breakLabel="..."
-          breakClassName={s.pageItem}
-          breakLinkClassName={s.pageLink}
-          containerClassName={s.pagination}
-          activeClassName={s.active}
-          renderOnZeroPageCount={null}
-        />
-      </div>
-      <AnimatePresence>
-        {openModal && (
-          <div className={s.itemModal} onClick={() => closeModalWindow()}>
-            <motion.div
-              variants={modalVariants}
-              layoutId={selectedItem._id}
-              className={s.innerItemModal}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <AiOutlineClose
-                className={s.innerItemModalCloseBtn}
-                onClick={() => closeModalWindow()}
-              />
-              <motion.div className={s.innerItemModalContainer}>
-                <motion.div
-                  className={s.innerItemModalFirstContainer}
-                  variants={imageVariants}
-                >
-                  <img src={selectedItem.image} alt="failedToLoad"></img>
-                </motion.div>
-                <motion.div className={s.innerItemModalSecondContainer}>
-                  <motion.h2>{selectedItem.title}</motion.h2>{" "}
-                  <motion.div className={s.availability}>
-                    В наявності
-                  </motion.div>
-                  {textColor(selectedItem)}
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    type="submit"
-                    className={s.buyButton}
+            if (response.data.error) {
+              console.log(response.data.error);
+            } else {
+              setLikedProducts(response.data);
+            }
+          })
+          .catch((err) => {
+            console.error("API Error:", err);
+            console.error("Error Details:", err.response?.data);
+          })
+          .finally(() => {});
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const [logo, setLogo] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLogo(false);
+    }, 5000);
+  }, []);
+  return (
+    <>
+      {logo ? (
+        <LoadingLogo />
+      ) : (
+        <>
+          <div className={s.productPageContent}>
+            <input
+              type="text"
+              placeholder="Пошук товарів..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={s.searchInput}
+            />
+            <div className={s.MyFilters}>
+              {Object.keys(filters).length > 0 && (
+                <>
+                  <h4>Обрані фільтри:</h4>
+                  {Object.entries(filters).map(([key, value], index) => (
+                    <div className={s.activeFilter} key={index}>
+                      {key}: {value}
+                    </div>
+                  ))}
+                  <button
+                    className={s.clearFiltersButton}
+                    onClick={handleClearFilters}
                   >
-                    Купити
-                  </motion.button>
-                </motion.div>
-              </motion.div>
-              <motion.h3 className={s.characteristicsModal}>
-                Характеристики:
-              </motion.h3>
-              {CharacteristicsTable(selectedItem.characteristics)}
-              <motion.button
-                className={s.closeButton}
-                onClick={() => closeModalWindow()}
-              >
-                Закрити{" "}
-              </motion.button>
-            </motion.div>
+                    Скинути фільтри
+                  </button>
+                </>
+              )}
+              <p>Фільтри:</p>
+              {Object.keys(filterOptions).map((key) => (
+                <MyFilter
+                  key={key}
+                  filterKey={key}
+                  uniqueOptions={filterOptions[key].values}
+                  onChange={handleFilterChange}
+                  disabled={!!filters[key]}
+                />
+              ))}
+            </div>
+            <div className={s.cards}>
+              {currentItems.map((item) => (
+                <Card
+                  item={item}
+                  setSelectedItem={setSelectedItem}
+                  setOpenModal={setOpenModal}
+                  likedProducts={likedProducts}
+                  userID={userId}
+                />
+              ))}{" "}
+            </div>{" "}
+            <div className={s.paginationContainer}>
+              <ReactPaginate
+                nextLabel=">"
+                onPageChange={(event) =>
+                  setItemOffset(event.selected * itemsPerPage)
+                }
+                pageRangeDisplayed={3}
+                marginPagesDisplayed={2}
+                pageCount={pageCount}
+                previousLabel="<"
+                pageClassName={s.pageItem}
+                pageLinkClassName={s.pageLink}
+                previousClassName={s.prevLink}
+                previousLinkClassName={s.prevLink}
+                nextClassName={s.nextLink}
+                nextLinkClassName={s.nextLink}
+                breakLabel="..."
+                breakClassName={s.pageItem}
+                breakLinkClassName={s.pageLink}
+                containerClassName={s.pagination}
+                activeClassName={s.active}
+                renderOnZeroPageCount={null}
+              />
+            </div>
+            <AnimatePresence>
+              {openModal && (
+                <ProductModalWindow
+                  closeModalWindow={closeModalWindow}
+                  modalVariants={modalVariants}
+                  imageVariants={imageVariants}
+                  textColor={textColor}
+                  selectedItem={selectedItem}
+                  CharacteristicsTable={CharacteristicsTable}
+                />
+              )}
+            </AnimatePresence>
           </div>
-        )}
-      </AnimatePresence>
-    </div>
+        </>
+      )}
+    </>
   );
 };
 

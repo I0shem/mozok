@@ -105,14 +105,18 @@ svg:hover {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  cursor: pointer;
 }
-
+.enterContainer a {
+  text-decoration: none;
+}
 .exitContainer,
 .userContainer {
   display: flex;
   align-items: center;
   cursor: pointer;
   padding: 0 10px;
+  color: black;
 }
 
 .enterBtn {
@@ -121,7 +125,7 @@ svg:hover {
 
 .exitContainer:hover,
 .userContainer:hover {
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
 }
 .searchBar {
   position: relative;
@@ -185,11 +189,12 @@ svg:hover {
 }
 .topBannersContainerModal {
   position: fixed;
-  width: 80vw;
   display: flex;
-  justify-self: center;
-  z-index: 15;
-  margin-top: 13vh;
+  width: 80vw;
+  margin-left: 9.6vw;
+  margin-top: 12vh;
+  top: 0.5vh;
+  z-index: 11;
 }
 
 .topBannerHeader {

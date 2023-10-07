@@ -1,7 +1,9 @@
 .productPageContent {
-  min-height: 230dvh;
+  min-height: 100%;
   max-width: 80vw;
-  margin: 0 auto;
+  width: 80%;
+  margin: auto;
+  position: relative;
 }
 .cards {
   max-width: 90%;

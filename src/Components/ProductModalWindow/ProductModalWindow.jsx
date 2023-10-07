@@ -1,14 +1,20 @@
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
-import s from "./Home.module.css";
+import s from "../Home/Home.module.css";
+import ImageMagnifier from "../ImageMagnifier/ImageMagnifier";
+import ReactStars from "react-stars";
 export default function ProductModalWindow({
   closeModalWindow,
   modalVariants,
   imageVariants,
   textColor,
   selectedItem,
-  CharacteristicsTable,
+  ModalInfoVariants,
 }) {
+  function getRandomInt(max) {
+    return Math.floor(Math.random(1) * max);
+  }
   return (
     <AnimatePresence>
       <div className={s.itemModal} onClick={() => closeModalWindow()}>
@@ -27,10 +33,18 @@ export default function ProductModalWindow({
               className={s.innerItemModalFirstContainer}
               variants={imageVariants}
             >
-              <img src={selectedItem.image} alt="failedToLoad"></img>
+              <ImageMagnifier selectedImage={selectedItem.image} />
             </motion.div>
             <motion.div className={s.innerItemModalSecondContainer}>
-              <motion.h2>{selectedItem.title}</motion.h2>{" "}
+              <motion.h2>{selectedItem.title}</motion.h2>
+              <div className={s.stars}>
+                <ReactStars
+                  count={5}
+                  value={getRandomInt(5)}
+                  size={36}
+                  color2={"#ffd700"}
+                />
+              </div>
               <motion.div className={s.availability}>В наявності</motion.div>
               {textColor(selectedItem)}
               <motion.button
@@ -50,7 +64,16 @@ export default function ProductModalWindow({
           <motion.h3 className={s.characteristicsModal}>
             Характеристики:
           </motion.h3>
-          {CharacteristicsTable(selectedItem.characteristics)}
+          <motion.table variants={ModalInfoVariants}>
+            {Object.entries(selectedItem.characteristics).map(
+              ([key, value]) => (
+                <tr key={key}>
+                  <th>{key}</th>
+                  <td>{value}</td>
+                </tr>
+              )
+            )}
+          </motion.table>
           <motion.button
             className={s.closeButton}
             onClick={() => closeModalWindow()}

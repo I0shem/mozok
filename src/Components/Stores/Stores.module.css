@@ -5,6 +5,7 @@
   display: grid;
   margin-left: 10%;
   margin-bottom: 5%;
+  margin-top: 0;
 }
 .InnerContainer {
   text-align: center;

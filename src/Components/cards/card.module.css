@@ -58,12 +58,7 @@
   transform: scale(1.01);
   text-shadow: 0px 0px 5px rgba(20, 126, 197, 0.779);
 }
-.price {
-  font-size: 26px;
-  margin: auto;
-  color: rgb(0, 0, 0);
-  font-weight: 600;
-}
+
 .buyButton {
   align-items: center;
   background-color: #ffffff;
@@ -114,7 +109,7 @@
   font-size: 12px;
 }
 .innerElement div {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .article {
   font-size: 12px;
@@ -149,4 +144,26 @@
   position: absolute;
   right: 5vh;
   top: -10vh;
+}
+.greyPrice {
+  text-align: center;
+  font-size: 14px;
+  text-decoration: line-through;
+  color: grey;
+}
+.redPrice {
+  font-size: 26px;
+  margin: 0;
+  color: red;
+  font-weight: 600;
+}
+.price {
+  position: relative;
+  font-size: 26px;
+
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+}
+.price div {
+  margin-top: 38px;
 }

@@ -23,18 +23,12 @@
   justify-content: center;
   text-decoration: none;
 }
-.dropDownBtn:hover {
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
-}
 .headerBtn {
   margin-left: 5px;
 }
-
-.headerBtn:hover {
-  cursor: pointer;
-  transform: scale(1.05);
+a {
+  color: #000;
 }
-
 .modalHeader0 {
   position: relative;
   top: 5vh;
@@ -84,7 +78,7 @@
 
 .modalBackground li:hover {
   cursor: pointer;
-  text-shadow: 0.1px 0 0 var(--main-text-color);
+  text-shadow: 0.6px 0px 0px rgba(0, 0, 0, 0.75);
 }
 .modalBackground {
   position: fixed;

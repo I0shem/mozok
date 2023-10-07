@@ -1,0 +1,62 @@
+.UserContent {
+  position: relative;
+  min-width: 100dvw;
+  text-align: center;
+}
+.userProfileContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 10dvh auto;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.userProfileContainer h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.userProfileContainer p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.userProfileContainer label {
+  font-size: 1em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.userProfileContainer input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.userProfileContainer button {
+  padding: 10px 20px;
+  background-color: rgba(20, 126, 197);
+  color: #fff;
+  font-weight: bolder;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px;
+  border: 1px solid rgba(20, 126, 197);
+  transition: background 0.3s ease;
+}
+.userProfileContainer .doNotSaveButton {
+  background-color: rgb(200, 50, 50);
+  border: 1px solid rgb(200, 50, 50);
+}
+.userProfileContainer button:hover {
+  background-color: white;
+  border: 1px solid rgba(20, 126, 197);
+  color: rgba(20, 126, 197);
+}
+.userProfileContainer .doNotSaveButton:hover {
+  background-color: white;
+  border: 1px solid rgb(200, 50, 50);
+  color: rgba(200, 50, 50);
+}

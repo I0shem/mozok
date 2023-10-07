@@ -19,16 +19,48 @@ export function HeaderBtns() {
     transform: showModal2 ? "rotate(180deg)" : "",
     transition: "transform 150ms ease",
   };
-  const loyaltyContent = ["Про програму лояльності", "Подарункові сертифікати"];
-  const clientsContent = [
-    "Уцінені товари",
-    "Доставка та оплата",
-    "Mozok Блог",
-    "Публічна оферта",
-    "Контакти",
-    "Всі бренди",
+  const loyaltyContent = [
+    {
+      tolink: "/mozok/loyalty_program#loyalty-program-section",
+      label: "Про програму лояльності",
+    },
+    {
+      tolink: "/mozok/loyalty_program#gift-certificates-section",
+      label: "Подарункові сертифікати",
+    },
   ];
-  const serviceContent = ["Сервісні центри", "Сервіс і гарантія"];
+  const clientsContent = [
+    {
+      tolink: "/mozok/forclients#discounted-products",
+      label: "Уцінені товари",
+    },
+    {
+      tolink: "/mozok/forclients#delivery-payment",
+      label: "Доставка та оплата",
+    },
+    {
+      tolink: "/mozok/forclients#public-offer",
+      label: "Публічна оферта",
+    },
+    {
+      tolink: "/mozok/forclients#contacts",
+      label: "Контакти",
+    },
+    {
+      tolink: "/mozok/forclients#all-brands",
+      label: "Всі бренди",
+    },
+  ];
+  const serviceContent = [
+    {
+      tolink: "/mozok/service_centre#service-centers",
+      label: "Сервісні центри",
+    },
+    {
+      tolink: "/mozok/service_centre#service-warranty",
+      label: "Сервіс і гарантія",
+    },
+  ];
 
   return (
     <div className={s.headerBtnContainer}>
@@ -55,13 +87,16 @@ export function HeaderBtns() {
               onClick={() => setShowModal(!showModal)}
               className={s.modalBackground}
             >
-              <div
-                className={s.modalHeader0}
-                onClick={(e) => e.stopPropagation()}
-              >
+              <div className={s.modalHeader0}>
                 <ul>
-                  {loyaltyContent.map((i) => (
-                    <li>{i}</li>
+                  {loyaltyContent.map((item) => (
+                    <NavLink
+                      to={item.tolink}
+                      className={s.link}
+                      activeClassName={s.linkActive}
+                    >
+                      <li>{item.label}</li>
+                    </NavLink>
                   ))}
                 </ul>
               </div>
@@ -84,8 +119,14 @@ export function HeaderBtns() {
           >
             <div className={s.modalHeader1}>
               <ul>
-                {clientsContent.map((i) => (
-                  <li>{i}</li>
+                {clientsContent.map((item) => (
+                  <NavLink
+                    to={item.tolink}
+                    className={s.link}
+                    activeClassName={s.linkActive}
+                  >
+                    <li>{item.label}</li>
+                  </NavLink>
                 ))}
               </ul>
             </div>
@@ -107,8 +148,14 @@ export function HeaderBtns() {
           >
             <div className={s.modalHeader2}>
               <ul>
-                {serviceContent.map((i) => (
-                  <li>{i}</li>
+                {serviceContent.map((item) => (
+                  <NavLink
+                    to={item.tolink}
+                    className={s.link}
+                    activeClassName={s.linkActive}
+                  >
+                    <li>{item.label}</li>
+                  </NavLink>
                 ))}
               </ul>
             </div>

@@ -1,28 +1,27 @@
-.ServiceCentreContent {
+.ForClients {
   min-height: 100dvh;
   width: 80vw;
   margin-left: 10%;
   position: relative;
-  text-align: justify;
 }
 
-.ServiceCentreContent section {
+.ForClients section {
   margin: 20px auto;
   padding: 10px 20px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background-color: rgba(20, 126, 197, 0.1);
 }
-.ServiceCentreContent li {
+.ForClients li {
   list-style: disc;
 }
-.ServiceCentreContent h2 {
+.ForClients h2 {
   font-size: 24px;
   color: #333;
   margin: 10px auto;
 }
 
-.ServiceCentreContent p {
+.ForClients p {
   font-size: 16px;
   color: #555;
 }

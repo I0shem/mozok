@@ -1,19 +1,70 @@
 import React, { useState } from "react";
 import s from "./card.module.css";
 import Tilt from "react-parallax-tilt";
-import { BsHeart, BsHeartFill } from "react-icons/bs";
-import { IconContext } from "react-icons";
 import SaleSVG from "../Images/sale.png";
 import { motion } from "framer-motion";
-import { PiScalesFill, PiScalesLight } from "react-icons/pi";
-const Card = ({ item, setSelectedItem, setOpenModal }) => {
-  let newTitle = item.title;
-  const [heart, setHeart] = useState(true);
+import { db } from "../Auth/firebase";
+import axios from "axios";
+import LikedIcon from "./LikedIcon";
+import ScalesIcon from "./ScalesIcon";
 
+const Card = ({
+  item,
+  userID,
+  setSelectedItem,
+  setOpenModal,
+  likedProducts,
+}) => {
+  let newTitle = item.title;
+  const [isLiked, setIsLiked] = useState(
+    likedProducts.some((i) => i._id === item._id)
+  );
   const [scales, setScales] = useState(true);
-  const heartClick = () => {
-    setHeart(!heart);
+  const deleteItem = async () => {
+    try {
+      const response = await axios.delete(
+        `https://eu-west-2.aws.data.mongodb-api.com/app/mozok-store-yrvzc/endpoint/delLikedItem?userId=${userID}&productTitle=${encodeURIComponent(
+          item.title
+        )}`
+      );
+      setIsLiked(false);
+    } catch (error) {
+      console.error(
+        "Error deleting item:",
+        error.response ? error.response.data : error.message
+      );
+    }
   };
+
+  const heartClick = async () => {
+    try {
+      if (!userID || !item._id || !db) {
+        console.error("One of the required properties is undefined");
+        return;
+      }
+      if (!isLiked) {
+        const response = await axios.post(
+          `https://eu-west-2.aws.data.mongodb-api.com/app/mozok-store-yrvzc/endpoint/likedItems`,
+          {
+            userId: userID,
+            product: item,
+          }
+        );
+        if (response) {
+          console.log("Product added to likedProducts in MongoDB");
+          setIsLiked(true);
+        } else {
+          console.error("Error adding product to likedProducts in MongoDB");
+        }
+      } else {
+        console.log("Product removed from likedProducts");
+        setIsLiked(false);
+      }
+    } catch (error) {
+      console.error("Error updating liked product: ", error);
+    }
+  };
+
   const scalesClick = () => {
     setScales(!scales);
   };
@@ -22,12 +73,10 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
       return (
         <div onClick={(e) => e.stopPropagation()}>
           <img className={s.salePNG} src={SaleSVG} loading="lazy" alt="" />
-          <div
-            className={s.price}
-            style={{ color: "red" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* модифікувати відображення ціни: зверху зліва малими чорними цифарми, закреслена ціна збільшена на 20%; по центру червона ціна - знижка*/}
+          <div className={s.greyPrice} onClick={(e) => e.stopPropagation()}>
+            {item.price * 0.1 - item.price * -1} ₴
+          </div>
+          <div className={s.redPrice} onClick={(e) => e.stopPropagation()}>
             {item.price} ₴
           </div>
         </div>
@@ -35,7 +84,7 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
     } else {
       return (
         <div className={s.price} onClick={(e) => e.stopPropagation()}>
-          {item.price} ₴
+          <div>{item.price} ₴</div>
         </div>
       );
     }
@@ -45,18 +94,23 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
     const body = document.querySelector("body");
     const main = document.querySelector("main");
     body.style.overflow = "hidden";
+    body.style.scrollbarGutter = "stable";
     main.style.paddingRight = "20px";
     setSelectedItem(item);
-    console.log(item._id);
     setOpenModal(true);
   };
+  const stopPropagationWrapper = (func) => (e) => {
+    e.stopPropagation();
+    func(e);
+  };
+
   return (
     <motion.div
       className={s.productCard}
       key={item._id}
       layoutId={item._id}
       layout="position"
-      onClick={() => HandleClick(item)}
+      onClick={stopPropagationWrapper(() => HandleClick(item))}
     >
       <Tilt
         className={s.parallaxEffect}
@@ -76,60 +130,16 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
           className={s.cardImage}
           loading="lazy"
         />
-        {heart ? (
-          <div onClick={(e) => e.stopPropagation()}>
-            <IconContext.Provider
-              value={{ className: s.heartBtn, size: "40px" }}
-            >
-              <BsHeart
-                onClick={(e) => {
-                  heartClick();
-                  e.stopPropagation();
-                }}
-              />
-            </IconContext.Provider>
-          </div>
-        ) : (
-          <div onClick={(e) => e.stopPropagation()}>
-            <IconContext.Provider
-              value={{ className: s.heartBtn, size: "40px" }}
-            >
-              <BsHeartFill
-                onClick={(e) => {
-                  heartClick();
-                  e.stopPropagation();
-                }}
-              />
-            </IconContext.Provider>
-          </div>
-        )}
-        {scales ? (
-          <div onClick={(e) => e.stopPropagation()}>
-            <IconContext.Provider
-              value={{ className: s.scalesBtn, size: "40px" }}
-            >
-              <PiScalesLight
-                onClick={(e) => {
-                  scalesClick();
-                  e.stopPropagation();
-                }}
-              />
-            </IconContext.Provider>
-          </div>
-        ) : (
-          <div onClick={(e) => e.stopPropagation()}>
-            <IconContext.Provider
-              value={{ className: s.scalesBtn, size: "40px" }}
-            >
-              <PiScalesFill
-                onClick={(e) => {
-                  scalesClick();
-                  e.stopPropagation();
-                }}
-              />
-            </IconContext.Provider>
-          </div>
-        )}
+        <LikedIcon
+          isLiked={isLiked}
+          onClick={stopPropagationWrapper(heartClick)}
+          deleteItem={deleteItem}
+        />
+        <ScalesIcon
+          scales={scales}
+          scalesClick={stopPropagationWrapper(scalesClick)}
+        />
+
         <div className={s.innerElement}>
           <div className={s.title}>{newTitle}</div>
           <div className={s.article} onClick={(e) => e.stopPropagation()}>
@@ -146,7 +156,7 @@ const Card = ({ item, setSelectedItem, setOpenModal }) => {
             type="submit"
             className={s.buyButton}
             onClick={(e) => {
-              console.log(item._id);
+              console.log(item);
               e.stopPropagation();
             }}
           >

@@ -4,8 +4,9 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "./firebase";
 import { motion } from "framer-motion";
 import { doc, setDoc } from "firebase/firestore";
+import { toast } from "sonner";
 // rafce
-const SignUp = ({ openSignIn, setShowSignUp }) => {
+const SignUp = ({ setShowSignUp }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userName, setUserName] = useState("");
@@ -40,6 +41,8 @@ const SignUp = ({ openSignIn, setShowSignUp }) => {
           phone: userPhone,
           email: userEmail,
           password: userPassword,
+          likedProducts: [],
+          comparedProducts: [],
         });
         setLoading(false);
         closeSignUp();
@@ -47,10 +50,9 @@ const SignUp = ({ openSignIn, setShowSignUp }) => {
 
       .catch((err) => {
         console.log(err);
-        setError([
-          "Помилка при створенні аккаунту.",
-          "Перевірте дані та спробуйте знову.",
-        ]);
+        toast.error(
+          "Помилка при створенні аккаунту. Перевірте дані та спробуйте знову."
+        );
         setLoading(false);
       });
   };
