@@ -1,0 +1,141 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 30px 30px 30px 20px;
+  border-radius: 8px;
+  max-width: 700px;
+  width: 80%;
+  min-height: 100px;
+  max-height: 800px;
+  position: relative;
+  overflow: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.closeButton {
+  border: none;
+  background-color: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 27px;
+  text-align: center;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.item span:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+  display: block;
+  margin-left: -20px;
+}
+.item span:first-child:hover {
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+.removeItemButton {
+  background-color: #e74c3c;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.removeItemButton:hover {
+  background-color: hsla(6, 78%, 57%, 0.7);
+}
+
+.total {
+  position: relative;
+  font-weight: bold;
+  padding-top: 10px;
+  margin-left: 20px;
+  border-top: 1px solid grey;
+  text-align: center;
+  width: 100%;
+  background-color: white;
+}
+.item span:nth-child(4) {
+  position: absolute;
+  left: 64%;
+}
+.incrementButton {
+  background-color: #008cba;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  position: absolute;
+  left: 50%;
+}
+.incrementButton:hover {
+  background-color: rgba(0, 139, 186, 0.7);
+}
+.decrementButton {
+  background-color: red;
+  color: white;
+  padding: 5px 11px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  position: absolute;
+  left: 45%;
+}
+.decrementButton:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+.checkoutButton {
+  background-color: var(--main-bg-color);
+  color: white;
+  border: 5px solid white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  float: right;
+  right: 10px;
+}
+.checkoutButton:hover {
+  background-color: white;
+  color: var(--main-bg-color);
+  box-shadow: 1px 1px 1px 1px var(--main-bg-color);
+}
+.totalCheckOut {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  width: 700px;
+  position: relative;
+  align-items: center;
+}

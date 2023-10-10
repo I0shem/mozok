@@ -1,0 +1,91 @@
+.trackOrderModal {
+  position: absolute;
+  width: 80%;
+  width: 500px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+}
+.TrackOrderModalOuter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.trackOrderModal,
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.trackOrderModal h2 {
+  margin: 0;
+}
+
+.trackOrderModal,
+.closeButton {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+}
+
+.modalBody label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.modalBody input {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.trackOrderModal,
+.trackButton {
+  background-color: rgba(20, 126, 197);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 1px solid rgba(20, 126, 197);
+  position: relative;
+  font-weight: 600;
+}
+.trackButton {
+  background-color: white;
+  color: rgba(20, 126, 197);
+}
+.trackButton:hover {
+  background-color: rgba(20, 126, 197);
+  color: white;
+  border: 1px solid white;
+}
+
+.trackOrderModal,
+.orderStatus {
+  margin-top: 20px;
+  font-size: 16px;
+  text-align: center;
+}

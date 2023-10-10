@@ -22,14 +22,41 @@ import { onAuthStateChanged, getAuth, signOut } from "firebase/auth";
 import SignUp from "./../Auth/SignUp";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { toast } from "sonner";
-
-const Header = ({ setUserID, userID }) => {
+import Comparison from "../Comparison/Comparison";
+import LikedProducts from "./../LikedProducts/LikedProducts";
+import TrackOrder from "./../TrackOrder/TrackOrder";
+import OrderCall from "./../OrderCall/OrderCall";
+import Basket from "./../Basket/Basket";
+import PurchaseForm from "./../PurchaseForm/PurchaseForm";
+const Header = ({
+  productsToCompare,
+  setProductsToCompare,
+  setMyUser,
+  myUser,
+  likedProducts,
+  setLikedProducts,
+  basketProducts,
+  setBasketProducts,
+}) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [isUserSignIn, setIsUserSignIn] = useState(false);
-
+  const [showComparison, setShowComparison] = useState(false);
+  const [showLikedProducts, setShowLikedProducts] = useState(false);
+  const [showTrackOrder, setShowTrackOrder] = useState(false);
+  const [showOrderCall, setShowOrderCall] = useState(false);
+  const [showBasket, setShowBasket] = useState(false);
+  const [showCheckOut, setShowCheckOut] = useState(false);
+  useEffect(() => {
+    if (showComparison) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [showComparison, showLikedProducts, showTrackOrder]);
   const closeSignIn = () => {
     setShowAuth(false);
     const body = document.querySelector("body");
@@ -145,17 +172,14 @@ const Header = ({ setUserID, userID }) => {
       name: "Java",
     },
   ];
-  const handleOnFocus = () => {
-    // console.log("Focused");
-  };
 
   const auth = getAuth();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUserID(user.uid);
-        console.log("User ID: ", userID);
+        setMyUser(user);
+        console.log("User ID: ", myUser.uid);
       } else {
         console.log("No user is signed in.");
       }
@@ -167,9 +191,9 @@ const Header = ({ setUserID, userID }) => {
   const db = getFirestore();
   const [loggedUser, setLoggedUser] = useState();
   useEffect(() => {
-    if (userID) {
+    if (myUser.uid) {
       // Check if userID is defined and non-empty
-      const userDocRef = doc(db, "users", userID);
+      const userDocRef = doc(db, "users", myUser.uid);
 
       const getUserData = async () => {
         const docSnap = await getDoc(userDocRef);
@@ -184,8 +208,24 @@ const Header = ({ setUserID, userID }) => {
 
       getUserData();
     }
-  }, [userID, db]);
+  }, [myUser.uid, db]);
 
+  const handleShowLikedProducts = () => {
+    if (likedProducts.length >= 1) {
+      setShowLikedProducts(true);
+    } else {
+      toast.error(
+        "Для перегляду списку бажаних товарів увійдіть до акаунту або зареєструйтеся."
+      );
+    }
+  };
+  const handleShowComparison = () => {
+    if (productsToCompare.length >= 2) {
+      setShowComparison(true);
+    } else {
+      toast.error("Додайте хоча б 2 товари для порівняння.");
+    }
+  };
   return (
     <>
       <header className={s.header} id="header">
@@ -251,7 +291,6 @@ const Header = ({ setUserID, userID }) => {
                 onHover={handleOnHover}
                 onSelect={handleOnSelect}
                 formatResult={formatResult}
-                onFocus={handleOnFocus}
                 autoFocus
                 styling={{ height: "36px", borderRadius: "1px" }}
                 placeholder="Пошук товарів..."
@@ -259,31 +298,41 @@ const Header = ({ setUserID, userID }) => {
               />
             </div>
 
-            <div className={s.orderCall}>
+            <div className={s.orderCall} onClick={() => setShowOrderCall(true)}>
               <BiPhoneCall />
               <div> Замовити дзвінок</div>
             </div>
-            <div className={s.searchOrder}>
+            <div
+              className={s.searchOrder}
+              onClick={() => setShowTrackOrder(true)}
+            >
               <TbMapSearch />
               <div> Відстежити замовлення</div>
             </div>
-            <div className={s.wishedProducts}>
+            <div
+              className={s.wishedProducts}
+              onClick={() => handleShowLikedProducts()}
+            >
               <BsFillBagHeartFill />
               <div> Бажані товари</div>
             </div>
-            <div className={s.comperedProducts}>
+            <div
+              className={s.comperedProducts}
+              onClick={() => handleShowComparison()}
+            >
               <PiScalesFill />
               <div> Порівняти товари</div>
             </div>
-            <div className={s.cart}>
+            <div className={s.cart} onClick={() => setShowBasket(true)}>
               <GiShoppingCart />
+              <div className={s.basketItemsNumber}>{basketProducts.length}</div>
             </div>
           </div>
         </div>
       </header>
       {cclick && (
         <motion.div>
-          <CatalogHeaderModal />
+          <CatalogHeaderModal setCClick={setCClick} />
         </motion.div>
       )}
       {showAuth && (
@@ -294,6 +343,53 @@ const Header = ({ setUserID, userID }) => {
       {showSignUp && (
         <>
           <SignUp openSignIn={openSignIn} setShowSignUp={setShowSignUp} />
+        </>
+      )}
+      {showComparison && (
+        <>
+          <Comparison
+            productsToCompare={productsToCompare}
+            showComparison={showComparison}
+            setShowComparison={setShowComparison}
+            setProductsToCompare={setProductsToCompare}
+          />
+        </>
+      )}
+      {showLikedProducts && (
+        <>
+          <LikedProducts
+            setShowLikedProducts={setShowLikedProducts}
+            likedProducts={likedProducts}
+            setLikedProducts={setLikedProducts}
+          />
+        </>
+      )}
+      {showTrackOrder && (
+        <>
+          <TrackOrder setShowTrackOrder={setShowTrackOrder} />
+        </>
+      )}
+      {showOrderCall && (
+        <>
+          <OrderCall setShowOrderCall={setShowOrderCall} />
+        </>
+      )}
+      {showBasket && (
+        <>
+          <Basket
+            setShowBasket={setShowBasket}
+            basketProducts={basketProducts}
+            setBasketProducts={setBasketProducts}
+            setShowCheckOut={setShowCheckOut}
+          />
+        </>
+      )}
+      {showCheckOut && (
+        <>
+          <PurchaseForm
+            setShowCheckOut={setShowCheckOut}
+            basketProducts={basketProducts}
+          />
         </>
       )}
     </>

@@ -40,7 +40,7 @@ a:hover span {
 }
 .map_box {
   width: 30vw;
-  height: 21vw;
+  height: 19vw;
   /* border: 1px solid tomato; */
   flex-shrink: 0;
   border-radius: 20px;

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Header.module.css";
-import { motion } from "framer-motion";
 import CatalogData from "./CatalogData";
-const CatalogHeaderModal = () => {
+const CatalogHeaderModal = ({ setCClick }) => {
   const [activeItem, setActiveItem] = useState(null);
   const [timeoutId, setTimeoutId] = useState(null);
   const handleMouseEnter = (item) => {
@@ -36,6 +35,7 @@ const CatalogHeaderModal = () => {
                   to={link.to}
                   className={s.link}
                   activeClassName={s.linkActive}
+                  onClick={() => setCClick(false)}
                 >
                   <p>{link.label}</p>
                 </NavLink>

@@ -10,19 +10,24 @@ import ProductModalWindow from "../ProductModalWindow/ProductModalWindow.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import axios from "axios";
 import LoadingLogo from "../LoadingLogo/LoadingLogo";
-const ProductPage = () => {
+const ProductPage = ({
+  setProductsToCompare,
+  productsToCompare,
+  basketProducts,
+  setBasketProducts,
+}) => {
   const itemsPerPage = 20;
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
   const [filters, setFilters] = useState({});
   const [filterOptions, setFilterOptions] = useState({});
-  const [searchQuery, setSearchQuery] = useState(""); // Added search state
+  const [searchQuery, setSearchQuery] = useState("");
   const { productName } = useParams();
-  console.log("productName:", productName);
   const data = MongoDBDataFetcher(productName);
-
+  const [logo, setLogo] = useState(true);
   useEffect(() => {
+    setLogo(true);
     if (!data.length) return;
     let filteredData = data.filter((item) => {
       if (!item.title.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -45,6 +50,9 @@ const ProductPage = () => {
       };
     }
     setFilterOptions(updatedFilterOptions);
+    setTimeout(() => {
+      setLogo(false);
+    }, 2000);
   }, [data, filters, itemOffset, searchQuery]); // Added searchQuery to dependency array
 
   const getUniqueFilterOptions = (currentData, filterKey) => {
@@ -159,12 +167,6 @@ const ProductPage = () => {
     return () => unsubscribe();
   }, []);
 
-  const [logo, setLogo] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLogo(false);
-    }, 5000);
-  }, []);
   return (
     <>
       {logo ? (
@@ -215,6 +217,10 @@ const ProductPage = () => {
                   setOpenModal={setOpenModal}
                   likedProducts={likedProducts}
                   userID={userId}
+                  setProductsToCompare={setProductsToCompare}
+                  productsToCompare={productsToCompare}
+                  basketProducts={basketProducts}
+                  setBasketProducts={setBasketProducts}
                 />
               ))}{" "}
             </div>{" "}

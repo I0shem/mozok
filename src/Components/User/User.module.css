@@ -1,11 +1,12 @@
 .UserContent {
   position: relative;
   min-width: 100dvw;
+  min-height: 44dvh;
   text-align: center;
 }
 .userProfileContainer {
   width: 100%;
-  max-width: 500px;
+  max-width: 80%;
   margin: 10dvh auto;
   padding: 20px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
@@ -26,6 +27,8 @@
   font-size: 1em;
   display: block;
   margin-bottom: 10px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .userProfileContainer input {
@@ -42,7 +45,7 @@
   font-weight: bolder;
   border-radius: 5px;
   cursor: pointer;
-  margin: 20px;
+  margin: 10px auto;
   border: 1px solid rgba(20, 126, 197);
   transition: background 0.3s ease;
 }
@@ -59,4 +62,9 @@
   background-color: white;
   border: 1px solid rgb(200, 50, 50);
   color: rgba(200, 50, 50);
+}
+.items {
+  padding-left: 5.5%;
+  display: flex;
+  flex-wrap: wrap;
 }

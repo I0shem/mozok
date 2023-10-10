@@ -2,16 +2,20 @@ import React, { useState, useEffect } from "react";
 import s from "./User.module.css";
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import ProductModalWindow from "../ProductModalWindow/ProductModalWindow.jsx";
-import Card from "../cards/card";
 import axios from "axios";
+import ModalCard from "../cards/ModalCard";
 
-const User = () => {
+const User = ({
+  likedProducts,
+  setLikedProducts,
+  basketProducts,
+  setBasketProducts,
+}) => {
   const [user, setUser] = useState(null);
   const [userInfo, setUserInfo] = useState({});
   const [isEditing, setIsEditing] = useState(false);
-  const [comparedProducts, setComparedProducts] = useState([]);
   const [selectedItem, setSelectedItem] = useState(1);
   const [openModal, setOpenModal] = useState(false);
 
@@ -72,7 +76,7 @@ const User = () => {
           .catch((err) => {
             console.error("API Error:", err);
             console.error("Error Details:", err.response?.data);
-            setError("An error occurred while fetching data");
+            setError("");
           })
           .finally(() => {
             setLoading(false);
@@ -112,7 +116,6 @@ const User = () => {
     if (docSnap.exists()) {
       const userData = docSnap.data();
       setUserInfo((prevState) => ({ ...prevState, ...userData }));
-      setComparedProducts(userData.comparedProducts || []);
     }
   };
 
@@ -134,7 +137,6 @@ const User = () => {
 
   const auth = getAuth();
 
-  const [likedProducts, setLikedProducts] = useState([]);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (u) => {
       if (u) {
@@ -208,6 +210,7 @@ const User = () => {
                     onChange={handleInputChange}
                   />
                 </label>{" "}
+                {/* видалити опцію пароль */}
                 <label>
                   Пароль:
                   <input
@@ -227,32 +230,27 @@ const User = () => {
                 <p>Ім'я: {userInfo.name}</p>
                 <p>Прізвище: {userInfo.surname}</p>
                 <p>Телефон: {userInfo.phone}</p>
-
                 {loading && <p>Loading...</p>}
-                {error && <p>Error: {error}</p>}
+                {error && (
+                  <>
+                    {" "}
+                    <p>Error: {error}</p>
+                    <h2>Бажані товари:</h2>
+                  </>
+                )}
                 <div className={s.items}>
-                  Відібрані товари:
                   {likedProducts.map((i) => (
-                    <Card
+                    <ModalCard
                       item={i}
                       userID={user.uid}
                       setSelectedItem={setSelectedItem}
                       setOpenModal={setOpenModal}
                       likedProducts={likedProducts}
+                      basketProducts={basketProducts}
+                      setBasketProducts={setBasketProducts}
                     />
                   ))}
                 </div>
-                {comparedProducts.length > 0 && (
-                  <>
-                    <h3>Збережені порівняння</h3>
-                    <ul>
-                      {comparedProducts.map((product) => (
-                        <li key={product.id}>{product}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-
                 <button onClick={() => setIsEditing(true)}>
                   Редагувати профіль
                 </button>

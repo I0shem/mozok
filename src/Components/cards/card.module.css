@@ -4,9 +4,25 @@
   text-align: center;
   padding: 10px;
 }
+.modalProductCard {
+  width: 320px;
+  height: 320px;
+  text-align: center;
+  padding: 10px;
+}
 .parallaxEffect {
   width: 320px;
   height: 450px;
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  background-color: white;
+  position: relative;
+  border-radius: 11px;
+  text-align: center;
+}
+.modalParallaxEffect {
+  width: 300px;
+  height: 320px;
   color: rgb(0, 0, 0);
   border: 1px solid black;
   background-color: white;
@@ -19,11 +35,20 @@
   -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
 }
+.modalParallaxEffect .innerElement {
+  display: block;
+  position: relative;
+  width: 90%;
+  height: auto;
+  margin-left: 5%;
+  text-align: center;
+}
 .innerElement {
   display: block;
   position: relative;
   width: 90%;
   height: auto;
+  min-height: 45%;
   text-align: center;
 }
 .cardImage {
@@ -33,6 +58,24 @@
   position: relative;
   display: flex;
   margin: 30px auto;
+  mix-blend-mode: multiply;
+  filter: contrast(1);
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.modalCardImage {
+  max-height: 35%;
+  max-width: 80%;
+  padding: 1vh;
+  position: relative;
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
   mix-blend-mode: multiply;
   filter: contrast(1);
   -khtml-user-select: none;
@@ -73,13 +116,12 @@
     Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
-  justify-content: center;
   line-height: 1.25;
-  margin: 0;
   min-height: 48px;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  bottom: 10px;
+  left: 32%;
   text-decoration: none;
   transition: all 150ms;
   touch-action: manipulation;
@@ -100,6 +142,50 @@
 }
 
 .buyButton:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.modalBuyButton {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  min-height: 48px;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: absolute;
+  bottom: 10px;
+  left: 30%;
+  text-decoration: none;
+  transition: all 150ms;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.modalBuyButton:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  background-color: rgb(20, 126, 197);
+  color: rgb(255, 255, 255);
+}
+
+.modalBuyButton:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(1px 1px 5px rgba(20, 126, 197, 1));
+}
+
+.modalBuyButton:active {
   background-color: #f0f0f1;
   border-color: rgba(0, 0, 0, 0.15);
   color: rgba(0, 0, 0, 0.75);
@@ -157,13 +243,32 @@
   color: red;
   font-weight: 600;
 }
+.modalParallaxEffect .redPrice {
+  font-size: 20px;
+  margin: 0;
+  color: red;
+  font-weight: 600;
+}
+.modalParallaxEffect .greyPrice {
+  text-align: center;
+  font-size: 12px;
+  text-decoration: line-through;
+  color: grey;
+  margin: 0;
+}
+.modalParallaxEffect .innerElement {
+  min-height: 60%;
+}
 .price {
   position: relative;
   font-size: 26px;
-
   color: rgb(0, 0, 0);
   font-weight: 600;
 }
 .price div {
   margin-top: 38px;
+}
+.modalPrice div {
+  margin-top: 10px;
+  font-weight: 600;
 }

@@ -34,7 +34,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import axios from "axios";
 import LoadingLogoOther from "../LoadingLogo/LoadingLogoOther";
 
-const Home = ({ userID }) => {
+const Home = ({ myUser, basketProducts, setBasketProducts }) => {
   const [loading, setLoading] = useState(true);
   const data = MongoDBDataFetcher("sales", setLoading);
   const halfLength = Math.ceil(data.length / 2);
@@ -179,10 +179,12 @@ const Home = ({ userID }) => {
               {firstHalf.map((i) => (
                 <Card
                   item={i}
-                  userID={userID}
+                  userID={myUser.uid}
                   setSelectedItem={setSelectedItem}
                   setOpenModal={setOpenModal}
                   likedProducts={likedProducts}
+                  basketProducts={basketProducts}
+                  setBasketProducts={setBasketProducts}
                 />
               ))}
             </div>
@@ -220,10 +222,12 @@ const Home = ({ userID }) => {
               {secondHalf.map((i) => (
                 <Card
                   item={i}
-                  userID={userID}
+                  userID={myUser.uid}
                   setSelectedItem={setSelectedItem}
                   setOpenModal={setOpenModal}
                   likedProducts={likedProducts}
+                  basketProducts={basketProducts}
+                  setBasketProducts={setBasketProducts}
                 />
               ))}
             </div>
@@ -297,6 +301,8 @@ const Home = ({ userID }) => {
                 imageVariants={imageVariants}
                 textColor={textColor}
                 selectedItem={selectedItem}
+                basketProducts={basketProducts}
+                setBasketProducts={setBasketProducts}
               />
             )}
           </AnimatePresence>

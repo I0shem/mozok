@@ -7,19 +7,23 @@ import { db } from "../Auth/firebase";
 import axios from "axios";
 import LikedIcon from "./LikedIcon";
 import ScalesIcon from "./ScalesIcon";
-
+import { toast } from "sonner";
 const Card = ({
   item,
   userID,
   setSelectedItem,
   setOpenModal,
   likedProducts,
+  setProductsToCompare,
+  productsToCompare,
+  basketProducts,
+  setBasketProducts,
 }) => {
   let newTitle = item.title;
   const [isLiked, setIsLiked] = useState(
     likedProducts.some((i) => i._id === item._id)
   );
-  const [scales, setScales] = useState(true);
+
   const deleteItem = async () => {
     try {
       const response = await axios.delete(
@@ -65,9 +69,44 @@ const Card = ({
     }
   };
 
-  const scalesClick = () => {
-    setScales(!scales);
+  const [scales, setScales] = useState(false);
+  const scalesClickTrue = (item) => {
+    setScales(true);
+    console.log(item);
+    setProductsToCompare((prevItems) => [...prevItems, item]);
   };
+
+  const scalesClickFalse = (item) => {
+    const newProductsToCompare = productsToCompare.filter(
+      (product) => product.title !== item.title
+    );
+    setProductsToCompare(newProductsToCompare);
+    setScales(false);
+  };
+  const BuyButtonClick = (item) => {
+    toast.success("Товар додано в кошик!");
+
+    setBasketProducts((prevItems) => {
+      const existingItemIndex = prevItems.findIndex(
+        (prevItem) => prevItem._id === item._id
+      );
+
+      if (existingItemIndex !== -1) {
+        const updatedItems = [...prevItems];
+        updatedItems[existingItemIndex] = {
+          ...updatedItems[existingItemIndex],
+          quantity: (updatedItems[existingItemIndex].quantity || 0) + 1,
+        };
+        return updatedItems;
+      } else {
+        return [...prevItems, { ...item, quantity: 1 }];
+      }
+    });
+    setTimeout(() => {
+      console.log("Кошик: ", basketProducts);
+    }, 2000);
+  };
+
   const textColor = () => {
     if (item.hot === true) {
       return (
@@ -137,7 +176,10 @@ const Card = ({
         />
         <ScalesIcon
           scales={scales}
-          scalesClick={stopPropagationWrapper(scalesClick)}
+          scalesClickTrue={stopPropagationWrapper(() => scalesClickTrue(item))}
+          scalesClickFalse={stopPropagationWrapper(() =>
+            scalesClickFalse(item)
+          )}
         />
 
         <div className={s.innerElement}>
@@ -155,10 +197,9 @@ const Card = ({
             whileTap={{ scale: 0.9 }}
             type="submit"
             className={s.buyButton}
-            onClick={(e) => {
-              console.log(item);
-              e.stopPropagation();
-            }}
+            onClick={stopPropagationWrapper((e) => {
+              BuyButtonClick(item);
+            })}
           >
             Купити
           </button>

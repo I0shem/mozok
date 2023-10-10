@@ -16,32 +16,69 @@ import Promotion from "./Components/Promotion/Promotion";
 
 function Mozok() {
   const [logo, setLogo] = useState(true);
-  const [userID, setUserID] = useState("");
+  const [myUser, setMyUser] = useState("");
   useEffect(() => {
     setTimeout(() => {
       setLogo(false);
     }, 5000);
   }, []);
-
+  const [productsToCompare, setProductsToCompare] = useState([]);
+  const [likedProducts, setLikedProducts] = useState([]);
+  const [basketProducts, setBasketProducts] = useState([]);
   return (
     <>
       {logo ? (
         <LoadingLogo />
       ) : (
         <div id="myBody" className={s.noScroll}>
-          <Header setUserID={setUserID} userID={userID} />
+          <Header
+            productsToCompare={productsToCompare}
+            setProductsToCompare={setProductsToCompare}
+            setMyUser={setMyUser}
+            myUser={myUser}
+            likedProducts={likedProducts}
+            setLikedProducts={setLikedProducts}
+            basketProducts={basketProducts}
+            setBasketProducts={setBasketProducts}
+          />
           <main id="content" className={s.PageContent}>
             <Routes>
-              <Route path="/mozok/" element={<Home userID={userID} />} />
+              <Route
+                path="/mozok/"
+                element={
+                  <Home
+                    myUser={myUser}
+                    basketProducts={basketProducts}
+                    setBasketProducts={setBasketProducts}
+                  />
+                }
+              />
               <Route path="/mozok/stores" element={<Stores />} />
-              <Route path="/mozok/user" element={<User />} />
+              <Route
+                path="/mozok/user"
+                element={
+                  <User
+                    likedProducts={likedProducts}
+                    setLikedProducts={setLikedProducts}
+                    basketProducts={basketProducts}
+                    setBasketProducts={setBasketProducts}
+                  />
+                }
+              />
               <Route
                 path="/mozok/loyalty_program"
                 element={<LoyaltyProgram />}
               />
               <Route
                 path="/mozok/productpage/:productName"
-                element={<ProductPage />}
+                element={
+                  <ProductPage
+                    productsToCompare={productsToCompare}
+                    setProductsToCompare={setProductsToCompare}
+                    basketProducts={basketProducts}
+                    setBasketProducts={setBasketProducts}
+                  />
+                }
               />
               <Route path="/mozok/service_centre" element={<ServiceCentre />} />
               <Route path="/mozok/forclients" element={<ForClients />} />
