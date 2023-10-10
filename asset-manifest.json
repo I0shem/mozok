@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mozok/static/css/main.30428ca4.css",
+    "main.css": "/mozok/static/css/main.2a96cde0.css",
     "main.js": "/mozok/static/js/main.b5daa675.js",
     "static/media/tv.png": "/mozok/static/media/tv.f35fd75a60772223062a.png",
     "static/media/smartphones-and-tablets.png": "/mozok/static/media/smartphones-and-tablets.b2055aa323fbbe41e6f4.png",
@@ -61,11 +61,11 @@
     "static/media/clock.svg": "/mozok/static/media/clock.638810859df6332f5450699a214783a1.svg",
     "static/media/fb.svg": "/mozok/static/media/fb.81be5f17ddfb9587213665446899ef16.svg",
     "static/media/phone.svg": "/mozok/static/media/phone.107fbc08105b646df44c9d1553a68ba4.svg",
-    "main.30428ca4.css.map": "/mozok/static/css/main.30428ca4.css.map",
+    "main.2a96cde0.css.map": "/mozok/static/css/main.2a96cde0.css.map",
     "main.b5daa675.js.map": "/mozok/static/js/main.b5daa675.js.map"
   },
   "entrypoints": [
-    "static/css/main.30428ca4.css",
+    "static/css/main.2a96cde0.css",
     "static/js/main.b5daa675.js"
   ]
 }
