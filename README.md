@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Mozok
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Ласкаво просимо до репозиторію Mozok!** Цей проект - веб-додаток, створений за допомогою React, є клоном сайту з продажу електроніки Brain і, зокрема, має зовнішній вигляд, який у багатому відзеркалює сайт Brain і частково співпадає з проектом сайту CBS, який Олександр додав як зразок подібного сайту на платформі Figma.
 
-## Available Scripts
+## 🚀 Початок Роботи
 
-In the project directory, you can run:
+Для початку роботи з проектом, клонуйте репозиторій та встановіть залежності.
 
-### `npm start`
+```bash
+git clone https://github.com/I0shem/mozok.git
+cd mozok
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Запустіть проект, використовуючи:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm start
+```
 
-### `npm test`
+## 🛒 Особливості
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Аутентифікація Користувача**: Функціональність входу та реєстрації.
+- **Перегляд Продуктів**: Компоненти, пов'язані з відображенням та деталями продуктів.
+- **Кошик для Покупок**: Компонент кошика для управління вибраними товарами.
+- **Порівняння Продуктів**: Функціональність для порівняння різних продуктів.
+- **Фільтрація**: Компонент фільтра для уточнення пошуку продуктів.
+- **Програма Лояльності**: Інформація або функціональність, пов'язана з програмою лояльності.
+- **Відстеження Замовлень**: Компонент для відстеження замовлень продуктів.
 
-### `npm run build`
+... та багато іншого!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Використані Технології
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React**: Для створення компонентів інтерфейсу користувача.
+- **Firebase**: Можливо, використовується для аутентифікації.
+- **CSS Modules**: Для стилізації компонентів.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📸 Скріншоти
 
-### `npm run eject`
+![Alt text](image.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Alt text](image-1.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Alt text](image-2.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Alt text](image-3.png)
