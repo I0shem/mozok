@@ -37,6 +37,7 @@ const Header = ({
   setLikedProducts,
   basketProducts,
   setBasketProducts,
+  userInfo,
 }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -191,7 +192,7 @@ const Header = ({
   const db = getFirestore();
   const [loggedUser, setLoggedUser] = useState();
   useEffect(() => {
-    if (myUser.uid) {
+    if (myUser && myUser.uid != null) {
       // Check if userID is defined and non-empty
       const userDocRef = doc(db, "users", myUser.uid);
 
@@ -208,7 +209,7 @@ const Header = ({
 
       getUserData();
     }
-  }, [myUser.uid, db]);
+  }, [myUser, db]);
 
   const handleShowLikedProducts = () => {
     if (likedProducts.length >= 1) {
@@ -361,6 +362,8 @@ const Header = ({
             setShowLikedProducts={setShowLikedProducts}
             likedProducts={likedProducts}
             setLikedProducts={setLikedProducts}
+            setBasketProducts={setBasketProducts}
+            setShowBasket={setShowBasket}
           />
         </>
       )}
@@ -389,6 +392,10 @@ const Header = ({
           <PurchaseForm
             setShowCheckOut={setShowCheckOut}
             basketProducts={basketProducts}
+            myUser={myUser}
+            userInfo={userInfo}
+            setBasketProducts={setBasketProducts}
+            setShowBasket={setShowBasket}
           />
         </>
       )}

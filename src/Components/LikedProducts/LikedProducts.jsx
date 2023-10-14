@@ -5,7 +5,11 @@ import axios from "axios";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { AnimatePresence, motion } from "framer-motion";
 import ProductModalWindow from "./../ProductModalWindow/ProductModalWindow";
-const LikedProducts = ({ setShowLikedProducts }) => {
+const LikedProducts = ({
+  setShowLikedProducts,
+  setBasketProducts,
+  setShowBasket,
+}) => {
   const [likedProducts, setLikedProducts] = useState([]);
   const auth = getAuth();
   useEffect(() => {
@@ -118,6 +122,8 @@ const LikedProducts = ({ setShowLikedProducts }) => {
             item={i}
             setSelectedItem={setSelectedItem}
             setOpenModal={setOpenModal}
+            setBasketProducts={setBasketProducts}
+            setShowBasket={setShowBasket}
           />
         ))}
       </div>
@@ -130,6 +136,8 @@ const LikedProducts = ({ setShowLikedProducts }) => {
             textColor={textColor}
             selectedItem={selectedItem}
             CharacteristicsTable={CharacteristicsTable}
+            setBasketProducts={setBasketProducts}
+            setShowBasket={setShowBasket}
           />
         )}
       </AnimatePresence>

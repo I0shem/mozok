@@ -16,6 +16,9 @@ const ProductPage = ({
   basketProducts,
   setBasketProducts,
 }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const itemsPerPage = 20;
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -257,6 +260,8 @@ const ProductPage = ({
                   textColor={textColor}
                   selectedItem={selectedItem}
                   CharacteristicsTable={CharacteristicsTable}
+                  basketProducts={basketProducts}
+                  setBasketProducts={setBasketProducts}
                 />
               )}
             </AnimatePresence>

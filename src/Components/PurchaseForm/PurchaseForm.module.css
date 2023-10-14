@@ -50,6 +50,7 @@
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 5px;
 }
 
 .submitButton {
@@ -63,4 +64,16 @@
   display: flex;
   margin: 10px auto;
   margin-top: 30px;
+}
+.cardDetailsInputs {
+  display: flex;
+}
+.cardDetailsInputs input {
+  width: 70%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 0px;
 }

@@ -35,6 +35,9 @@ import axios from "axios";
 import LoadingLogoOther from "../LoadingLogo/LoadingLogoOther";
 
 const Home = ({ myUser, basketProducts, setBasketProducts }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [loading, setLoading] = useState(true);
   const data = MongoDBDataFetcher("sales", setLoading);
   const halfLength = Math.ceil(data.length / 2);
@@ -179,7 +182,7 @@ const Home = ({ myUser, basketProducts, setBasketProducts }) => {
               {firstHalf.map((i) => (
                 <Card
                   item={i}
-                  userID={myUser.uid}
+                  userID={myUser ? myUser.uid : null}
                   setSelectedItem={setSelectedItem}
                   setOpenModal={setOpenModal}
                   likedProducts={likedProducts}
@@ -222,7 +225,7 @@ const Home = ({ myUser, basketProducts, setBasketProducts }) => {
               {secondHalf.map((i) => (
                 <Card
                   item={i}
-                  userID={myUser.uid}
+                  userID={myUser ? myUser.uid : null}
                   setSelectedItem={setSelectedItem}
                   setOpenModal={setOpenModal}
                   likedProducts={likedProducts}

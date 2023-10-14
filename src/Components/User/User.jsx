@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./User.module.css";
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
-import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { getFirestore, doc, updateDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 import { AnimatePresence } from "framer-motion";
 import ProductModalWindow from "../ProductModalWindow/ProductModalWindow.jsx";
 import axios from "axios";
@@ -12,9 +12,13 @@ const User = ({
   setLikedProducts,
   basketProducts,
   setBasketProducts,
+  error,
+  loading,
+  myUser,
+  setUserInfo,
+  userInfo,
+  auth,
 }) => {
-  const [user, setUser] = useState(null);
-  const [userInfo, setUserInfo] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [selectedItem, setSelectedItem] = useState(1);
   const [openModal, setOpenModal] = useState(false);
@@ -47,47 +51,6 @@ const User = ({
     },
     closed: { opacity: 0, x: "10%" },
   };
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (u) => {
-      if (u) {
-        setLoading(true);
-        setUser(u);
-        fetchUserInfo(u.uid);
-        const endpoint = `https://eu-west-2.aws.data.mongodb-api.com/app/mozok-store-yrvzc/endpoint/getlikedItems`;
-
-        axios
-          .get(endpoint, {
-            params: { userId: u.uid },
-            headers: { "Content-Type": "application/json" },
-          })
-          .then((response) => {
-            console.log("API response data:", response.data);
-
-            // Check for errors in the response
-            if (response.data.error) {
-              setError(response.data.error);
-            } else {
-              setLikedProducts(response.data);
-              setError(null);
-            }
-          })
-          .catch((err) => {
-            console.error("API Error:", err);
-            console.error("Error Details:", err.response?.data);
-            setError("");
-          })
-          .finally(() => {
-            setLoading(false);
-          });
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   const textColor = (item) => {
     if (item.hot === true) {
@@ -108,16 +71,6 @@ const User = ({
       );
     }
   };
-  const fetchUserInfo = async (userId) => {
-    const db = getFirestore();
-    const userDocRef = doc(db, "users", userId);
-    const docSnap = await getDoc(userDocRef);
-
-    if (docSnap.exists()) {
-      const userData = docSnap.data();
-      setUserInfo((prevState) => ({ ...prevState, ...userData }));
-    }
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -126,7 +79,7 @@ const User = ({
 
   const saveChanges = async () => {
     const db = getFirestore();
-    const userDocRef = doc(db, "users", user.uid);
+    const userDocRef = doc(db, "users", myUser.uid);
 
     await updateDoc(userDocRef, userInfo);
     setIsEditing(false);
@@ -134,8 +87,6 @@ const User = ({
   const delChanges = async () => {
     setIsEditing(false);
   };
-
-  const auth = getAuth();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (u) => {
@@ -169,9 +120,9 @@ const User = ({
   return (
     <div className={s.UserContent}>
       <div className={s.userProfileContainer}>
-        {user ? (
+        {myUser ? (
           <>
-            <h2>Профіль користувача: {user.email}</h2>
+            <h2>Профіль користувача: {myUser.email}</h2>
             {isEditing ? (
               <div>
                 <label>
@@ -242,7 +193,7 @@ const User = ({
                   {likedProducts.map((i) => (
                     <ModalCard
                       item={i}
-                      userID={user.uid}
+                      userID={myUser.uid}
                       setSelectedItem={setSelectedItem}
                       setOpenModal={setOpenModal}
                       likedProducts={likedProducts}

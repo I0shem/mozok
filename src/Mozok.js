@@ -13,18 +13,75 @@ import ProductPage from "./Components/ProductPage/ProductPage";
 import AuthDetails from "./Components/Auth/AuthDetails";
 import LoadingLogo from "./Components/LoadingLogo/LoadingLogo";
 import Promotion from "./Components/Promotion/Promotion";
-
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+import axios from "axios";
 function Mozok() {
   const [logo, setLogo] = useState(true);
-  const [myUser, setMyUser] = useState("");
+  const [myUser, setMyUser] = useState({
+    uid: "",
+  });
   useEffect(() => {
     setTimeout(() => {
       setLogo(false);
     }, 5000);
   }, []);
+  const [userInfo, setUserInfo] = useState({});
   const [productsToCompare, setProductsToCompare] = useState([]);
   const [likedProducts, setLikedProducts] = useState([]);
   const [basketProducts, setBasketProducts] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const fetchUserInfo = async (userId) => {
+    const db = getFirestore();
+    const userDocRef = doc(db, "users", userId);
+    const docSnap = await getDoc(userDocRef);
+
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      setUserInfo((prevState) => ({ ...prevState, ...userData }));
+    }
+  };
+  const auth = getAuth();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => {
+      if (u) {
+        setLoading(true);
+        setMyUser(u);
+        fetchUserInfo(u.uid);
+        const endpoint = `https://eu-west-2.aws.data.mongodb-api.com/app/mozok-store-yrvzc/endpoint/getlikedItems`;
+
+        axios
+          .get(endpoint, {
+            params: { userId: u.uid },
+            headers: { "Content-Type": "application/json" },
+          })
+          .then((response) => {
+            console.log("API response data:", response.data);
+
+            // Check for errors in the response
+            if (response.data.error) {
+              setError(response.data.error);
+            } else {
+              setLikedProducts(response.data);
+              setError(null);
+            }
+          })
+          .catch((err) => {
+            console.error("API Error:", err);
+            console.error("Error Details:", err.response?.data);
+            setError("");
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+      } else {
+        setMyUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
   return (
     <>
       {logo ? (
@@ -40,6 +97,7 @@ function Mozok() {
             setLikedProducts={setLikedProducts}
             basketProducts={basketProducts}
             setBasketProducts={setBasketProducts}
+            userInfo={userInfo}
           />
           <main id="content" className={s.PageContent}>
             <Routes>
@@ -62,6 +120,12 @@ function Mozok() {
                     setLikedProducts={setLikedProducts}
                     basketProducts={basketProducts}
                     setBasketProducts={setBasketProducts}
+                    userInfo={userInfo}
+                    setUserInfo={setUserInfo}
+                    error={error}
+                    loading={loading}
+                    myUser={myUser}
+                    auth={auth}
                   />
                 }
               />

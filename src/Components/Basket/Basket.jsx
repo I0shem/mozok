@@ -171,6 +171,8 @@ function Basket({
           textColor={textColor}
           selectedItem={selectedItem}
           CharacteristicsTable={CharacteristicsTable}
+          basketProducts={basketProducts}
+          setBasketProducts={setBasketProducts}
         />
       )}
     </div>
