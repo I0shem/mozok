@@ -1,44 +1,47 @@
-Mozok
-Welcome to the Mozok repository! This project is a web application built using React and appears to be an e-commerce or product-related platform, given the various components and images related to products and shopping.
+# Mozok
 
-🚀 Getting Started
-To get started with the project, clone the repository and install the dependencies.
+**Ласкаво просимо до репозиторію Mozok!** Цей проект - веб-додаток, створений за допомогою React, є клоном сайту з продажу електроніки Brain і, зокрема, має зовнішній вигляд, який у багатому відзеркалює сайт Brain і частково співпадає з проектом сайту CBS, який Олександр додав як зразок подібного сайту на платформі Figma.
 
-bash
-Copy code
+## 🚀 Початок Роботи
+
+Для початку роботи з проектом, клонуйте репозиторій та встановіть залежності.
+
+```bash
 git clone https://github.com/I0shem/mozok.git
 cd mozok
 npm install
-Run the project using:
+```
 
-bash
-Copy code
+## Запустіть проект, використовуючи:
+
+```bash
 npm start
-🛒 Features
-User Authentication: Sign in and sign up functionalities.
-Product Viewing: Components related to product display and details.
-Shopping Basket: A basket component to manage selected items.
-Product Comparison: Functionality to compare different products.
-Filtering: A filter component to refine product searches.
-Loyalty Program: Information or functionalities related to a loyalty program.
-Order Tracking: A component to track product orders.
-... and many more!
+```
 
-🛠️ Technologies Used
-React: For building the UI components.
-Firebase: Potentially used for authentication.
-CSS Modules: For styling components.
-📸 Screenshots
-(Add screenshots of the application here)
+## 🛒 Особливості
 
-📚 Documentation
-Component Documentation (If available)
-API Documentation (If available)
-🤝 Contributing
-We welcome contributions to Mozok! Please see our contributing guide for more details.
+- **Аутентифікація Користувача**: Функціональність входу та реєстрації.
+- **Перегляд Продуктів**: Компоненти, пов'язані з відображенням та деталями продуктів.
+- **Кошик для Покупок**: Компонент кошика для управління вибраними товарами.
+- **Порівняння Продуктів**: Функціональність для порівняння різних продуктів.
+- **Фільтрація**: Компонент фільтра для уточнення пошуку продуктів.
+- **Програма Лояльності**: Інформація або функціональність, пов'язана з програмою лояльності.
+- **Відстеження Замовлень**: Компонент для відстеження замовлень продуктів.
 
-📃 License
-This project is licensed under the MIT License.
+... та багато іншого!
 
-📞 Contact
-If you have any questions or want to make contact, please raise an issue or submit a PR.
+## 🛠️ Використані Технології
+
+- **React**: Для створення компонентів інтерфейсу користувача.
+- **Firebase**: Можливо, використовується для аутентифікації.
+- **CSS Modules**: Для стилізації компонентів.
+
+## 📸 Скріншоти
+
+![Alt text](image.png)
+
+![Alt text](image-1.png)
+
+![Alt text](image-2.png)
+
+![Alt text](image-3.png)
