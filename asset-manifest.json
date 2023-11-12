@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/mozok/static/css/main.3e7abdce.css",
-    "main.js": "/mozok/static/js/main.406afa51.js",
-    "static/media/tv.png": "/mozok/static/media/tv.f35fd75a60772223062a.png",
-    "static/media/smartphones-and-tablets.png": "/mozok/static/media/smartphones-and-tablets.b2055aa323fbbe41e6f4.png",
-    "static/media/apple.png": "/mozok/static/media/apple.7bceed1d8c8ce59baa50.png",
-    "static/media/pc-parts.png": "/mozok/static/media/pc-parts.9b7455d9c4eaeda214fb.png",
-    "static/media/mediaplayers.png": "/mozok/static/media/mediaplayers.c8ec23aa7338b7aeeb12.png",
-    "static/media/monitor.png": "/mozok/static/media/monitor.03fbe364872d22fdbead.png",
+    "main.css": "/mozok/static/css/main.3e446b19.css",
+    "main.js": "/mozok/static/js/main.2ecbdd4e.js",
+    "static/media/tv.png": "/mozok/static/media/tv.8b17f93dc556632137c0.png",
+    "static/media/pc-parts.png": "/mozok/static/media/pc-parts.e43df08b2cc5d9ec9973.png",
     "static/media/headphones.png": "/mozok/static/media/headphones.5f4220a506cf4c49c153.png",
-    "static/media/projectors.png": "/mozok/static/media/projectors.414b789c07ed0a2602ec.png",
-    "static/media/Peripherals.webp": "/mozok/static/media/Peripherals.9e1d95a74dc70bc988ae.webp",
+    "static/media/mediaplayers.png": "/mozok/static/media/mediaplayers.b144ac569c408463b2c4.png",
+    "static/media/smartphones-and-tablets.png": "/mozok/static/media/smartphones-and-tablets.d767c579d7322bfacbf1.png",
+    "static/media/apple.png": "/mozok/static/media/apple.09167fbba245924f7d64.png",
     "static/media/ebooks.png": "/mozok/static/media/ebooks.4b35a86bdc91579e85b0.png",
+    "static/media/monitor.png": "/mozok/static/media/monitor.b158f39149be36d65c6e.png",
+    "static/media/projectors.png": "/mozok/static/media/projectors.918d11bb7a8007949d6a.png",
     "static/media/1.jpg": "/mozok/static/media/1.c70ad20f02b6d9b3e8c3.jpg",
     "static/media/3.jpg": "/mozok/static/media/3.62f2bc64fa6ded4c5f0d.jpg",
     "static/media/4.jpg": "/mozok/static/media/4.513cdeabac5f743c1f56.jpg",
     "static/media/EPAM logo.png": "/mozok/static/media/EPAM logo.eeeeb6279d61446b8b96.png",
+    "static/media/Peripherals.webp": "/mozok/static/media/Peripherals.2cd9705588c3731651df.webp",
     "static/media/2.jpg": "/mozok/static/media/2.a8c54e2342c8c276ac07.jpg",
     "static/media/laptop-desktop.webp": "/mozok/static/media/laptop-desktop.aaebcafd16c1f8c04c16.webp",
     "static/media/s3.jpg": "/mozok/static/media/s3.685539889f8c3e992a91.jpg",
@@ -61,11 +61,11 @@
     "static/media/clock.svg": "/mozok/static/media/clock.638810859df6332f5450699a214783a1.svg",
     "static/media/fb.svg": "/mozok/static/media/fb.81be5f17ddfb9587213665446899ef16.svg",
     "static/media/phone.svg": "/mozok/static/media/phone.107fbc08105b646df44c9d1553a68ba4.svg",
-    "main.3e7abdce.css.map": "/mozok/static/css/main.3e7abdce.css.map",
-    "main.406afa51.js.map": "/mozok/static/js/main.406afa51.js.map"
+    "main.3e446b19.css.map": "/mozok/static/css/main.3e446b19.css.map",
+    "main.2ecbdd4e.js.map": "/mozok/static/js/main.2ecbdd4e.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e7abdce.css",
-    "static/js/main.406afa51.js"
+    "static/css/main.3e446b19.css",
+    "static/js/main.2ecbdd4e.js"
   ]
 }
