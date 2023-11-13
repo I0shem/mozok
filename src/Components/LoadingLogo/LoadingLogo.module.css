@@ -14,6 +14,7 @@
   -webkit-user-select: none;
   user-select: none;
   overflow: hidden;
+  text-align: center;
   margin: 0;
 }
 .logoAnimated {
@@ -30,8 +31,13 @@
   margin-top: 30px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .messageVisible {
   opacity: 1;
+  text-align: center;
 }

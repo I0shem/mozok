@@ -221,6 +221,9 @@ svg:hover {
 .topBannerHeader hr {
   margin: 0;
 }
+.topBannerHeader li:nth-child(11) {
+  border-bottom: none;
+}
 .topBannerHeader svg {
   font-size: 17px;
   height: 17px;
@@ -234,8 +237,14 @@ svg:hover {
 .topBannerHeader li:hover {
   font-weight: 600;
   cursor: pointer;
-  transform: scale(1.03);
+  transform: scale(1.01);
   background-color: rgba(20, 126, 197, 0.11);
+  font-size: 13px;
+}
+.topBannerHeader li:hover svg {
+  height: 20px;
+  color: black;
+  fill: black;
 }
 .catalogModalWindow {
   position: relative;

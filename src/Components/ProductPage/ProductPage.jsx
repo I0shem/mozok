@@ -16,9 +16,8 @@ const ProductPage = ({
   basketProducts,
   setBasketProducts,
 }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  window.scrollTo(0, 0);
+
   const itemsPerPage = 20;
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -30,7 +29,7 @@ const ProductPage = ({
   const data = MongoDBDataFetcher(productName);
   const [logo, setLogo] = useState(true);
   useEffect(() => {
-    setLogo(true);
+    window.scrollTo(0, 0);
     if (!data.length) return;
     let filteredData = data.filter((item) => {
       if (!item.title.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -169,7 +168,13 @@ const ProductPage = ({
 
     return () => unsubscribe();
   }, []);
-
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % data.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
   return (
     <>
       {logo ? (
@@ -225,14 +230,12 @@ const ProductPage = ({
                   basketProducts={basketProducts}
                   setBasketProducts={setBasketProducts}
                 />
-              ))}{" "}
-            </div>{" "}
+              ))}
+            </div>
             <div className={s.paginationContainer}>
               <ReactPaginate
                 nextLabel=">"
-                onPageChange={(event) =>
-                  setItemOffset(event.selected * itemsPerPage)
-                }
+                onPageChange={(e) => handlePageClick(e)}
                 pageRangeDisplayed={3}
                 marginPagesDisplayed={2}
                 pageCount={pageCount}

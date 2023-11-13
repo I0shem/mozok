@@ -79,6 +79,7 @@ const ImageMagnifier = ({ selectedImage }) => {
           src={selectedImage}
           alt="failedToLoad"
           loading="lazy"
+          className={s.productImage}
         />
         <div
           ref={magnifierRef}

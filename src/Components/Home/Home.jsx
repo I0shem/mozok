@@ -146,9 +146,12 @@ const Home = ({ myUser, basketProducts, setBasketProducts }) => {
                   <AiOutlineLaptop />
                 </li>
               </NavLink>
-              <li>
-                <GPUSVG />
-              </li>
+              <NavLink to="/mozok/productpage/gpus" className={s.Link}>
+                <li>
+                  <GPUSVG />
+                </li>
+              </NavLink>
+
               <NavLink to="/mozok/productpage/phones" className={s.Link}>
                 <li>
                   <IoIosPhonePortrait />

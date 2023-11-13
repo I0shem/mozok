@@ -101,7 +101,7 @@
   display: flex;
   max-width: 65vw;
   margin-left: 22.7vw;
-  top: 56dvh;
+  top: 55.9vh;
   background-color: white;
 }
 .bottomBannersContainer li {
@@ -118,11 +118,9 @@
 }
 
 .bottomBannersContainer svg {
-  font-size: 17px;
   height: 30px;
   width: 30px;
   margin: 0;
-  margin-right: 10px;
   display: flex;
   flex-direction: row;
   color: rgb(20, 126, 197);
@@ -132,6 +130,12 @@
   cursor: pointer;
   background-color: rgba(20, 126, 197, 0.11);
   transform: scale(1.03);
+  color: black;
+  fill: black;
+}
+.bottomBannersContainer li:hover svg {
+  color: black;
+  fill: black;
 }
 .homeHeaderContainer {
   min-height: 457px;
@@ -190,6 +194,7 @@ td {
 }
 .innerItemModalFirstContainer {
   width: clamp(10vw, 15vw, 30vw);
+  height: clamp(250px, 230px, 350px);
   display: flex;
   align-items: center;
   justify-content: center;
