@@ -234,9 +234,8 @@ const Header = ({
           <div className={s.containerOne}>
             <div className={s.logo} onClick={() => navigate(`/mozok/`)}>
               <NavLink to="/mozok" end>
-                <MyLogo className={s.logoImage} />
+                <MyLogo className={s.logoImage} /> Mozok
               </NavLink>
-              Mozok
             </div>
             <div className={s.changeCity}>
               <ModalCityWindow show={show} setShow={setShow} />

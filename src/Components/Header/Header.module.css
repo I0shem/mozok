@@ -78,9 +78,9 @@
   padding: 10px;
   z-index: 16;
 }
-.logo:hover,
-svg:hover {
+.logo:hover {
   cursor: pointer;
+  color: #f00202;
 }
 .logoImage {
   margin-bottom: -13px;
