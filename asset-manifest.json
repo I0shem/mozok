@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mozok/static/css/main.3e446b19.css",
-    "main.js": "/mozok/static/js/main.2ecbdd4e.js",
+    "main.css": "/mozok/static/css/main.793732f9.css",
+    "main.js": "/mozok/static/js/main.389684ea.js",
     "static/media/tv.png": "/mozok/static/media/tv.8b17f93dc556632137c0.png",
     "static/media/pc-parts.png": "/mozok/static/media/pc-parts.e43df08b2cc5d9ec9973.png",
     "static/media/headphones.png": "/mozok/static/media/headphones.5f4220a506cf4c49c153.png",
@@ -61,11 +61,11 @@
     "static/media/clock.svg": "/mozok/static/media/clock.638810859df6332f5450699a214783a1.svg",
     "static/media/fb.svg": "/mozok/static/media/fb.81be5f17ddfb9587213665446899ef16.svg",
     "static/media/phone.svg": "/mozok/static/media/phone.107fbc08105b646df44c9d1553a68ba4.svg",
-    "main.3e446b19.css.map": "/mozok/static/css/main.3e446b19.css.map",
-    "main.2ecbdd4e.js.map": "/mozok/static/js/main.2ecbdd4e.js.map"
+    "main.793732f9.css.map": "/mozok/static/css/main.793732f9.css.map",
+    "main.389684ea.js.map": "/mozok/static/js/main.389684ea.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e446b19.css",
-    "static/js/main.2ecbdd4e.js"
+    "static/css/main.793732f9.css",
+    "static/js/main.389684ea.js"
   ]
 }
