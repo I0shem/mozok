@@ -106,28 +106,81 @@ const Footer = () => {
         >
           <li className={s.contacts_list_item}>Подарункові сертифікати</li>
         </NavLink>
-
-        <li
-          className={`${s.category_text} ${s.contacts_list_item}`}
-          style={{ fontWeight: "bold" }}
+        <NavLink
+          to="/mozok/service_centre"
+          className={s.link}
+          activeClassName={s.linkActive}
         >
-          Сервіс
-        </li>
-        <li className={s.contacts_list_item}>Сервісні центри</li>
-        <li className={s.contacts_list_item}>Сервіс і гарантія</li>
+          <li
+            className={`${s.category_text} ${s.contacts_list_item}`}
+            style={{ fontWeight: "bold" }}
+          >
+            Сервіс
+          </li>{" "}
+        </NavLink>
+        <NavLink
+          to="/mozok/service_centre#service-centers"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Сервісні центри</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/service_centre#service-warranty"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Сервіс і гарантія</li>
+        </NavLink>
       </ul>
       <ul className={s.info}>
-        <li
-          className={`${s.category_text} ${s.contacts_list_item}`}
-          style={{ fontWeight: "bold" }}
+        <NavLink
+          to="/mozok/forclients"
+          className={s.link}
+          activeClassName={s.linkActive}
         >
-          Клієнтам
-        </li>
-        <li className={s.contacts_list_item}>Уцінені товари</li>
-        <li className={s.contacts_list_item}>Доставка та оплата</li>
-        <li className={s.contacts_list_item}>Публічна оферта</li>
-        <li className={s.contacts_list_item}>Контакти</li>
-        <li className={s.contacts_list_item}>Всі бренди</li>
+          <li
+            className={`${s.category_text} ${s.contacts_list_item}`}
+            style={{ fontWeight: "bold" }}
+          >
+            Клієнтам
+          </li>
+        </NavLink>
+        <NavLink
+          to="/mozok/forclients#discounted-products"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Уцінені товари</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/forclients#delivery-payment"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Доставка та оплата</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/forclients#public-offer"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Публічна оферта</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/forclients#contacts"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Контакти</li>
+        </NavLink>
+        <NavLink
+          to="/mozok/forclients#all-brands"
+          className={s.link}
+          activeClassName={s.linkActive}
+        >
+          <li className={s.contacts_list_item}>Всі бренди</li>
+        </NavLink>
       </ul>
       <ul className={s.social}>
         <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
