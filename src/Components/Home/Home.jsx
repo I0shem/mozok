@@ -298,8 +298,8 @@ const Home = ({ myUser, basketProducts, setBasketProducts }) => {
               "Mozok" планує розширити свою присутність у регіонах України та
               відкрити нові магазини.
             </div>
-          </div>
-          <AnimatePresence>
+          </div>{" "}
+          <AnimatePresence mode="wait" initial={false}>
             {openModal && (
               <ProductModalWindow
                 closeModalWindow={closeModalWindow}

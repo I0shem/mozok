@@ -133,7 +133,6 @@ const Card = ({
     const body = document.querySelector("body");
     const main = document.querySelector("main");
     body.style.overflow = "hidden";
-    body.style.scrollbarGutter = "stable";
     main.style.paddingRight = "20px";
     setSelectedItem(item);
     setOpenModal(true);

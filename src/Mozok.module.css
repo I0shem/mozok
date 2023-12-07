@@ -1,6 +1,8 @@
 :root {
   --main-bg-color: rgb(20, 126, 197);
   --main-text-color: black;
+  scrollbar-color: rgba(20, 126, 197) white;
+  scrollbar-width: thin;
 }
 
 .noScroll {

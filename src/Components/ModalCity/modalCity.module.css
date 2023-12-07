@@ -34,13 +34,13 @@
   height: 100%;
   text-align: left;
 }
-tr,
-td,
-th {
-  border: none !important;
+.citiesRow tr,
+.citiesRow td,
+.citiesRow th {
+  border: none;
 }
-.cities th,
-td {
+
+.citiesRow td {
   margin: 5px;
 }
 .cities td:hover {

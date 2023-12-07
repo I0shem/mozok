@@ -16,8 +16,6 @@ const ProductPage = ({
   basketProducts,
   setBasketProducts,
 }) => {
-  window.scrollTo(0, 0);
-
   const itemsPerPage = 20;
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);

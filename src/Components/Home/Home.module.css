@@ -142,10 +142,11 @@
 }
 .itemModal {
   position: fixed;
+
   top: 0;
   left: 0;
   z-index: 15;
-  display: flex;
+
   background-color: rgba(4, 23, 36, 0.075);
   align-items: center;
   justify-content: center;
@@ -158,14 +159,15 @@
   flex-direction: column;
   align-items: center;
   position: fixed;
-  min-width: 95dvw;
-  height: 95dvh;
+  min-width: 100vw;
+  height: 100vh;
   background-color: white;
-  border-radius: 25px;
+
   overflow-x: hidden;
   overflow-y: scroll;
-  scrollbar-gutter: stable both-edges;
   border: 1px solid black;
+  scrollbar-color: rgba(20, 126, 197) white;
+  scrollbar-width: thin;
 }
 .innerItemModal img {
   max-width: 30vw;
@@ -193,8 +195,8 @@ td {
   margin: 5vh;
 }
 .innerItemModalFirstContainer {
-  width: clamp(10vw, 15vw, 30vw);
-  height: clamp(250px, 230px, 350px);
+  width: 15vw;
+  height: 30vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -284,13 +286,14 @@ td {
 }
 .innerItemModalCloseBtn {
   position: fixed;
-  right: 3dvw;
+  right: 1vw;
   margin: 10px;
   font-size: 26px;
 }
 .innerItemModalCloseBtn:hover {
   transform: scale(1.2);
   fill: black;
+  cursor: pointer;
 }
 .characteristicsModal {
   margin: 0;
@@ -303,4 +306,18 @@ td {
   position: relative;
   display: flex;
   margin: auto 30%;
+}
+.characteristicsTable {
+  border-spacing: 0 15px;
+  border-collapse: separate;
+}
+th,
+td {
+  text-align: center;
+  padding: 6px;
+  border: 1px solid black;
+}
+.characteristicsTable tr {
+  border: 1px solid black;
+  color: black;
 }

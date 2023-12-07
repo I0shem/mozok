@@ -38,10 +38,7 @@
   margin: 10px auto;
   font-weight: 500;
 }
-.Promotion h3::before,
-h3::after {
-  content: "''";
-}
+
 h1 {
   font-size: 27px;
   margin: 30px auto;
