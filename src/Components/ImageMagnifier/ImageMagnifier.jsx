@@ -69,7 +69,7 @@ const ImageMagnifier = ({ selectedImage }) => {
   return (
     <>
       <div
-        class={s.img_magnifier_container}
+        className={s.img_magnifier_container}
         onMouseEnter={() => setMagnifierVisible(true)}
         onMouseLeave={() => setMagnifierVisible(false)}
       >

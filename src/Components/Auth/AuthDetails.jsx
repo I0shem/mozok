@@ -15,7 +15,7 @@ const AuthDetails = () => {
     });
     return () => {
       listen();
-    };
+    }; // eslint-disable-next-line
   }, []);
 
   return <Toaster richColors />;

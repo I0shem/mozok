@@ -41,7 +41,7 @@ export default function App() {
         <SwiperSlide className={s.swiperSlide}>
           <img src={Image2} alt="picture1" loading="lazy" />
         </SwiperSlide>
-        <SwiperSlide swiperSlideclassName={s.swiperSlide}>
+        <SwiperSlide className={s.swiperSlide}>
           <img src={Image3} alt="picture1" loading="lazy" />
         </SwiperSlide>
         <SwiperSlide className={s.swiperSlide}>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import s from "./Mozok.module.css";
 import { Routes, Route } from "react-router-dom";
 import Stores from "./Components/Stores/Stores";
@@ -25,6 +26,7 @@ function Mozok() {
     setTimeout(() => {
       setLogo(false);
     }, 5000);
+    // eslint-disable-next-line
   }, []);
   const [userInfo, setUserInfo] = useState({});
   const [productsToCompare, setProductsToCompare] = useState([]);
@@ -81,6 +83,7 @@ function Mozok() {
     });
 
     return () => unsubscribe();
+    // eslint-disable-next-line
   }, []);
   return (
     <>

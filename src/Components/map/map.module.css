@@ -114,3 +114,38 @@ h1 {
   height: 72vh;
   margin: 0;
 }
+@media (max-width: 615px) {
+  .map_container {
+    width: auto;
+    height: auto;
+    margin: 10px 0;
+    padding: 0vh;
+  }
+  .stores_map_container {
+    width: auto;
+    height: auto;
+    margin: 10px 0;
+    padding: 0vh;
+  }
+  .mao_info_box {
+    width: 100vw;
+    margin-top: 25vh;
+  }
+  .contacts_list_item {
+    margin-bottom: 1vh;
+  }
+
+  .map_box {
+    position: absolute;
+    width: 80vw;
+    height: 20vh;
+    left: 10vw;
+  }
+
+  .stores_map_container svg {
+    z-index: -1;
+  }
+  .pr_svg {
+    visibility: hidden;
+  }
+}

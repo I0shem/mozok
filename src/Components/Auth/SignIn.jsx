@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-// rafce
+
 const SignIn = ({ closeSignIn, setShowSignUp }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

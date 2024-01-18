@@ -50,3 +50,39 @@
 .changeCity {
   width: 135px;
 }
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  .city {
+    font-size: 0.8rem;
+  }
+
+  .cities {
+    width: 260px;
+    height: 200px;
+    font-size: 0.8rem;
+    padding: 5px;
+    top: 8vh;
+    left: 16vw;
+  }
+}
+
+/* iPads, Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Styles */
+}
+
+/* Small screens, laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Styles */
+}
+
+/* Desktops, large screens */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  /* Styles */
+}
+
+/* Extra large screens, TV */
+@media (min-width: 1201px) {
+  /* Styles */
+}

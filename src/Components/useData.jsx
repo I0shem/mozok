@@ -12,7 +12,7 @@ const MongoDBDataFetcher = (name) => {
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData(); // eslint-disable-next-line
   }, [name]);
 
   return data;

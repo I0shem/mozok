@@ -164,7 +164,7 @@ const ProductPage = ({
       }
     });
 
-    return () => unsubscribe();
+    return () => unsubscribe(); // eslint-disable-next-line
   }, []);
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
@@ -248,7 +248,6 @@ const ProductPage = ({
                 breakClassName={s.pageItem}
                 breakLinkClassName={s.pageLink}
                 containerClassName={s.pagination}
-                activeClassName={s.active}
                 renderOnZeroPageCount={null}
               />
             </div>

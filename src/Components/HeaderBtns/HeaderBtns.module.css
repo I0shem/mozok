@@ -82,13 +82,72 @@ a {
 }
 .modalBackground {
   position: fixed;
-  height: 100dvh;
+  height: 100vh;
   width: 100vw;
   left: 0;
   top: 0;
   z-index: 5;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.headerBtnContainer button {
-  min-width: 100px;
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  .headerBtnContainer {
+    font-size: 12px;
+    margin-left: 0;
+
+    top: -1vh;
+  }
+
+  .dropDownBtn,
+  .Link {
+    font-size: 11px;
+    max-width: 23vw;
+    min-width: 12vw;
+  }
+
+  .headerBtnContainer svg {
+    height: 1em;
+    width: 1.8em;
+    margin-left: -3px;
+  }
+
+  .modalHeader0 {
+    top: 5vh;
+    margin-left: 43%;
+    z-index: 18;
+  }
+  .modalHeader1 {
+    top: 4.8vh;
+    margin-left: 57%;
+    width: 100px;
+    z-index: 18;
+  }
+  .modalHeader2 {
+    top: 4.8vh;
+    margin-left: 65%;
+    padding: 0;
+    width: 100px;
+    z-index: 18;
+  }
+}
+
+/* iPads, Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Styles */
+}
+
+/* Small screens, laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Styles */
+}
+
+/* Desktops, large screens */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  /* Styles */
+}
+
+/* Extra large screens, TV */
+@media (min-width: 1201px) {
+  /* Styles */
 }

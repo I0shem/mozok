@@ -33,46 +33,22 @@ const Footer = () => {
         >
           Популярні категорії
         </li>
-        <NavLink
-          to="/mozok/productpage/cpus"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/productpage/cpus" className={s.link}>
           <li className={s.contacts_list_item}>Центральні процесори (CPU)</li>
         </NavLink>
-        <NavLink
-          to="/mozok/productpage/gpus"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/productpage/gpus" className={s.link}>
           <li className={s.contacts_list_item}>Графічні процесори (GPU)</li>
         </NavLink>
-        <NavLink
-          to="/mozok/productpage/motherboards"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/productpage/motherboards" className={s.link}>
           <li className={s.contacts_list_item}>Материнські плати</li>
         </NavLink>
-        <NavLink
-          to="/mozok/productpage/tablets"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/productpage/tablets" className={s.link}>
           <li className={s.contacts_list_item}>Смартфони та телефони</li>
         </NavLink>
-        <NavLink
-          to="/mozok/productpage/phones"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/productpage/phones" className={s.link}>
           <li className={s.contacts_list_item}>Планшети</li>
         </NavLink>
-        <NavLink
-          to="/mozok/promotion"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/promotion" className={s.link}>
           <li className={s.contacts_list_item} style={{ color: "red" }}>
             Акції
           </li>
@@ -80,11 +56,7 @@ const Footer = () => {
       </ul>
 
       <ul className={s.service}>
-        <NavLink
-          to="/mozok/loyalty_program"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/loyalty_program" className={s.link}>
           <li
             className={`${s.category_text} ${s.contacts_list_item}`}
             style={{ fontWeight: "bold" }}
@@ -95,22 +67,16 @@ const Footer = () => {
         <NavLink
           to="/mozok/loyalty_program#loyalty-program-section"
           className={s.link}
-          activeClassName={s.linkActive}
         >
           <li className={s.contacts_list_item}>Про програму лояльності</li>
         </NavLink>
         <NavLink
           to="/mozok/loyalty_program#gift-certificates-section"
           className={s.link}
-          activeClassName={s.linkActive}
         >
           <li className={s.contacts_list_item}>Подарункові сертифікати</li>
         </NavLink>
-        <NavLink
-          to="/mozok/service_centre"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/service_centre" className={s.link}>
           <li
             className={`${s.category_text} ${s.contacts_list_item}`}
             style={{ fontWeight: "bold" }}
@@ -118,27 +84,15 @@ const Footer = () => {
             Сервіс
           </li>{" "}
         </NavLink>
-        <NavLink
-          to="/mozok/service_centre#service-centers"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/service_centre#service-centers" className={s.link}>
           <li className={s.contacts_list_item}>Сервісні центри</li>
         </NavLink>
-        <NavLink
-          to="/mozok/service_centre#service-warranty"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/service_centre#service-warranty" className={s.link}>
           <li className={s.contacts_list_item}>Сервіс і гарантія</li>
         </NavLink>
       </ul>
       <ul className={s.info}>
-        <NavLink
-          to="/mozok/forclients"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/forclients" className={s.link}>
           <li
             className={`${s.category_text} ${s.contacts_list_item}`}
             style={{ fontWeight: "bold" }}
@@ -146,39 +100,19 @@ const Footer = () => {
             Клієнтам
           </li>
         </NavLink>
-        <NavLink
-          to="/mozok/forclients#discounted-products"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/forclients#discounted-products" className={s.link}>
           <li className={s.contacts_list_item}>Уцінені товари</li>
         </NavLink>
-        <NavLink
-          to="/mozok/forclients#delivery-payment"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/forclients#delivery-payment" className={s.link}>
           <li className={s.contacts_list_item}>Доставка та оплата</li>
         </NavLink>
-        <NavLink
-          to="/mozok/forclients#public-offer"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/forclients#public-offer" className={s.link}>
           <li className={s.contacts_list_item}>Публічна оферта</li>
         </NavLink>
-        <NavLink
-          to="/mozok/forclients#contacts"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/forclients#contacts" className={s.link}>
           <li className={s.contacts_list_item}>Контакти</li>
         </NavLink>
-        <NavLink
-          to="/mozok/forclients#all-brands"
-          className={s.link}
-          activeClassName={s.linkActive}
-        >
+        <NavLink to="/mozok/forclients#all-brands" className={s.link}>
           <li className={s.contacts_list_item}>Всі бренди</li>
         </NavLink>
       </ul>
@@ -234,7 +168,7 @@ const Footer = () => {
           />{" "}
           м. Вінниця, вул. Соборна 30
         </li>
-        <li>
+        <li className={s.contacts_list_img}>
           <img src={viza} alt="" style={{ marginTop: "40px" }} />
         </li>
       </ul>

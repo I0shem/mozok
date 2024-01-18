@@ -90,11 +90,7 @@ export function HeaderBtns() {
               <div className={s.modalHeader0}>
                 <ul>
                   {loyaltyContent.map((item) => (
-                    <NavLink
-                      to={item.tolink}
-                      className={s.link}
-                      activeClassName={s.linkActive}
-                    >
+                    <NavLink to={item.tolink} className={s.link}>
                       <li>{item.label}</li>
                     </NavLink>
                   ))}
@@ -120,11 +116,7 @@ export function HeaderBtns() {
             <div className={s.modalHeader1}>
               <ul>
                 {clientsContent.map((item) => (
-                  <NavLink
-                    to={item.tolink}
-                    className={s.link}
-                    activeClassName={s.linkActive}
-                  >
+                  <NavLink to={item.tolink} className={s.link}>
                     <li>{item.label}</li>
                   </NavLink>
                 ))}
@@ -149,11 +141,7 @@ export function HeaderBtns() {
             <div className={s.modalHeader2}>
               <ul>
                 {serviceContent.map((item) => (
-                  <NavLink
-                    to={item.tolink}
-                    className={s.link}
-                    activeClassName={s.linkActive}
-                  >
+                  <NavLink to={item.tolink} className={s.link}>
                     <li>{item.label}</li>
                   </NavLink>
                 ))}

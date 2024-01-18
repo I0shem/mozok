@@ -3,7 +3,7 @@ import { IconContext } from "react-icons";
 import s from "./card.module.css";
 
 const LikedIcon = ({ isLiked, onClick, deleteItem }) => (
-  <div onClick={(e) => e.stopPropagation()}>
+  <div className={s.HeartSVG} onClick={(e) => e.stopPropagation()}>
     <IconContext.Provider value={{ className: s.heartBtn, size: "40px" }}>
       {isLiked ? (
         <BsHeartFill onClick={deleteItem} />

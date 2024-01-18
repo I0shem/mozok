@@ -115,7 +115,7 @@ const User = ({
       }
     });
 
-    return () => unsubscribe();
+    return () => unsubscribe(); // eslint-disable-next-line
   }, []);
   return (
     <div className={s.UserContent}>

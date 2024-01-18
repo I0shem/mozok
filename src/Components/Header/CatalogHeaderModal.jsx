@@ -34,7 +34,6 @@ const CatalogHeaderModal = ({ setCClick }) => {
                   key={index}
                   to={link.to}
                   className={s.link}
-                  activeClassName={s.linkActive}
                   onClick={() => setCClick(false)}
                 >
                   <p>{link.label}</p>

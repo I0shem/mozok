@@ -20,9 +20,9 @@ const Map = () => {
           opacity="0.2"
           d="M246.154 2.99999L1920 2.99999L1920 347.058V732.82L443.568 732.82L5.89351e-05 735V502.091V347.058L5.89351e-05 203.254L163.404 203.254"
           stroke="#1F347B"
-          stroke-width="6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
 
         <g transform="translate(230, -10)">

@@ -36,7 +36,7 @@ import LoadingLogoOther from "../LoadingLogo/LoadingLogoOther";
 
 const Home = ({ myUser, basketProducts, setBasketProducts }) => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // eslint-disable-next-line
   }, []);
   const [loading, setLoading] = useState(true);
   const data = MongoDBDataFetcher("sales", setLoading);
@@ -116,12 +116,12 @@ const Home = ({ myUser, basketProducts, setBasketProducts }) => {
       }
     });
 
-    return () => unsubscribe();
+    return () => unsubscribe(); // eslint-disable-next-line
   }, []);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 3000); // eslint-disable-next-line
   }, []);
   return (
     <>
@@ -184,6 +184,7 @@ const Home = ({ myUser, basketProducts, setBasketProducts }) => {
             <div className={s.items}>
               {firstHalf.map((i) => (
                 <Card
+                  key={i._id}
                   item={i}
                   userID={myUser ? myUser.uid : null}
                   setSelectedItem={setSelectedItem}
@@ -227,6 +228,7 @@ const Home = ({ myUser, basketProducts, setBasketProducts }) => {
             <div className={s.items}>
               {secondHalf.map((i) => (
                 <Card
+                  key={i._id}
                   item={i}
                   userID={myUser ? myUser.uid : null}
                   setSelectedItem={setSelectedItem}

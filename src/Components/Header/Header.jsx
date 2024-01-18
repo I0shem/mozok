@@ -102,8 +102,8 @@ const Header = ({
     window.addEventListener("scroll", isSticky);
     return () => {
       window.removeEventListener("scroll", isSticky);
-    };
-  });
+    }; // eslint-disable-next-line
+  }, []);
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -114,7 +114,7 @@ const Header = ({
     });
     return () => {
       listen();
-    };
+    }; // eslint-disable-next-line
   }, []);
 
   const SignOut = () => {
@@ -186,7 +186,7 @@ const Header = ({
       }
     });
 
-    return () => unsubscribe();
+    return () => unsubscribe(); // eslint-disable-next-line
   }, []);
 
   const db = getFirestore();

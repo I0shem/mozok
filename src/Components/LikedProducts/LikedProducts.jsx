@@ -39,7 +39,7 @@ const LikedProducts = ({
       }
     });
 
-    return () => unsubscribe();
+    return () => unsubscribe(); // eslint-disable-next-line
   }, []);
   const [openModal, setOpenModal] = useState(false);
   const CharacteristicsTable = (characteristics) => (

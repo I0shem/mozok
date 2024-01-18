@@ -25,7 +25,7 @@ const CatalogHeader = () => {
         {CatalogData.map((item, index) => (
           <li key={index} onMouseEnter={() => handleMouseEnter(item)}>
             {item.icon}
-            {item.title}
+            <span>{item.title}</span>
           </li>
         ))}
       </div>
@@ -35,12 +35,7 @@ const CatalogHeader = () => {
           <div className={s.catalogItemFP}>
             <ul>
               {activeItem.links.map((link, index) => (
-                <NavLink
-                  key={index}
-                  to={link.to}
-                  className={s.link}
-                  activeClassName={s.linkActive}
-                >
+                <NavLink key={index} to={link.to} className={s.link}>
                   <p>{link.label}</p>
                 </NavLink>
               ))}
