@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mozok/static/css/main.0a30cc29.css",
-    "main.js": "/mozok/static/js/main.38fb78fd.js",
+    "main.js": "/mozok/static/js/main.828ac4a8.js",
     "static/media/tv.png": "/mozok/static/media/tv.8b17f93dc556632137c0.png",
     "static/media/pc-parts.png": "/mozok/static/media/pc-parts.e43df08b2cc5d9ec9973.png",
     "static/media/headphones.png": "/mozok/static/media/headphones.5f4220a506cf4c49c153.png",
@@ -62,10 +62,10 @@
     "static/media/fb.svg": "/mozok/static/media/fb.81be5f17ddfb9587213665446899ef16.svg",
     "static/media/phone.svg": "/mozok/static/media/phone.107fbc08105b646df44c9d1553a68ba4.svg",
     "main.0a30cc29.css.map": "/mozok/static/css/main.0a30cc29.css.map",
-    "main.38fb78fd.js.map": "/mozok/static/js/main.38fb78fd.js.map"
+    "main.828ac4a8.js.map": "/mozok/static/js/main.828ac4a8.js.map"
   },
   "entrypoints": [
     "static/css/main.0a30cc29.css",
-    "static/js/main.38fb78fd.js"
+    "static/js/main.828ac4a8.js"
   ]
 }
