@@ -8,6 +8,8 @@ import axios from "axios";
 import LikedIcon from "./LikedIcon";
 import ScalesIcon from "./ScalesIcon";
 import { toast } from "sonner";
+import placeholderImage from "../Images/No-Image-Placeholder.png";
+
 const Card = ({
   item,
   userID,
@@ -163,10 +165,13 @@ const Card = ({
         perspective={500}
       >
         <img
-          src={item.image}
+          src={item.image || placeholderImage}
           alt="pic"
           className={s.cardImage}
           loading="lazy"
+          onError={(e) => {
+            e.target.src = placeholderImage;
+          }}
         />
         <LikedIcon
           isLiked={isLiked}

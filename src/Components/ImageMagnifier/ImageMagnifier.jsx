@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "./ImageMagnifier.module.css";
+import placeholderImage from "../Images/No-Image-Placeholder.png";
+
 const ImageMagnifier = ({ selectedImage }) => {
   // Визначення стану для відображення лупи
   const [magnifierVisible, setMagnifierVisible] = useState(false);
@@ -76,10 +78,13 @@ const ImageMagnifier = ({ selectedImage }) => {
         <img
           ref={imgRef}
           id="magnifiedImage"
-          src={selectedImage}
+          src={selectedImage || placeholderImage}
           alt="failedToLoad"
           loading="lazy"
           className={s.productImage}
+          onError={(e) => {
+            e.target.src = placeholderImage;
+          }}
         />
         <div
           ref={magnifierRef}

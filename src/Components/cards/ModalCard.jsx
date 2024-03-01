@@ -4,6 +4,8 @@ import Tilt from "react-parallax-tilt";
 import SaleSVG from "../Images/sale.png";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import placeholderImage from "../Images/No-Image-Placeholder.png";
+
 const ModalCard = ({
   item,
   setSelectedItem,
@@ -90,10 +92,13 @@ const ModalCard = ({
         perspective={500}
       >
         <img
-          src={item.image}
+          src={item.image || placeholderImage}
           alt="pic"
-          className={s.modalCardImage}
+          className={s.cardImage}
           loading="lazy"
+          onError={(e) => {
+            e.target.src = placeholderImage;
+          }}
         />
         <div className={s.innerElement}>
           <div className={s.title}>{item.title}</div>
